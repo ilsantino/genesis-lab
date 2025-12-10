@@ -15,10 +15,18 @@ La arquitectura prioriza claridad, mantenibilidad, extensibilidad y separación 
 
 2. Estructura general del proyecto
 GENESIS-LAB/
+  gitgun/
+  .venv/
   data/
     raw/
     synthetic/
     reference/
+  docs/
+    ARCHITECTURE.md
+    DEVLOG.md
+    PROJECTSTATUS.md
+    ROADMAP.md
+    TDR.md
   models/
   notebooks/
   src/
@@ -27,14 +35,16 @@ GENESIS-LAB/
     training/
     registry/
     utils/
+  tests/
   ui/
     app.py
     pages/
-  tests/
-  .env
   .cursorrules
+  .env
+  .env.template
   pyproject.toml
   README.md
+  uv.lock
 
 A continuación se detalla la función y responsabilidad de cada carpeta y módulo.
 
