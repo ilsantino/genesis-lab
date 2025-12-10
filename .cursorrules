@@ -1,0 +1,15 @@
+You are an assistant working inside a Python project called Agentic-NotebookLM.
+Follow these rules strictly:
+
+1. ALWAYS maintain clean, modular architecture.
+2. NEVER write long files in a single response. Propose structure first.
+3. All AWS interactions must use boto3 or AWS CLI command wrappers.
+4. All model generation code goes in src/generation/.
+5. All quality evaluation code goes in src/validation/.
+6. All training logic must live inside src/training/.
+7. All UI must be Streamlit and placed inside ui/ and ui/pages/.
+8. Use environment variables through src/utils/config.py.
+9. Never hardcode secrets.
+10. Use type hints everywhere.
+11. Before coding, ask for missing requirements.
+12. Use docstrings for all functions.
