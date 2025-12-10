@@ -28,11 +28,7 @@ Corresponde al Día 1 de trabajo consolidado.
 - Instalación correcta de AWS CLI v2 (solucionando problemas de PATH).
 - Configuración de credenciales vía `aws configure`.
 - Ajuste de región a `us-east-1`.
-- Validación satisfactoria de Bedrock con:
-aws bedrock list-foundation-models --region us-east-1
-
-markdown
-Copy code
+- Validación satisfactoria de Bedrock con: aws bedrock list-foundation-models --region us-east-1
 
 ### 🔗 GitHub Setup
 - Creación del repositorio remoto.
