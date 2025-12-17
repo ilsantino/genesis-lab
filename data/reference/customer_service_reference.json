@@ -1,0 +1,2502 @@
+[
+  {
+    "text": "I am still waiting on my card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What can I do if my card still hasn't arrived after 2 weeks?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I have been waiting over a week. Is the card still coming?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can I track my card while it is in the process of delivery?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How do I know if I will get my card, or if it is lost?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "When did you send me my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Do you have info about the card on delivery?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What do I do if I still have not received my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Does the package with my card have tracking?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I ordered my card but it still isn't here",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Why has my new card still not come?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I still haven't received my card after two weeks, is it lost?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can you track my card for me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is there a way to track the delivery of my card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "It's been a week since I ordered my card and it's not here. Please help?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Will I be able to track the card that was sent to me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I don't have my card in 1 week.  Should I be worried?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How do I know when my new card is going to arrive?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My new card has not been delivered to my home yet. What is going on?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "It's been a week since you issued me a card and I still didn't get it. Should I keep waiting?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "On the card that is coming, what's the tracking info?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What is the status of my card's delivery?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Have you sent out my card yet?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card isn't here yet.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "where is my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "It's been a week since you sent my card and I still don't have it.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How do I track the card you sent me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "When will I recieve my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "When will I get my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What is the expected delivery date for my card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is there a tracking number for the card you sent me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I would like to track the card you sent to me.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Has my card been lost in delivery?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My new card hasn't came in.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Where is the card I ordered 2 weeks ago?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can I get an update on my replacement card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How long does it take for a new card to ship?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What's the tracking on the card you sent?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I haven't received my card and am worried it is lost.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card still hasn't been delivered",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I need to find out where the card is that I ordered.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Where is my credit card that was to be mailed?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I ordered my card but it hasn't been delivered yet",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Am I able to track the card that was just sent to me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can you tell me why I haven't received my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I'm still waiting for my new card.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is my card lost? I am still waiting for it to be delivered.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Should I keep waiting for my card to be delivered?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can I track when my card will be delivered?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How can I check on the status of my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "A card has been sent to me, how do I track it?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is there a way I can get my card expedited?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What can I do to track the card you sent me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "why hasnt my card come in yet?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How can I periodically check the delivery of the card you sent?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What's the reason my new card hasn't come?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How long does it take for me to get my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I don't have my card after 1 week. What are my next steps?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I know I'm getting a new card but would like know when I can expect to receive it.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I want to find out what happened to my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Was there a way for me to get tracking for that?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I am still waiting for my card.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card hasn't arrived.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can I track the card you sent to me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I haven't gotten my new card.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How long should it take for my new card to arrive in them mail? What should I do if I never receive it?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Will I have to wait much longer for my new card to arrive?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "how to track the card you sent",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "2 weeks ago I ordered my new card.  It isn't here.  What should I do?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How can I check on the delivery status of my card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card has not been delivered yet and its been a week since I ordered it, please help",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What's the expected wait time to recieve my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How can I see the progress of delivery of the card that was sent?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card was supposed to arrive, but hasn't?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I ordered a card and would like to know how to track the delivery progress of it.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How long will it take for me to get my card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card hasn't shown up yet.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Does the card you sent have a tracking number?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card hasn't arrived in the mail yet. I ordered it two weeks ago. What can I do?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "maximum how many days get the courier?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is there a reason my new card hasn't arrived yet?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I've been waiting a while for my card, is there a way to know when it will arrive?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How can I track my card's delivery?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can I track the card that was just sent to me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "If I ordered my new card last week, how much longer should I wait to receive it?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What's go on, where is my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Where is my new card if I haven't received it yet?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Where is my card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can you tell me why I haven't received my new card yet?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is there a way to track my card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is there a way to track the new card you sent me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I'm still waiting for my card.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What do I need to do to get my new card which I have requested 2 weeks ago?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "WHAT IS THE SOLUTION OF THIS PROBLEM",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Could I get tracking on the card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can you help me track my card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Shouldn't my new card be here by now?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is there a reason my new card hasn't arrived?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I would like to track a card sent to me, how do I do that?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is there a tracking number for the card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "can you share card tracking number?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I have not received my card and it's been a week, what do I do?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is there a way I can check on the card on route to me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "When will my new card arrive?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Why haven't I received my new card yet?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What is the expected delivery date of my card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card hasn't came in the mail yet?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I haven't received my card.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is it possible for me to track the card is was mailed to me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "When will my new card be delivered?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I was issued a card about a week ago. why hasn't it come in yet?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can you please tell me where my card is? I ordered it 2 weeks ago!",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I still haven't received my card in the mail",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I'm still waiting for my card that was issued a week ago. What should I do?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I still haven't gotten my new card.  When will it get here?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Do you have a tracking number for the card I was sent?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How do I track the card you sent to me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is my new bank card on the way and is there a way to track it?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Could you send me and up date on the arrival of my card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How long does it take to recieve my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card has not come in the mail yet.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "What's the card you sent me's tracking number?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "i havent got my card",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Why hasn't my card arrived yet?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I thought I would have received my new card at this point.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How long until my new card gets here?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How much longer until I get my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Am I able to track a card that has already been sent?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is it possible to track the card you sent me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How long will it be to get this new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "how can i track card you sent",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can the card was sen to me be tracked?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "why have i not got my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I need to track the card sent to me.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "It's been two weeks and I haven't gotten my card, what do I do?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I was expecting my new card by now.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Where is the tracking number for the card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I was issued a new card a week ago but still haven't received it. How long will it be until I receive it?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can I track the card that you sent me in the mail?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Can you tell me if I can track the card you sent me?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Why have I not gotten my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I'm still waiting on my new card to be delivered!",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My new card isn't here and it was issued a week ago.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I was supposed to receive my new card by now, but it hasn't came in.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Is a tracking number available for the card that was just sent?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Why haven't I gotten my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "Was there a number to track that I could get?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "How much longer is it going to take to get my new card?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "I haven't gotten my credit card in the mail.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card hasn't arrived yet. What do I do?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card still hasn't arrived after two weeks, now what?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card appears to have never arrived?",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card never arrived.",
+    "label": 11,
+    "intent": "card_arrival"
+  },
+  {
+    "text": "My card has been found. Is there any way for me to put it back into the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I was able to find my card. How to I go about putting it into my app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "how do I get my card to show in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I just got my card.  It's not linked yet--how do I do that?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "lost card found, want to put it back in app",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I just got a card, how can I add it to the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Is there any way to see my card in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "If I find a card I lost do I need to dispose of it? Or can I re-active the card and continue to use it?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found my card. How can I put it into my app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I make my card show up in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can you show me where to link the new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found my old card. Can I link it back into the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Show me how to link the new card,",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I add an existing card to the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I finally got my card.  Now I want to link it.  Is that something you have to do or can I do that?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I link one of your card that I already have?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "If I have a physical card can I link it?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found my lost card in my jacket pocket this morning so I'd like to reactivate it please.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I add a card that I just found (again) to the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How can I make my card show up in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I would like to re-activate my card, it was previously reported  lost but I found it this morning.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Okay, I found my card, can I put it back in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I reactivate a card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I would like to reactivate a card and wondered if that could be done?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I got my card now, how do I make it show up in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I link an existing card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I link a new card in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "The card I thought was lost was just in my jacket, so can I reactivate it since I found it this morning?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I already have a card and want to link it",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can you please reactivate my card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Where do I go to add a new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I want my card I just received to show up in the app. How do I do that?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I received my card, how do I get it to show in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "If I have a credit card with you how I get set up to link to it?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I add my new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I want to reactivate my card, I thought I had lost it but found it again this morning.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I need a card reactivation, I had reported my card lost but I ran across it in my jacket.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "My card is no longer lost. How do I enter it back into the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I want to reactivate my card, I thought I had lost it but found it again in my jacket.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "May I reactivate my card? I previously reported it lost, but have now found it safe and sound.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I reactivate a card I thought I lost?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Help me figure out how to link the new card.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found my lost card. Am I still able to use it?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Will I need a new card or can I put my old card back into the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Is there a way to link the card i just got?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I add a new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I want to reactivate my card, I found it after thinking it was lost.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I put my old card back in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I got a new card, how do I link it?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found the card I thought I lost this morning. Can I reactivate this card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do i go about linking a new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "how do i get the card linked",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I have one of your cards, but I don't know how to link it.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "how do I link an old card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I received my card. How do I link it to the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Now that I have my card, how do I connect it to the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I add the card I just received to show up in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I want to reactivate my card, I thought I had lost it but I found it.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "What do I need to do to link my new card for my account?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I add a card to back into the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I want to link my new card. Can you help?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "What is the process to link the new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found my card, am I able to put it back into the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I have found my lost or stolen card, would I still have to activate the new card that was sent to me through the mail in order to access my account?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Where can I link a new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I add a card on to the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found my card in my jacket this morning, so can I reactivate it?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I've obtained the card, how do I enable it on the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I need to find the card I received in the app.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I get my card on the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "In the app, how can I make it show the new card that arrived?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I link my new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I activate a card in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I want to link to my card card with you, how?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I would like to link my card to my account.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I thought I lost my card so I cancelled it, but recently I found it in my jacket and I would like to re-establish the card.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How can I link the new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I got a new card and can't find where to link it.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Hey, I have my card, how do I get it to show in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Where in the app do I go to make my new card show up?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Where do I scan my card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I reactivate my card? I reported it lost and found it this morning in my jacket.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I link my card I previously received?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I want to reactivate my card, I thought I had lost it but found it again in my jacket this morning.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I'd lke my card reactivated, I was thinking it was misplaced but I discovered when I woke up that I had left it in my coat.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "You sent me a card and now I want to link it.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I add my new card to the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I add a card back to the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "What if I want to add a card I already have to the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I recently reported my card as missing/lost, and I just found it. Can I still use it?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Could I reactivate my card please, I couldn't find it but it turns out it was in my jacket pocket.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Is there a way to link cards if I have one of yours?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "If my card was lost or stolen can I re-link it?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I link a new card to an existing one?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I link a new payment card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I would like to reactivate my card that I previously reported lost. I located the card this morning.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Card has been received, how will it show up on the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I re-link a lost card with the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "What do I do to link my new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Is it possible to link a new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I deactivated my card but would like to reactivate it.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found my card that I thought I had lost, I need to reactive it, please help.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "can I link a card of yours I already have?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I put my found card back into the app on my phone?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "My card arrived but I need to make it work in the app, how do I do that?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found the card that I thought I lost, and I would like to reactivate it.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found my card again. Can I put it back into the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I need some help linking my new card.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "help me link my card",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I link my card in the app.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I get my card into the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found my card! Can I link it back into the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I reactivate my card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Where do I go to get my new card linked?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I thought I lost my card but I found it today, so I would like to reactivate it.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I link the new card that I just got from you guys?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How can I add a new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can you tell me how to get my card on the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Is it possible to reactivate the card I thought I lost but found this morning in my jacket?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I make my card appear on the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I link the new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Where in the app do I link a new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I add my card to the app once I get it?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Can I link your physical card",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I activate and link my new card?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I got a card, how do I get it in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I received my new card.  Where is it in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I found my card, how can I use it again?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I just received a new card, where do I go to link it to my account?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "found card, how to put it back in app",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "How do I see my card in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "The card I thought I lost was in my jacket pocket this morning, so can I reactivate that?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I don't see my card anywhere in the app.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I received my card, how do I get it to work in the app?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "What do I do if I already had a card with you guys?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "if i found a lost card can i put it back in app",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "I have a card that was deactivated can I reactivate it?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "My new card isn't in my app, how do I get it in there?",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "Help me access the card I already got so I can information from it.",
+    "label": 13,
+    "intent": "card_linking"
+  },
+  {
+    "text": "What is my money worth in other countries?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Will my money be of equal value when I travel abroad?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Do you know the rate of exchange?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What foreign exchange rate will I get on weekdays and on the weekends?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is the exchange looking like?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How is the exchange rate doing?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "I would like to know how exchange rates are calculated when transferring funds.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "I would like to know what exchange rates you use?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "If I need to cash foreign transfers, how does that work?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Do you know what your exchange rates are?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do I know what exchange rate I will get?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What are you exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Do you have the best exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Where can I find your exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Your exchange rates come from where?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "I need to know what your exchange rates are.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What's the process for exchanges?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What do you think of the exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How are exchange rates calculated at this bank?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What do you use to figure out the exchange rate for the card?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What's the foreign exchange rate I will receive?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "I need to know what foreign exchange rate I can get.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What are the current exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What exchange rate will I receive?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is the basis of your exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How's the exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do you determine your exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do the foreign exchange rates work?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Where are you getting your exchange rates from?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How is the exchange rate calculated?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "I'm interested in what your exchange rates are based on.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do you decide what the exchange rates are?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is the current exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is the formula for your exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What method do you use for the exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What are Interbanks current exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "from where are coming your exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do you calculate exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Why is your exchange rate different on different days?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Where can I find the exchange rate for my transfer?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Where can I get your exchange rates from?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do you find the exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How are exchange rates determined?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What value can I get for my currency?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Please explain your exchange rate policy.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What are your exchange rates calculated from?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is an exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is your opinion on the exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What are the exchange rates you assign?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do you determine exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How are your exchange rates calculated?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How is an exchange rate calculated?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "When exchanging, how much are the rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is the exchange rate for EUR?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How can I find your exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Could you please tell me your exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Is there an exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How does the exchange rate work?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is the present state of the exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How are foreign exchange rates determined?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How's the exchange rate looking right now?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Please explain the exchange rates.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is the foreign exchange rate you will apply?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "explain the interbank exchange rate",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What will my exchange rate be?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "how do you get exchange rates",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What exchange rates do you use?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How will I know what the exchange rate is?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What factors effect the exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Where does the exchange rate stand right now?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "I'd like to know what the foreign exchange rate will be.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Does the exchange rate change?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do your exchange rates factor in?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Will I know which exchange rate I will get?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do I know what the exchange rate will be when I make an exchange.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Is the exchange rate the same on weekends as the weekdays?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do you do exchanges?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "On what do you base your exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do you come up with your exchange rate",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What factors determine your exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How are the exchange rates determined?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "I would like to know what your exchange rates are.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Is the exchange rate current?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What are the exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How much are the rates of exchange?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do you decide what your exchange rates are?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Your exchange rates are coming from where?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Is there a specific source that the exchange rate for the transfer I'm planning on making is pulled from?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How are the exchange rates for transfers calculated?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do I know how much money I will have when I travel abroad?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do you do currency exchanges?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Can you explain your exchange rates basis?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How did you guys get your exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Can you tell me your exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Could you tell me what your exchange rates are?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Does this app have the same exchange rate as third parties?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "what are your exchange rates at?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How is the current exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is the system for determining the exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "I am travelling and I was wondering what your exchange rates are",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How can I tell what foreign exchange rate I will get?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Tell me your opinion on the exchange rate.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "I'd like to know what you guys look at to decide an exchange rate",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How does the exchange rate work on this app?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "where do you find your exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "I want to know your exchange rates.",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What exchange rate is it?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What is the source of your exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "i need to know about exchange rates",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Where do you get those exchange rates?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "How do you determine the exchange rate?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "What foreign exchange rate will I get?",
+    "label": 32,
+    "intent": "exchange_rate"
+  },
+  {
+    "text": "Last Saturday, I was charged extra for the exchange rate on my payment. Is something wrong?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Hi, I am disappointed to see such a bad exchange rate and hope you can assist me. Would you be able to confirm the official interbank exchange rate for me?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I think the currency exchange that's been applied is wrong.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate I was charged for a purchase was not right.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Can you please explain why the exchange rate for the item I bought is wrong?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I think something went wrong with my exchange between Russian Ruble and UK pounds. I was overcharged during the swap.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "My payment has an incorrect exchange rate.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "my exchange rate looks wrong for my last payment",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate you are using is bad.This can't be the official interbank exchange rate.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I was charged the wing amount for an item.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "the exchange rate on my payment was wrong",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Why is the exchange rate terrible?  That can't be close to the actual interbank rate.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "An incorrect exchange rate was applied to an item I bought.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate was incorrect for an item I bought.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate on my payment doesn't look right",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I just saw the exchange rate you use, but it's so bad that I can't believe that it's the official interbank exchange rate! Is this truly the official interbank exchange rate?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "This exchange rate you use is awful! Please tell me this is a mistake and not the official interbank exchange rate!",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "After purchasing an item I noticed the exchange rate was incorrect.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The amount of exchange was not correct for the item i bought.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate from my card payment isn't right.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "My exchange rate isn't correct.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Why was the exchange rate so wrong when I bought something!",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "My exchange rate was wrong for an Item I bought!",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I was using a foreign currecy to make a payment and the applied the wrong rate.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate was incorrect for this item I bought.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I purchased something overseas and the incorrect exchange rate was applied.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate is incorrect for my payment.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The item i bought exchanged rate was incorrect.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I'm on holiday and I noticed a different amount for exchange rate.  Can you explain?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I bought something in another country but the exchange rate is wrong",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I bought an item and the exchange rate was wrong.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Exchange rate for my card payment is wrong",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "the exchange rate at which my card payment is at is wrong",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "There was a problem with the exchange rate on a purchase.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I recently purchased something, and the exchange rate was wrong.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "What if there is an error on the exchange rate?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Why is my exchange rate wrong?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Please check my payment from last Saturday as I feel I have been overcharged on the exchange rate.  Thank you.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I used foreign currency to buy something and I think the rate applied is incorrect.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "This exchange rate on my purchase is wrong.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Why is your exchange rate so bad?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate looks wrong on a holiday purchase",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I purchased something abroad, and the exchange rate that was applied was wrong.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I bought something and I take issue with the exchange rate applied.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I think there has been a mistake on my exchange rate for this purchase.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "You did not give me the correct exchange rate for an item that I bought.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I checked on google and the exchange rate you are using is really bad. Can you update it?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I seem to have been charged to much for my holiday purchases, the exchange rate is wrong.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "In regards to my card payment, the exchange rate is incorrect.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I bough an item and the exchange rate was incorrect.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Why did you charge me more for my purchase? It was a foreign currency and you didn't offer market rate",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I question today's exchange rate for rubles into pounds. I was hoping for a better return.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I feel as though I have been over charged for the exchange rate on my payment on last Saturday.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "My currency rate is inaccurate.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The currency exchange rate was wrong for a purchase I made.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I purchased something abroad and the incorrect exchange rate was applied.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Your exchange rate was off.  I was charged extra on my payment that I made last Saturday.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I was charged the wrong exchange rate on a purchase",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Can you change the rate for the item I bought in a different currency as it is wrong?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The currency exchange for my purchase in foreign currency is incorrect.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I noticed the currency exchange rate was incorrect after paying for something in a foreign country.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "My foreign currency exchange has been applied incorrectly.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Why isn't my purchase exchange rate correct?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I noticed that the exchange rate applied to a recent purchase I made abroad was incorrect.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I purchased something while traveling, and the exchange rate applied was wrong.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Why is the exchange rate different on my recent purchase?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The fee charged when I changed rubles into British pounds was too much.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I wasn't charged the correct exchange rate for an item I purchased.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Does the fee for exchange change?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The rate applied to my purchase in a foreign currency was wrong.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I bought something while traveling, and the exchange rate was wrong.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "something is wrong with my exchange rate charge",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Seems like the exchange rate for my payment last Saturday was wrong. I was charged extra.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "It seems that something went wrong with my exchange. I changed Russian Ruble into UK pounds but have been charged entirely too much!",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I bought an item then noticed the exchange rate was wrong.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate applied is wrong for my international purchase.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "My card payment had the wrong exchange rate",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "They used the wrong rate when I made a purchase with foreign currency.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Does the exchange rate change each day for purchases? There is a different rate on my purchase.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "It seems that the rate I got is incorrect.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I exchanged Russian rubles for British pounds today and got less than I expected. Was exchange rate correct?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "Was I charged more than I should of been for a currency exchange?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "What do i do if the exchange rate was wrong for the item i bought overseas?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "My client was converting their Russian ruble into UK pound currency when they noticed their bill was much too high for the exchange. What happened?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I have been overcharged. I just changed over Russian Ruble to UK pounds and it was too much. It seems something was wrong with my exchange.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "What is your exchange rate between UK pounds and Russian rubles for my last transaction",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I think there was an error in your exchange rate.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate was not correct for the item I bought.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I noticed an extra charge on the purchase that I made last Saturday on my account. Can you see if I received the correct exchange rate?",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "My exchange seems to have something wrong with it. I changed over Russian Ruble to UK pounds and it appears I was charged way more than I was supposed to be.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The correct exchange rate wasn't given to me for an item I purchased.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I bought something in another currency, but the exchange rate was incorrect.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "the exchange rate is wrong from something I got in another country",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "The exchange rate given to me after a purchase, was incorrect",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "My card payment has the wrong exchange rate",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  },
+  {
+    "text": "I have been charged way to much so something is apparently wrong with my exchange. I changed Russian Ruble into UK pounds.",
+    "label": 17,
+    "intent": "card_payment_wrong_exchange_rate"
+  }
+]

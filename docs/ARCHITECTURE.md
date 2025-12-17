@@ -1,154 +1,749 @@
-GENESIS-LAB — Architecture Overview
+# GENESIS-LAB — Architecture Overview
 
 Este documento describe la arquitectura técnica de GENESIS-LAB, su organización interna, responsabilidades por módulo, principios de diseño y componentes principales. Su propósito es servir como referencia para el desarrollo, mantenimiento y escalamiento del proyecto.
 
-1. Objetivo de la arquitectura
+---
+
+## 1. Objetivo de la arquitectura
+
 GENESIS-LAB está diseñado como un sistema modular para:
-generación de datos sintéticos utilizando modelos de AWS Bedrock,
-validación de calidad y sesgos,
-registro y manejo de metadatos de datasets generados,
-entrenamiento ligero de modelos cuando sea necesario,
-interacción mediante una interfaz basada en Streamlit,
-futura integración con agentes de IA y pipelines automatizados.
 
-La arquitectura prioriza claridad, mantenibilidad, extensibilidad y separación estricta de responsabilidades.
+- **Generación de datos sintéticos** utilizando modelos de AWS Bedrock
+- **Validación de calidad y sesgos**
+- **Registro y manejo de metadatos** de datasets generados
+- **Entrenamiento ligero de modelos** cuando sea necesario
+- **Interacción mediante interfaz** basada en Streamlit
+- **Futura integración** con agentes de IA y pipelines automatizados
 
-2. Estructura general del proyecto
+La arquitectura prioriza **claridad**, **mantenibilidad**, **extensibilidad** y **separación estricta de responsabilidades**.
+
+---
+
+## 2. Estructura general del proyecto
+
+```
 GENESIS-LAB/
-  gitgun/
-  .venv/
-  data/
-    raw/
-    synthetic/
-    reference/
-  docs/
-    ARCHITECTURE.md
-    DEVLOG.md
-    PROJECTSTATUS.md
-    ROADMAP.md
-    TDR.md
-  models/
-  notebooks/
-  src/
-    generation/
-    validation/
-    training/
-    registry/
-    utils/
-  tests/
-  ui/
-    app.py
-    pages/
-  .cursorrules
-  .env
-  .env.template
-  pyproject.toml
-  README.md
-  uv.lock
+├── .github/
+├── .venv/
+├── data/
+│   ├── raw/
+│   ├── synthetic/
+│   └── reference/
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── DEVLOG.md
+│   ├── PROJECTSTATUS.md
+│   ├── ROADMAP.md
+│   └── TDR.md
+├── logs/
+├── models/
+├── notebooks/
+├── src/
+│   ├── generation/
+│   │   ├── templates/
+│   │   │   ├── customer_service_prompts.py
+│   │   │   └── timeseries_prompts.py
+│   │   ├── generator.py
+│   │   └── schemas.py
+│   ├── validation/
+│   │   ├── quality.py
+│   │   └── bias.py
+│   ├── training/
+│   │   ├── trainer.py
+│   │   └── models.py
+│   ├── registry/
+│   │   └── database.py
+│   └── utils/
+│       ├── config.py
+│       ├── aws_client.py
+│       └── logger.py
+├── tests/
+├── ui/
+│   ├── app.py
+│   └── pages/
+├── .cursorrules
+├── .env
+├── .env.template
+├── pyproject.toml
+├── README.md
+└── uv.lock
+```
 
-A continuación se detalla la función y responsabilidad de cada carpeta y módulo.
+---
 
-3. Descripción detallada por módulo
-3.1 /data:
-- data/raw/: Datos originales o datasets base utilizados como referencia o comparación.
-- data/synthetic/: Salida generada por el módulo de generación sintética. Incluye versiones, metadatos y logs.
-- data/reference/: Datasets externos descargados o utilizados como ground truth.
+## 3. Descripción detallada por módulo
+
+### 3.1 `/data`
+
+| Subdirectorio | Propósito |
+|---------------|-----------|
+| `data/raw/` | Datos originales o datasets base utilizados como referencia o comparación |
+| `data/synthetic/` | Salida generada por el módulo de generación sintética. Incluye versiones, metadatos y logs |
+| `data/reference/` | Datasets externos descargados o utilizados como ground truth (Banking77, electricity_hourly) |
+
 Este directorio no contiene lógica; solo almacenamiento estructurado.
 
-3.2 /models
-Contiene modelos entrenados, checkpoints o artefactos generados por procesos internos de entrenamiento.
-Puede incluir wrappers o modelos livianos generados con trainer.py (por ejemplo embeddings o clasificadores pequeños).
+### 3.2 `/models`
 
-3.3 /notebooks
+Contiene modelos entrenados, checkpoints o artefactos generados por procesos internos de entrenamiento.
+
+Puede incluir wrappers o modelos livianos generados con `trainer.py` (por ejemplo embeddings o clasificadores pequeños).
+
+### 3.3 `/notebooks`
+
 Notebooks exploratorios de análisis, experimentación y documentación técnica.
+
 No forman parte del código de producción, pero complementan la investigación y pruebas.
 
-3.4 /src
+### 3.4 `/src`
+
 Carpeta principal de la lógica del proyecto.
 
-a) src/generation/
-Funcionalidad principal de generación sintética.
-- generator.py: Define clases y funciones que interactúan con Bedrock para generar datos en distintos formatos (texto, tablas, prompts estructurados). Responsable de: construcción de prompts, interacción con el cliente AWS, control de parámetros del modelo, retorno de resultados en formato estandarizado.
-- templates/: Plantillas reutilizables para generación, definidas como JSON, YAML o Python dictionaries.
+#### a) `src/generation/`
 
-b) src/validation/
+Funcionalidad principal de generación sintética.
+
+| Archivo | Responsabilidad |
+|---------|-----------------|
+| `generator.py` | Interacción con Bedrock, construcción de prompts, control de parámetros, retorno estandarizado |
+| `schemas.py` | Schemas Pydantic para validación de datos generados |
+| `templates/customer_service_prompts.py` | Prompts para conversaciones Banking77 (77 intents, bilingüe) |
+| `templates/timeseries_prompts.py` | Prompts para series temporales (4 dominios, 16 types, bilingüe) |
+
+#### b) `src/validation/`
+
 Evaluación de calidad, consistencia y sesgos.
-- quality.py: Métricas objetivas como completitud, coherencia, diversidad, formato correcto y cumplimiento de reglas.
-- bias.py: Detección de sesgos lingüísticos o temáticos utilizando heurísticas o modelos secundarios.
+
+| Archivo | Responsabilidad |
+|---------|-----------------|
+| `quality.py` | Métricas objetivas: completitud, coherencia, diversidad, formato correcto |
+| `bias.py` | Detección de sesgos lingüísticos o temáticos |
 
 Estos módulos producen reportes estructurados que alimentan el registro.
 
-c) src/training/
+#### c) `src/training/`
+
 Módulos para entrenamiento ligero o ajuste interno.
-- trainer.py: Permite entrenar modelos complementarios (clasificadores, pequeñas redes, filtros, embeddings).
-- models.py: Define estructuras internas para representar modelos entrenados, cargar pesos o exportarlos.
+
+| Archivo | Responsabilidad |
+|---------|-----------------|
+| `trainer.py` | Entrenamiento de modelos complementarios (clasificadores, embeddings) |
+| `models.py` | Estructuras internas para representar modelos entrenados |
 
 Este módulo es opcional para el MVP inicial, pero la arquitectura ya lo considera para escalabilidad futura.
 
-d) src/registry/
+#### d) `src/registry/`
+
 Registro centralizado de datasets generados.
-- database.py: Registra cada dataset generado con sus metadatos: fecha, parámetros del prompt, modelo utilizado, calidad obtenida, validaciones, ruta del archivo generado.
 
-Puede implementarse en SQLite, Parquet o JSON estructurado según necesidades.
+| Archivo | Responsabilidad |
+|---------|-----------------|
+| `database.py` | Registro de cada dataset con metadatos: fecha, parámetros, modelo, calidad, ruta |
 
-e) src/utils/
+Implementado en SQLite para el MVP.
+
+#### e) `src/utils/`
+
 Utilidades generales del sistema.
-- config.py: Maneja variables de entorno, carga del .env, configuración global, rutas, y constantes del proyecto.
-- aws_client.py: Cliente generalizado para interactuar con AWS Bedrock mediante boto3: inicialización, manejo de excepciones, wrapper para invocación de modelos, manejo de modelos alternativos (Llama, Nova, Claude cuando esté disponible).
-- logger.py: Logger centralizado para registrar errores, métricas, eventos y diagnósticos del sistema.
 
-Estos utilitarios son fundamentales y utilizados por todos los demás módulos.
+| Archivo | Responsabilidad |
+|---------|-----------------|
+| `config.py` | Variables de entorno, carga del `.env`, configuración global, rutas, constantes |
+| `aws_client.py` | Cliente para AWS Bedrock: inicialización, invocación, manejo de errores |
+| `logger.py` | Logger centralizado para errores, métricas, eventos y diagnósticos |
 
-4. UI (Streamlit)
-/ui/app.py
-Punto de entrada principal para la interfaz.
-Controla: 
-- navegación entre páginas
-- inicialización de estado global
-- carga de configuraciones.
+---
 
-/ui/pages/
-Cada funcionalidad vive como una página independiente: 
-- generate.py → página para generar datos sintéticos, 
-- validate.py → muestra resultados de validación
-- registry.py → consulta del historial de datasets
+## 4. UI (Streamlit)
+
+### `/ui/app.py`
+
+Punto de entrada principal para la interfaz. Controla:
+- Navegación entre páginas
+- Inicialización de estado global
+- Carga de configuraciones
+
+### `/ui/pages/`
+
+Cada funcionalidad vive como una página independiente:
+
+| Página | Funcionalidad |
+|--------|---------------|
+| `generate.py` | Generación de datos sintéticos |
+| `validate.py` | Visualización de resultados de validación |
+| `registry.py` | Consulta del historial de datasets |
 
 Streamlit se usa únicamente como interfaz de experimentación para el MVP.
 
-5. Pruebas
-/tests/
+---
+
+## 5. Pruebas
+
+### `/tests/`
+
 Contiene pruebas unitarias y de integración.
-Cada módulo crítico debe tener pruebas asociadas: test_config.py, test_generator.py, test_validation.py, test_registry.py, test_aws_client.py
+
+Cada módulo crítico debe tener pruebas asociadas:
+- `test_config.py`
+- `test_generator.py`
+- `test_validation.py`
+- `test_registry.py`
+- `test_aws_client.py`
+
 En fases posteriores se incluirán pruebas automáticas de CI/CD.
 
-6. Componentes externos
-AWS Bedrock: Proveedor LLM principal (Claude cuando esté habilitado; temporalmente Llama/Nova).
-boto3: SDK para comunicación con Bedrock, S3 y servicios auxiliares.
-Streamlit: Framework para la interfaz interactiva del MVP.
-uv + pyproject.toml: Manejo moderno de entornos y dependencias.
+---
 
-7. Principios arquitectónicos del proyecto
-Separación estricta de responsabilidades:Cada módulo tiene una sola función claramente definida.
-Extensibilidad: Nuevos modelos o funciones deben integrarse sin alterar módulos existentes.
-Ausencia de secretos en código: Todo debe manejarse desde .env y config.py.
-Modularidad y composición: Los módulos deben poder conectarse entre sí sin dependencia circular.
-Compatibilidad con IA asistida (Cursor, Claude): Código limpio, estructurado y predecible para facilitar generación automatizada.
-Evolución incremental: 
-La arquitectura permite crecer hacia: pipelines automatizados, agentes, UI avanzada, APIs externas.
+## 6. Componentes externos
 
-8. Flujo general del sistema
-El usuario interactúa con la UI (Streamlit).
-La UI envía parámetros al módulo generation.
-generator.py construye el prompt y llama a aws_client.py.
-Bedrock devuelve la generación.
-El resultado pasa por validaciones (validation/).
-Se registra el dataset en registry/database.py.
-La UI muestra los resultados.
+| Componente | Propósito |
+|------------|-----------|
+| **AWS Bedrock** | Proveedor LLM principal (Claude 3.5 Sonnet) |
+| **boto3** | SDK para comunicación con Bedrock, S3 y servicios auxiliares |
+| **Streamlit** | Framework para la interfaz interactiva del MVP |
+| **uv + pyproject.toml** | Manejo moderno de entornos y dependencias |
+| **HuggingFace Datasets** | Datasets de referencia (Banking77, electricity_hourly) |
 
-9. Estado actual de la arquitectura
-Estructura general creada.
-Módulos definidos pero aún no implementados.
-Dependencias instaladas.
-AWS conectado.
-UI inicial creada.
-Preparado para comenzar implementación de backend.
+---
+
+## 7. Principios arquitectónicos del proyecto
+
+| Principio | Descripción |
+|-----------|-------------|
+| **Separación estricta de responsabilidades** | Cada módulo tiene una sola función claramente definida |
+| **Extensibilidad** | Nuevos modelos o funciones deben integrarse sin alterar módulos existentes |
+| **Ausencia de secretos en código** | Todo debe manejarse desde `.env` y `config.py` |
+| **Modularidad y composición** | Los módulos deben poder conectarse entre sí sin dependencia circular |
+| **Compatibilidad con IA asistida** | Código limpio, estructurado y predecible para facilitar generación automatizada |
+| **Evolución incremental** | La arquitectura permite crecer hacia pipelines automatizados, agentes, UI avanzada, APIs externas |
+
+---
+
+## 8. Flujo general del sistema
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                      1. UI (Streamlit)                          │
+│         Usuario configura parámetros de generación              │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   2. Generation Module                          │
+│    generator.py + templates/ → Construye prompts                │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   3. AWS Bedrock (Claude)                       │
+│              Genera datos sintéticos                            │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   4. Validation Module                          │
+│         quality.py + bias.py → Evalúa calidad                   │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   5. Registry Module                            │
+│       database.py → Registra dataset + metadatos                │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   6. UI (Streamlit)                             │
+│              Muestra resultados al usuario                      │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 9. Datasets de Referencia
+
+### 9.1 Customer Service: Banking77
+
+| Atributo | Valor |
+|----------|-------|
+| **Fuente** | `PolyAI/banking77` (HuggingFace) |
+| **Dominio** | Neobank/Fintech (Revolut, Monzo style) |
+| **Intents** | 77 categorías agrupadas en 11 categorías |
+| **Idiomas soportados** | Inglés, Español |
+| **Template** | `src/generation/templates/customer_service_prompts.py` |
+
+**Categorías de intents:**
+- card_management (18), card_payments (7), cash_atm (7)
+- transfers (10), top_up (12), exchange_currency (5)
+- account_security (4), verification_identity (4)
+- account_management (5), payment_methods (2), refunds (3)
+
+### 9.2 Time Series: Electricity Hourly
+
+| Atributo | Valor |
+|----------|-------|
+| **Fuente** | `LeoTungAnh/electricity_hourly` (HuggingFace) |
+| **Dominio** | Consumo eléctrico Portugal |
+| **Series** | 370 clientes individuales |
+| **Período** | 2012-2014 (3 años) |
+| **Frecuencia** | Horaria (1H) |
+| **Preprocesamiento** | Estandarizado (mean≈0, std≈1) |
+| **Template** | `src/generation/templates/timeseries_prompts.py` |
+
+**Dominios extendidos para generación:**
+- electricity (50%): residential, commercial, industrial, grid
+- energy (20%): solar, wind, gas, heating
+- sensors (20%): temperature, pressure, humidity, air_quality
+- financial (10%): stock, crypto, exchange_rate, trading_volume
+
+---
+
+## 10. Contratos Entre Módulos (Data Contracts)
+
+Esta sección define las interfaces y expectativas entre módulos del sistema. Cada contrato especifica el formato de entrada y salida que cada módulo espera y garantiza.
+
+> **Referencias de implementación:**
+> - Schemas de conversaciones: `src/generation/templates/customer_service_prompts.py`
+> - Schemas de time series: `src/generation/templates/timeseries_prompts.py`
+> - Schemas Pydantic: `src/generation/schemas.py`
+
+---
+
+### 10.1 Generation → Validation
+
+#### Input esperado por Validation
+
+```python
+{
+    "domain": "customer_service" | "time_series",
+    "data": [<schema_objects>],  # Lista de objetos validados
+    "metadata": {
+        "model_used": str,               # e.g., "claude-3-5-sonnet-20241022"
+        "generation_date": datetime,     # ISO 8601 format
+        "generation_params": {
+            "temperature": float,
+            "max_tokens": int,
+            "top_p": float
+        },
+        "total_generated": int,
+        "generation_time_seconds": float,
+        "language": "en" | "es",
+        "prompt_template_version": str
+    }
+}
+```
+
+#### Schema: Customer Service Conversation
+
+```python
+{
+    "conversation_id": str,              # "conv_XXX"
+    "intent": str,                       # Uno de 77 Banking77 intents
+    "category": str,                     # Categoría del intent (11 categorías)
+    "sentiment": "positive" | "neutral" | "negative",
+    "complexity": "simple" | "medium" | "complex",
+    "language": "en" | "es",
+    "turn_count": int,
+    "customer_emotion_arc": str,         # e.g., "frustrated_to_satisfied"
+    "resolution_time_category": "quick" | "standard" | "extended",
+    "resolution_status": "resolved" | "escalated" | "unresolved",
+    "turns": [
+        {"speaker": "customer" | "agent", "text": str}
+    ]
+}
+```
+
+#### Schema: Time Series
+
+```python
+{
+    "series_id": str,                    # "ts_XXX"
+    "domain": "electricity" | "energy" | "sensors" | "financial",
+    "series_type": str,                  # Uno de 16 series types
+    "frequency": "15min" | "30min" | "1H" | "1D" | "1W",
+    "complexity": "simple" | "medium" | "complex",
+    "data_quality": "clean" | "noisy" | "missing_values",
+    "language": "en" | "es",
+    "length": int,
+    "seasonality_types": List[str],      # ["daily", "weekly", "annual"]
+    "trend_type": "none" | "upward" | "downward" | "cyclic",
+    "anomaly_types": List[str],          # ["spike", "drop", "plateau", "drift", "outage"]
+    "anomaly_indices": List[int],
+    "domain_context": "residential" | "commercial" | "industrial" | "mixed",
+    "start": str,                        # ISO 8601 datetime
+    "target": List[float | None],        # Valores de la serie (compatible HuggingFace)
+    "metadata": dict
+}
+```
+
+#### Output de Generation
+
+**Caso exitoso:**
+```python
+{
+    "success": True,
+    "data": [<schema_objects>],
+    "metadata": {...},
+    "error": None
+}
+```
+
+**Caso de error:**
+```python
+{
+    "success": False,
+    "data": [],
+    "metadata": None,
+    "error": "Descripción del error"
+}
+```
+
+---
+
+### 10.2 Validation → Registry
+
+#### Input esperado por Registry
+
+```python
+{
+    "dataset_id": str,                   # UUID único
+    "domain": str,                       # "customer_service" | "time_series"
+    "data": [],                          # Raw data objects
+    "generation_metadata": dict,         # From generator
+    "quality_metrics": QualityMetrics,   # From quality.py
+    "bias_metrics": BiasMetrics,         # From bias.py
+    "file_path": str,                    # Where data is saved
+    "file_format": "json" | "jsonl" | "parquet",
+    "file_size_mb": float
+}
+```
+
+#### Output de Validation
+
+```python
+{
+    "success": bool,
+    "quality_passed": bool,              # True if quality_score >= threshold
+    "bias_passed": bool,                 # True if no severe bias detected
+    "quality_metrics": QualityMetrics,
+    "bias_metrics": BiasMetrics,
+    "issues": List[str],                 # Critical issues found
+    "warnings": List[str],               # Non-critical warnings
+    "recommendations": List[str],        # Suggestions for improvement
+    "error": Optional[str]
+}
+```
+
+---
+
+### 10.3 Registry → Training
+
+#### Input esperado por Training
+
+```python
+{
+    "dataset_id": str,
+    "domain": str,
+    "data_path": str,                    # Path to load data from
+    "task_type": "classification" | "regression" | "forecasting",
+    "target_column": str,                # What to predict
+    "feature_columns": List[str],        # What to use as features
+    "training_config": dict              # From config.py
+}
+```
+
+#### Output de Training
+
+```python
+{
+    "success": bool,
+    "model_name": str,                   # e.g., "xgboost_classifier"
+    "model_path": str,                   # Where model is saved
+    "metrics": {
+        "accuracy": float,
+        "f1_score": float,
+        "precision": float,
+        "recall": float,
+        # ... other metrics depending on task
+    },
+    "training_time_seconds": float,
+    "hyperparameters_used": dict,
+    "error": Optional[str]
+}
+```
+
+---
+
+### 10.4 All Modules → UI (Streamlit)
+
+#### Status Updates (for progress bars)
+
+```python
+{
+    "stage": "generation" | "validation" | "training" | "registry",
+    "progress": float,                   # 0.0 to 1.0
+    "current_step": str,                 # Human-readable description
+    "total_steps": int,
+    "current_step_number": int,
+    "eta_seconds": Optional[float]
+}
+```
+
+#### Error Reporting
+
+```python
+{
+    "error_type": "ValidationError" | "GenerationError" | "TrainingError",
+    "error_message": str,                # User-friendly message
+    "module": str,                       # Which module raised the error
+    "timestamp": datetime,
+    "traceback": Optional[str],          # Full traceback for debugging
+    "suggestion": Optional[str]          # How to fix the error
+}
+```
+
+---
+
+### 10.5 AWS Bedrock Client → All Modules
+
+#### Bedrock Invocation Input
+
+```python
+{
+    "model_id": str,                     # From config.BEDROCK_MODEL_IDS
+    "prompt": str,                       # User prompt
+    "system_prompt": Optional[str],      # System instructions
+    "temperature": float,                # 0.0 to 1.0
+    "max_tokens": int,                   # Max response length
+    "top_p": float                       # 0.0 to 1.0
+}
+```
+
+#### Bedrock Invocation Output
+
+```python
+{
+    "success": bool,
+    "response_text": Optional[str],      # LLM response
+    "error": Optional[str],
+    "tokens_used": {
+        "input": int,
+        "output": int,
+        "total": int
+    },
+    "latency_ms": float,
+    "model_id": str
+}
+```
+
+---
+
+### 10.6 Error Handling Contract
+
+Todos los módulos deben seguir este patrón:
+
+#### Estructura de Retorno Estándar
+
+```python
+{
+    "success": bool,
+    "data": Any,                         # Result data if success=True
+    "error": Optional[str],              # Error message if success=False
+    "metadata": Optional[dict]           # Additional context
+}
+```
+
+#### Reglas de Error Handling
+
+| Regla | Descripción |
+|-------|-------------|
+| **Logging obligatorio** | Todos los errores deben loggearse usando el logger centralizado |
+| **Errores recuperables** | Manejar internamente con retry logic (máx 3 intentos) |
+| **Errores críticos** | Propagar hacia arriba con contexto claro |
+| **Validación temprana** | Validar inputs antes de procesamiento costoso |
+| **Mensajes útiles** | Incluir sugerencias de solución cuando sea posible |
+
+---
+
+### 10.7 Validation Metrics Contract
+
+#### Quality Metrics (Todos los dominios)
+
+```python
+{
+    "completeness_score": float,         # 0.0-1.0: % of required fields present
+    "consistency_score": float,          # 0.0-1.0: Internal consistency
+    "realism_score": float,              # 0.0-1.0: Comparison to reference data
+    "diversity_score": float,            # 0.0-1.0: Variety in generated data
+    "overall_quality_score": float       # 0-100: Weighted combination
+}
+```
+
+#### Customer Service Specific Metrics
+
+```python
+{
+    "turn_coherence_score": float,       # 0.0-1.0: Conversation flow quality
+    "intent_distribution_score": float,  # 0.0-1.0: Coverage of 77 intents
+    "intent_category_balance": float,    # 0.0-1.0: Balance across 11 categories
+    "sentiment_balance_score": float,    # 0.0-1.0: Distribution of sentiments
+    "complexity_distribution": float,    # 0.0-1.0: Mix of simple/medium/complex
+    "language_quality_score": float,     # 0.0-1.0: Grammar and naturalness
+    "resolution_rate": float,            # 0.0-1.0: % resolved conversations
+    "emotion_arc_variety": float         # 0.0-1.0: Variety in emotion arcs
+}
+```
+
+#### Time Series Specific Metrics
+
+```python
+{
+    "autocorrelation_similarity": float, # 0.0-1.0: ACF comparison
+    "stationarity_score": float,         # 0.0-1.0: ADF test result
+    "dtw_distance": float,               # Dynamic Time Warping distance
+    "spectral_similarity": float,        # 0.0-1.0: Frequency domain comparison
+    "temporal_consistency": float,       # 0.0-1.0: Timestamp validation
+    "seasonality_accuracy": float,       # 0.0-1.0: Detected vs specified patterns
+    "anomaly_placement_score": float,    # 0.0-1.0: Anomalies at specified indices
+    "domain_realism_score": float        # 0.0-1.0: Values realistic for domain
+}
+```
+
+---
+
+### 10.8 Data Format Standards
+
+#### File Naming Convention
+
+```
+{domain}_{dataset_id}_{timestamp}.{format}
+
+Ejemplos:
+- customer_service_a3f2e1d4_20240101_120000.jsonl
+- time_series_b7c9f3a2_20240101_120000.parquet
+```
+
+#### Format Selection
+
+| Formato | Uso | Características |
+|---------|-----|-----------------|
+| **JSON** | Datasets pequeños (<1000 registros) | Legible, fácil debug |
+| **JSONL** | Datasets grandes (≥1000 registros) | Un objeto por línea, streaming |
+| **Parquet** | Time series y datos tabulares grandes | Compresión snappy, eficiente |
+
+#### Standards
+
+- **Encoding**: UTF-8
+- **Timestamps**: ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
+- **Null values**: `null` en JSON, `None` en Python
+
+---
+
+### 10.9 Versioning Contract
+
+#### Dataset Versioning
+
+```python
+{
+    "version": str,                      # Semantic versioning: "1.0.0"
+    "created_at": datetime,
+    "parent_version": Optional[str],     # If derived from another dataset
+    "changes": List[str],                # What changed from parent
+    "backward_compatible": bool,
+    "prompt_template_version": str,      # Version of prompts used
+    "reference_dataset_version": str     # Version of Banking77/electricity used
+}
+```
+
+#### Model Versioning
+
+```python
+{
+    "model_version": str,                # "1.0.0"
+    "dataset_version": str,              # Which dataset was used
+    "trained_at": datetime,
+    "framework": str,                    # "scikit-learn" | "xgboost"
+    "framework_version": str
+}
+```
+
+---
+
+### 10.10 Testing Contract
+
+Cada módulo debe tener:
+
+| Tipo | Descripción |
+|------|-------------|
+| **Unit tests** | Funciones individuales |
+| **Integration tests** | Contratos entre módulos |
+| **End-to-end tests** | Pipeline completo |
+
+#### Test Data Location
+
+```
+tests/
+├── fixtures/
+│   ├── customer_service_sample.json
+│   ├── timeseries_sample.json
+│   └── reference_data/
+│       ├── banking77_sample.json
+│       └── electricity_sample.json
+└── test_*.py
+```
+
+#### Contract Validation Tests
+
+```python
+# Ejemplo de test de contrato
+def test_generation_to_validation_contract():
+    """Verify Generation output matches Validation input contract."""
+    generation_output = generator.generate(...)
+    
+    # Debe tener estructura correcta
+    assert "success" in generation_output
+    assert "data" in generation_output
+    assert "metadata" in generation_output
+    
+    # Data debe cumplir schema
+    for item in generation_output["data"]:
+        errors = validate_conversation_schema(item)  # o validate_timeseries_schema
+        assert len(errors) == 0, f"Schema errors: {errors}"
+```
+
+---
+
+## 11. Estado actual de la arquitectura
+
+| Componente | Estado |
+|------------|--------|
+| Estructura general | ✅ Creada |
+| Módulos definidos | ✅ Definidos (implementación parcial) |
+| Dependencias instaladas | ✅ Completado |
+| AWS conectado | ✅ Configurado |
+| UI inicial | ✅ Creada |
+| Templates de prompts | ✅ Customer Service + Time Series |
+| Contratos documentados | ✅ Completado |
+| Datasets de referencia | ✅ Banking77 + electricity_hourly |
+| Schemas Pydantic | 🔄 En progreso |
+| Módulo de generación | 🔄 En progreso |
+| Módulo de validación | ⏳ Pendiente |
+| Módulo de training | ⏳ Pendiente |
+| Tests | ⏳ Pendiente |
+
+**Leyenda:** ✅ Completado | 🔄 En progreso | ⏳ Pendiente
+
+---
+
+## 12. Changelog
+
+| Fecha | Cambio |
+|-------|--------|
+| 2024-01-XX | Estructura inicial del proyecto |
+| 2024-01-XX | Templates de prompts: customer_service_prompts.py (77 intents Banking77, bilingüe) |
+| 2024-01-XX | Templates de prompts: timeseries_prompts.py (4 dominios, 16 types, bilingüe) |
+| 2024-01-XX | Documentación de contratos entre módulos |
+
+---
+
+*Última actualización: [Fecha actual]*

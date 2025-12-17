@@ -11,6 +11,9 @@ dependencies = [
     "pandas",
     "numpy",
     "pydantic>=1.10.0",
+    "datasets<4.0.0",
+    "pyarrow>=22.0.0",
+    "huggingface-hub>=1.2.2",
 ]
 
 [tool.uv]
