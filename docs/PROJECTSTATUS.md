@@ -1,80 +1,202 @@
-GENESIS-LAB — Project Status Document
+# GENESIS-LAB — Project Status Document
 
-Este documento resume el estado actual del proyecto GENESIS-LAB, incluyendo el trabajo realizado, decisiones tomadas, ajustes efectuados y lo que falta por desarrollar en las siguientes fases. Está diseñado para mantenerse actualizado conforme avance el proyecto.
+Este documento resume el estado actual del proyecto GENESIS-LAB, incluyendo el trabajo realizado, métricas clave, y próximos pasos.
 
-1. Estado general del proyecto
-GENESIS-LAB cuenta ya con la estructura base completa del repositorio, un entorno de desarrollo funcional y configuraciones iniciales en AWS y GitHub. El proyecto está preparado para comenzar la implementación del backend modular y las primeras interacciones con modelos de Bedrock. La arquitectura fue definida desde el inicio con un enfoque en modularidad, mantenibilidad y escalabilidad.
+**Última actualización:** 2024-12-21 (Día 3)
 
-2. Avances realizados:
-Entorno y dependencias
-Creación de la estructura del proyecto con carpetas src/, ui/, data/, tests/, models/, notebooks/.
-Configuración de pyproject.toml y uso de uv como gestor de dependencias.
-Instalación de librerías base: boto3, streamlit, numpy, pandas, python-dotenv.
-Archivo .cursorrules creado para guiar al asistente de IA en estándares de estilo y arquitectura.
-Archivo .env creado para variables de entorno (sin versionar).
+---
 
-AWS:
-Creación de IAM User exclusivo para el proyecto.
-Creación de un IAM Group con políticas mínimas necesarias (AmazonBedrockFullAccess, AmazonS3FullAccess).
-Generación y configuración de credenciales.
-Solución de problemas con AWS CLI (instalación, PATH, configuración).
-Configuración correcta de región en us-east-1.
-Validación exitosa del acceso a Bedrock.
+## 1. Estado General del Proyecto
 
-GitHub:
-Creación de repositorio remoto y sincronización con el entorno local.
-Corrección de conflictos de push del repositorio inicial.
+GENESIS-LAB ha completado exitosamente su **MVP funcional** con:
 
-UI y arquitectura interna:
-Creación de la base de la aplicación con Streamlit (ui/app.py).
-Creación de estructura inicial para páginas dentro de ui/pages/.
-Definición de la arquitectura modular del backend en src/.
+- ✅ Motor de generación con AWS Bedrock (Claude 3.5 Sonnet)
+- ✅ Generadores para Customer Service y Time Series
+- ✅ Pipeline de validación (calidad + sesgos)
+- ✅ Registro de datasets con SQLite
+- ✅ Clasificador de intents baseline
+- ✅ 100 conversaciones bilingües generadas y validadas
 
-Decisiones técnicas consolidadas:
-Uso de uv en lugar de venv o pip.
-Separación estricta en módulos (generation, validation, training, registry, utils).
-Uso obligatorio de .env para configuración sensible.
-AWS Bedrock como proveedor de LLMs.
-Streamlit como interfaz inicial del sistema.
+El proyecto está listo para escalar a datasets más grandes (1K+) y comenzar desarrollo de UI.
 
-3. Cambios realizados durante el proceso
-Ajuste de región AWS a us-east-1 por compatibilidad con Bedrock.
-Corrección de la configuración de AWS CLI y reinstalación por problemas en la detección del ejecutable.
-Ajuste del repositorio para eliminar conflictos iniciales con el remoto.
-Simplificación del ambiente de trabajo mediante uv para evitar instalaciones duplicadas y mantener coherencia.
-Eliminación de la necesidad de un requirements.txt, migrando dependencias a pyproject.toml.
-Redefinición del manejo de secretos para evitar cualquier riesgo de filtración.
+---
 
-4. Trabajo pendiente para la siguiente fase
-Implementaciones técnicas inmediatas:
-Crear src/utils/config.py para centralizar configuración del proyecto.
-Implementar src/utils/aws_client.py como wrapper para llamadas a Bedrock.
-Crear un módulo de logging (logger.py) para trazabilidad del sistema.
-Implementar y probar la primera invocación a un modelo de Bedrock desde Python.
-Definir las plantillas iniciales de generación para generator.py.
+## 2. Métricas Actuales
 
-Diseño y funcionalidad del backend:
-Implementar generator.py para generación sintética.
-Implementar módulo de validación de datos (quality.py, bias.py).
-Crear sistema de registro de datasets en registry/database.py.
+### Dataset Generado
 
-Desarrollo de la interfaz:
-Crear página funcional para generación dentro de Streamlit.
-Crear interfaz para revisar métricas de calidad.
-Crear vista para explorar datasets generados.
+| Métrica | Valor |
+|---------|-------|
+| Conversaciones | 100 |
+| Idiomas | 50 EN + 50 ES |
+| Intents cubiertos | 77/77 (100%) |
+| Success rate | 100% |
+| Tiempo generación | 51.5 min |
+| Costo estimado | ~$1.00 |
 
-Consolidación del pipeline:
-Integración progresiva de: generación → validación → registro.
-Preparar estructura para futura integración de agentes (cuando se apruebe Claude).
+### Quality Scores
 
-5. Riesgos y consideraciones actuales
-Falta de acceso aprobado a Claude 3.5 puede retrasar pruebas avanzadas; se utilizarán modelos alternos mientras tanto.
-El proyecto depende de mantener coherencia en la arquitectura modular para evitar deuda técnica desde temprano.
-El manejo de credenciales debe seguir estrictamente las prácticas definias.
+| Métrica | Score |
+|---------|-------|
+| Completeness | 1.00 |
+| Consistency | 1.00 |
+| Realism | 0.43 |
+| Diversity | 0.83 |
+| **Overall** | **81.3/100** |
 
-6. Próximos pasos recomendados
-Finalizar la configuración interna del módulo utils (configuración, AWS client, logging).
-Ejecutar la primera prueba real de comunicación con Bedrock desde código.
-Construir la primera versión mínima del generador de datos.
-Establecer el sistema de registro local de datasets generados.
-Iniciar la construcción de las páginas de Streamlit con funcionalidades básicas.
+### Bias Analysis
+
+| Check | Resultado | Status |
+|-------|-----------|--------|
+| Sentiment | 30/50/20 | ✅ Perfect |
+| Language | 50/50 EN/ES | ✅ Balanced |
+| Complexity | 30/50/20 | ✅ Perfect |
+| Intent coverage | 77/77 | ✅ Complete |
+
+### Training Results
+
+| Métrica | Valor |
+|---------|-------|
+| Test Accuracy | 15.0% |
+| F1 Score (macro) | 10.3% |
+| Unique intents | 77 |
+| Model | TF-IDF + LogisticRegression |
+
+> **Nota:** 15% accuracy es esperado con 77 clases y 100 muestras. Random baseline = 1.3%.
+
+---
+
+## 3. Módulos Completados
+
+### Generación (`src/generation/`)
+
+| Componente | Estado | Descripción |
+|------------|--------|-------------|
+| `generator.py` | ✅ | BaseGenerator + CustomerServiceGenerator |
+| `timeseries_generator.py` | ✅ | TimeSeriesGenerator (16 tipos, 4 dominios) |
+| `schemas.py` | ✅ | Pydantic models para todos los dominios |
+| `templates/` | ✅ | Prompts bilingües con few-shot examples |
+
+### Validación (`src/validation/`)
+
+| Componente | Estado | Descripción |
+|------------|--------|-------------|
+| `quality.py` | ✅ | QualityValidator con Jensen-Shannon divergence |
+| `bias.py` | ✅ | BiasDetector para sentiment, intent, language |
+
+### Registry (`src/registry/`)
+
+| Componente | Estado | Descripción |
+|------------|--------|-------------|
+| `database.py` | ✅ | DatasetRegistry con SQLite |
+
+### Training (`src/training/`)
+
+| Componente | Estado | Descripción |
+|------------|--------|-------------|
+| `intent_classifier.py` | ✅ | TF-IDF + LogisticRegression baseline |
+
+### Utils (`src/utils/`)
+
+| Componente | Estado | Descripción |
+|------------|--------|-------------|
+| `aws_client.py` | ✅ | BedrockClient con retry/rate limiting |
+| `config/` | ✅ | Configuración centralizada |
+
+---
+
+## 4. Archivos Clave
+
+### Datos
+
+| Archivo | Descripción |
+|---------|-------------|
+| `data/synthetic/customer_service_100.json` | 100 conversaciones bilingües |
+| `data/synthetic/cs_smoke_v2.json` | 10 conversaciones de smoke test |
+| `data/synthetic/ts_smoke_v2.json` | 9 series temporales de smoke test |
+| `data/reference/customer_service_reference.json` | 500 ejemplos Banking77 |
+| `data/reference/timeseries_reference.json` | 100 series electricity_hourly |
+| `data/registry.db` | Base de datos SQLite |
+
+### Modelos
+
+| Archivo | Descripción |
+|---------|-------------|
+| `models/trained/intent_classifier.pkl` | Clasificador entrenado |
+
+### Scripts
+
+| Script | Descripción |
+|--------|-------------|
+| `scripts/generate_100.py` | Generación con checkpointing |
+| `scripts/smoke_test.py` | Test de humo bilingüe |
+| `scripts/diagnose_throttling.py` | Diagnóstico de rate limiting |
+| `scripts/health_check.py` | Verificación de sistema |
+| `scripts/validate_100.py` | Validación de dataset |
+
+---
+
+## 5. Trabajo Pendiente (Día 4+)
+
+### Prioridad Alta
+
+1. **Escalar a 1K Conversaciones**
+   - Modificar `generate_100.py` para 1000 items
+   - Tiempo estimado: ~9 horas (overnight)
+   - Expected accuracy: 60-70%
+
+2. **Time Series Pipeline Completo**
+   - Generar 100+ series temporales
+   - Implementar TimeSeriesValidator
+   - Entrenar forecasting baseline
+
+### Prioridad Media
+
+3. **Mejorar Intent Classifier**
+   - Probar XGBoost
+   - Añadir embeddings (sentence-transformers)
+   - Cross-validation
+
+4. **UI Streamlit Básico**
+   - Dashboard de métricas
+   - Gráficas de distribución
+   - Trigger manual de generación
+
+### Prioridad Baja
+
+5. **Optimizaciones**
+   - Prompt caching
+   - Export a HuggingFace Hub
+   - Batch processing paralelo
+
+---
+
+## 6. Riesgos y Mitigaciones
+
+| Riesgo | Mitigación | Estado |
+|--------|------------|--------|
+| AWS Throttling | Delay 5s + sequential | ✅ Resuelto |
+| Class imbalance | Balanced class_weight | ✅ Implementado |
+| Cross-region inference | Prefijo `us.` en model ID | ✅ Resuelto |
+| Costos de generación | ~$0.01/conversación | ✅ Aceptable |
+
+---
+
+## 7. Historial de Commits
+
+| Commit | Fecha | Descripción |
+|--------|-------|-------------|
+| `ddc5c36` | 2024-12-21 | docs: Update DEVLOG with Day 3 progress |
+| `3126a10` | 2024-12-21 | Day 3: Validation pipeline + training baseline |
+| `a1eb8ef` | 2024-12-20 | docs: Update DEVLOG with Day 2 progress |
+| `e537a62` | 2024-12-20 | Day 2: Add unit tests (16 tests, mocked AWS) |
+| `d591a78` | 2024-12-20 | Day 2: Bedrock client + generators + smoke test |
+
+---
+
+## 8. Referencias
+
+- [DEVLOG.md](DEVLOG.md) - Registro detallado de desarrollo día a día
+- [ARCHITECTURE.md](ARCHITECTURE.md) - Arquitectura técnica del proyecto
+- [TDR.md](TDR.md) - Technical Decision Records
+- [ROADMAP.md](ROADMAP.md) - Roadmap del proyecto

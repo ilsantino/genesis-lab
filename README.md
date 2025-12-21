@@ -61,6 +61,25 @@ AWS_REGION=us-east-1
 
 Nunca subas tu .env al repo.
 
+## 🚀 Quick Start
+
+```bash
+# Generar 10 conversaciones de prueba
+uv run python -m scripts.smoke_test
+
+# Generar 100 conversaciones bilingües (~50 min)
+uv run python scripts/generate_100.py
+
+# Validar calidad del dataset
+uv run python scripts/validate_100.py
+
+# Entrenar clasificador de intents
+uv run python -m src.training.intent_classifier
+
+# Health check del sistema
+uv run python scripts/health_check.py
+```
+
 ▶️ Cómo ejecutar la UI: uv run streamlit run ui/app.py
 La UI permite:
 - Probar generadores de datos
@@ -112,14 +131,28 @@ docs/
 ├── ROADMAP.md
 └── TDR.md
 
+## 📊 Métricas Actuales (Día 3)
+
+| Métrica | Valor |
+|---------|-------|
+| Conversaciones generadas | 100 |
+| Intents cubiertos | 77/77 (100%) |
+| Quality score | 81.3/100 |
+| Idiomas | 50% EN / 50% ES |
+| Costo por conversación | ~$0.01 |
+
 🧩 Roadmap (High Level)
- Integración Bedrock completa
- Agente autónomo para iterar datasets
- Sistema de scoring de calidad
- Entrenamiento RLHF
- Export direct to S3 + version control
- Métricas de fairness más avanzadas
- Dashboard comparativo de datasets
+- [x] Integración Bedrock completa
+- [x] Sistema de scoring de calidad
+- [x] Validación de sesgos
+- [x] Dataset Registry (SQLite)
+- [x] Intent Classifier baseline
+- [ ] Agente autónomo para iterar datasets
+- [ ] Entrenamiento RLHF
+- [ ] Export direct to S3 + version control
+- [ ] Métricas de fairness más avanzadas
+- [ ] Dashboard comparativo de datasets
+- [ ] UI Streamlit completa
 
 👤 Autor
 
