@@ -1,41 +1,41 @@
 """
-Smoke test script for GENESIS-LAB generators.
+Smoke test script for GENESIS-LAB generators (v2).
 
-Generates small batches of customer service conversations and time series data
-with throttling protection and Pydantic validation.
+Generates customer service conversations and time series data
+with optimized throttling settings for >90% success rate.
 
 Usage:
     uv run python -m scripts.smoke_test
 """
 
 import json
-import os
+import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-from pydantic import ValidationError
-
 from src.generation import CustomerServiceGenerator, TimeSeriesGenerator
 
 
 # =============================================================================
-# CONFIGURATION
+# CONFIGURATION (v2 - optimized for >90% success rate)
 # =============================================================================
 
 TOTAL_CONVERSATIONS = 10
 TOTAL_TIMESERIES = 10
-BATCH_SIZE = 2
-DELAY_BETWEEN_BATCHES = 3  # seconds
+BATCH_SIZE = 1  # Sequential generation for reliability
+DELAY_BETWEEN_CALLS = 5  # 5 seconds between calls (optimal from diagnostic)
+
+SUCCESS_RATE_THRESHOLD = 0.90  # Target >90% success
 
 OUTPUT_DIR = Path("data/synthetic")
-CS_OUTPUT_FILE = OUTPUT_DIR / "customer_service_smoke_test.json"
-TS_OUTPUT_FILE = OUTPUT_DIR / "timeseries_smoke_test.json"
+CS_OUTPUT_FILE = OUTPUT_DIR / "cs_smoke_v2.json"
+TS_OUTPUT_FILE = OUTPUT_DIR / "ts_smoke_v2.json"
 
 
 # =============================================================================
-# LIGHTWEIGHT VALIDATION (matches generator output format)
+# VALIDATION FUNCTIONS
 # =============================================================================
 
 def validate_conversation(conv: Dict[str, Any]) -> Tuple[bool, str]:
@@ -107,17 +107,23 @@ def validate_timeseries(ts: Dict[str, Any]) -> Tuple[bool, str]:
 
 
 # =============================================================================
-# BATCH GENERATION WITH THROTTLING
+# SEQUENTIAL GENERATION WITH THROTTLING
 # =============================================================================
 
-def generate_conversations_with_throttling(
+def generate_conversations_sequential(
     generator: CustomerServiceGenerator,
     total: int,
-    batch_size: int,
-    delay: int
+    delay: float,
+    bilingual: bool = True
 ) -> Tuple[List[Dict], int, int]:
     """
-    Generate conversations in small batches with delays.
+    Generate conversations one at a time with delays.
+    
+    Args:
+        generator: CustomerServiceGenerator instance
+        total: Number of conversations to generate
+        delay: Delay in seconds between calls
+        bilingual: If True, alternate between EN and ES (50/50 split)
     
     Returns:
         Tuple of (successful_results, success_count, failure_count)
@@ -126,50 +132,45 @@ def generate_conversations_with_throttling(
     success_count = 0
     failure_count = 0
     
-    num_batches = (total + batch_size - 1) // batch_size
-    
-    for batch_idx in range(num_batches):
-        batch_start = batch_idx * batch_size
-        batch_end = min(batch_start + batch_size, total)
-        batch_count = batch_end - batch_start
+    for i in range(total):
+        # Alternate between EN and ES for bilingual mode
+        language = "en" if (i % 2 == 0 or not bilingual) else "es"
+        lang_label = f"[{language.upper()}]"
         
-        print(f"  Generating conversations {batch_start + 1}-{batch_end}/{total}...")
+        print(f"  [{i+1}/{total}] {lang_label} Generating conversation...", end=" ", flush=True)
         
         try:
-            batch_results = generator.generate_batch(
-                count=batch_count,
-                continue_on_error=True
-            )
+            conv = generator.generate_single(language=language)
             
-            for conv in batch_results:
-                is_valid, error = validate_conversation(conv)
-                if is_valid:
-                    results.append(conv)
-                    success_count += 1
-                else:
-                    print(f"    [VALIDATION FAILED] {error}")
-                    failure_count += 1
-                    
+            is_valid, error = validate_conversation(conv)
+            if is_valid:
+                results.append(conv)
+                success_count += 1
+                intent = conv.get("intent", "unknown")[:20]
+                print(f"[OK] intent={intent}")
+            else:
+                print(f"[INVALID] {error}")
+                failure_count += 1
+                
         except Exception as e:
-            print(f"    [BATCH ERROR] {e}")
-            failure_count += batch_count
+            error_type = "Throttled" if "Throttling" in str(e) else "Error"
+            print(f"[FAIL] {error_type}")
+            failure_count += 1
         
-        # Delay before next batch (except for last batch)
-        if batch_idx < num_batches - 1:
-            print(f"  Waiting {delay}s to avoid throttling...")
+        # Delay before next call (except for last)
+        if i < total - 1:
             time.sleep(delay)
     
     return results, success_count, failure_count
 
 
-def generate_timeseries_with_throttling(
+def generate_timeseries_sequential(
     generator: TimeSeriesGenerator,
     total: int,
-    batch_size: int,
-    delay: int
+    delay: float
 ) -> Tuple[List[Dict], int, int]:
     """
-    Generate time series in small batches with delays.
+    Generate time series one at a time with delays.
     
     Returns:
         Tuple of (successful_results, success_count, failure_count)
@@ -178,39 +179,32 @@ def generate_timeseries_with_throttling(
     success_count = 0
     failure_count = 0
     
-    num_batches = (total + batch_size - 1) // batch_size
-    
-    for batch_idx in range(num_batches):
-        batch_start = batch_idx * batch_size
-        batch_end = min(batch_start + batch_size, total)
-        batch_count = batch_end - batch_start
-        
-        print(f"  Generating time series {batch_start + 1}-{batch_end}/{total}...")
+    for i in range(total):
+        print(f"  [{i+1}/{total}] Generating time series...", end=" ", flush=True)
         
         try:
-            batch_results = generator.generate_batch(
-                count=batch_count,
+            ts = generator.generate_single(
                 length=24,  # 24 hours
-                frequency="1H",
-                continue_on_error=True
+                frequency="1H"
             )
             
-            for ts in batch_results:
-                is_valid, error = validate_timeseries(ts)
-                if is_valid:
-                    results.append(ts)
-                    success_count += 1
-                else:
-                    print(f"    [VALIDATION FAILED] {error}")
-                    failure_count += 1
-                    
+            is_valid, error = validate_timeseries(ts)
+            if is_valid:
+                results.append(ts)
+                success_count += 1
+                series_type = ts.get("series_type", "unknown")[:20]
+                print(f"[OK] type={series_type}")
+            else:
+                print(f"[INVALID] {error}")
+                failure_count += 1
+                
         except Exception as e:
-            print(f"    [BATCH ERROR] {e}")
-            failure_count += batch_count
+            error_type = "Throttled" if "Throttling" in str(e) else "Error"
+            print(f"[FAIL] {error_type}")
+            failure_count += 1
         
-        # Delay before next batch (except for last batch)
-        if batch_idx < num_batches - 1:
-            print(f"  Waiting {delay}s to avoid throttling...")
+        # Delay before next call (except for last)
+        if i < total - 1:
             time.sleep(delay)
     
     return results, success_count, failure_count
@@ -221,12 +215,14 @@ def generate_timeseries_with_throttling(
 # =============================================================================
 
 def main():
-    """Run smoke test for all generators."""
+    """Run smoke test v2 with optimized throttling and bilingual support."""
     print("=" * 60)
-    print("GENESIS-LAB Smoke Test")
+    print("GENESIS-LAB Smoke Test v2 (Bilingual)")
     print("=" * 60)
-    print(f"Config: {TOTAL_CONVERSATIONS} conversations, {TOTAL_TIMESERIES} time series")
-    print(f"Batch size: {BATCH_SIZE}, Delay: {DELAY_BETWEEN_BATCHES}s")
+    print(f"Target: {TOTAL_CONVERSATIONS} conversations + {TOTAL_TIMESERIES} time series")
+    print(f"Mode: Sequential (batch size 1), Bilingual (EN/ES)")
+    print(f"Delay: {DELAY_BETWEEN_CALLS}s between calls")
+    print(f"Success threshold: {SUCCESS_RATE_THRESHOLD*100:.0f}%")
     print("=" * 60)
     
     # Ensure output directory exists
@@ -235,30 +231,32 @@ def main():
     overall_start = time.time()
     
     # =========================================================================
-    # CUSTOMER SERVICE CONVERSATIONS
+    # CUSTOMER SERVICE CONVERSATIONS (Bilingual EN/ES)
     # =========================================================================
-    print("\n[1/2] Customer Service Conversations")
+    print("\n[1/2] Customer Service Conversations (Bilingual)")
     print("-" * 40)
     
     cs_start = time.time()
     cs_generator = CustomerServiceGenerator.from_config()
     print(f"  Generator ready with {cs_generator.intent_count} intents")
+    print(f"  Language mode: Bilingual (50% EN, 50% ES)\n")
     
-    cs_results, cs_success, cs_failed = generate_conversations_with_throttling(
+    cs_results, cs_success, cs_failed = generate_conversations_sequential(
         generator=cs_generator,
         total=TOTAL_CONVERSATIONS,
-        batch_size=BATCH_SIZE,
-        delay=DELAY_BETWEEN_BATCHES
+        delay=DELAY_BETWEEN_CALLS,
+        bilingual=True
     )
     cs_elapsed = time.time() - cs_start
+    cs_rate = cs_success / TOTAL_CONVERSATIONS if TOTAL_CONVERSATIONS > 0 else 0
     
     # Save results
     if cs_results:
         with open(CS_OUTPUT_FILE, "w", encoding="utf-8") as f:
             json.dump(cs_results, f, indent=2, ensure_ascii=False, default=str)
-        print(f"  Saved {len(cs_results)} conversations to {CS_OUTPUT_FILE}")
+        print(f"\n  Saved {len(cs_results)} conversations to {CS_OUTPUT_FILE}")
     
-    print(f"  Time: {cs_elapsed:.1f}s | Success: {cs_success} | Failed: {cs_failed}")
+    print(f"  Time: {cs_elapsed:.1f}s | Success: {cs_success}/{TOTAL_CONVERSATIONS} ({cs_rate*100:.0f}%)")
     
     # =========================================================================
     # TIME SERIES
@@ -268,58 +266,68 @@ def main():
     
     ts_start = time.time()
     ts_generator = TimeSeriesGenerator.from_config()
-    print(f"  Generator ready with {ts_generator.series_type_count} series types")
+    print(f"  Generator ready with {ts_generator.series_type_count} series types\n")
     
-    ts_results, ts_success, ts_failed = generate_timeseries_with_throttling(
+    ts_results, ts_success, ts_failed = generate_timeseries_sequential(
         generator=ts_generator,
         total=TOTAL_TIMESERIES,
-        batch_size=BATCH_SIZE,
-        delay=DELAY_BETWEEN_BATCHES
+        delay=DELAY_BETWEEN_CALLS
     )
     ts_elapsed = time.time() - ts_start
+    ts_rate = ts_success / TOTAL_TIMESERIES if TOTAL_TIMESERIES > 0 else 0
     
     # Save results
     if ts_results:
         with open(TS_OUTPUT_FILE, "w", encoding="utf-8") as f:
             json.dump(ts_results, f, indent=2, ensure_ascii=False, default=str)
-        print(f"  Saved {len(ts_results)} time series to {TS_OUTPUT_FILE}")
+        print(f"\n  Saved {len(ts_results)} time series to {TS_OUTPUT_FILE}")
     
-    print(f"  Time: {ts_elapsed:.1f}s | Success: {ts_success} | Failed: {ts_failed}")
+    print(f"  Time: {ts_elapsed:.1f}s | Success: {ts_success}/{TOTAL_TIMESERIES} ({ts_rate*100:.0f}%)")
     
     # =========================================================================
     # FINAL SUMMARY
     # =========================================================================
     overall_elapsed = time.time() - overall_start
     
+    total_success = cs_success + ts_success
+    total_attempted = TOTAL_CONVERSATIONS + TOTAL_TIMESERIES
+    overall_rate = total_success / total_attempted if total_attempted > 0 else 0
+    
     print("\n" + "=" * 60)
-    print("SMOKE TEST COMPLETE")
+    print("SMOKE TEST v2 RESULTS")
     print("=" * 60)
-    print(f"Total time: {overall_elapsed:.1f}s")
+    
     print(f"\nCustomer Service:")
-    print(f"  - Generated: {cs_success}/{TOTAL_CONVERSATIONS}")
-    print(f"  - Failed: {cs_failed}")
+    print(f"  - Generated: {cs_success}/{TOTAL_CONVERSATIONS} ({cs_rate*100:.0f}%)")
     print(f"  - Output: {CS_OUTPUT_FILE}")
+    
     print(f"\nTime Series:")
-    print(f"  - Generated: {ts_success}/{TOTAL_TIMESERIES}")
-    print(f"  - Failed: {ts_failed}")
+    print(f"  - Generated: {ts_success}/{TOTAL_TIMESERIES} ({ts_rate*100:.0f}%)")
     print(f"  - Output: {TS_OUTPUT_FILE}")
     
-    total_success = cs_success + ts_success
-    total_failed = cs_failed + ts_failed
-    total_attempted = TOTAL_CONVERSATIONS + TOTAL_TIMESERIES
+    print(f"\n{'=' * 40}")
+    print(f"OVERALL: {total_success}/{total_attempted} ({overall_rate*100:.0f}%)")
+    print(f"{'=' * 40}")
+    print(f"Time: {overall_elapsed:.1f}s ({overall_elapsed/60:.1f} min)")
     
-    print(f"\nOverall: {total_success}/{total_attempted} successful ({total_success/total_attempted*100:.0f}%)")
-    
-    if total_failed == 0:
-        print("\n[OK] All generations passed validation!")
+    # Check against threshold
+    print("\n" + "-" * 40)
+    if overall_rate >= SUCCESS_RATE_THRESHOLD:
+        print(f"[PASS] Success rate {overall_rate*100:.0f}% >= {SUCCESS_RATE_THRESHOLD*100:.0f}% threshold")
+        exit_code = 0
     else:
-        print(f"\n[WARN] {total_failed} generations failed")
+        print(f"[FAIL] Success rate {overall_rate*100:.0f}% < {SUCCESS_RATE_THRESHOLD*100:.0f}% threshold")
+        exit_code = 1
     
-    return total_failed == 0
+    # Validation summary
+    if cs_success == TOTAL_CONVERSATIONS and ts_success == TOTAL_TIMESERIES:
+        print("[PASS] All generated items passed validation")
+    else:
+        failed = (TOTAL_CONVERSATIONS - cs_success) + (TOTAL_TIMESERIES - ts_success)
+        print(f"[WARN] {failed} items failed generation or validation")
+    
+    return exit_code
 
 
 if __name__ == "__main__":
-    import sys
-    success = main()
-    sys.exit(0 if success else 1)
-
+    sys.exit(main())

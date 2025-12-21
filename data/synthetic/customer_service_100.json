@@ -1,0 +1,4130 @@
+[
+  {
+    "conversation_id": "conv_783",
+    "intent": "activate_my_card",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I just got my new metal card in the mail. How do I activate it?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! Congratulations on getting your new metal card 🎉 I'll help you activate it right away. Could you open your app and go to the Cards tab?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Okay, I'm in the Cards section. I see my virtual card but not the physical one yet"
+      },
+      {
+        "speaker": "agent",
+        "text": "No worries! Tap on 'Add new card' at the bottom of the screen, then select 'Activate physical card'. You'll need to enter the last 4 digits of your card number to complete the activation."
+      },
+      {
+        "speaker": "customer",
+        "text": "Found it! Last 4 digits are 7241. Should I also set up a PIN?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Perfect! Yes, once activation is complete, you can set up your PIN right in the app - just tap on the card and select 'View PIN'. Your card will be ready to use in about 2 hours ✨ Is there anything else you need help with?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:29:39.449549+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_783",
+    "intent": "card_about_to_expire",
+    "category": "card_management",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! Just got a notification that my card expires next month. Will you automatically send me a new one?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! Thanks for reaching out! 👋 Yes, we'll automatically send you a new card around 2-3 weeks before your current one expires. I can see your card expires on February 15th - is that the one you're asking about?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes that's right! I'm traveling in early February though - should I be worried about not having the new card in time?"
+      },
+      {
+        "speaker": "agent",
+        "text": "No need to worry! 😊 I can actually request your replacement card to be sent out earlier. Would you like me to do that for you? It would arrive within 5-7 business days to your registered address on Maple Street."
+      },
+      {
+        "speaker": "customer",
+        "text": "That would be perfect, yes please!"
+      },
+      {
+        "speaker": "agent",
+        "text": "I've just requested your new card to be sent out priority delivery. You'll get a notification when it's dispatched. Your current card will keep working until the expiry date, so you'll have both cards for a while. Is there anything else you need help with?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:29:54.269683+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_738",
+    "intent": "card_acceptance",
+    "category": "card_management",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Quería consultar por qué mi tarjeta fue rechazada en Amazon. Intenté hacer una compra de $899 y no pasó 🤔"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana 👋 Gracias por contactarnos. Entiendo tu preocupación por el rechazo de la compra. Dame un momento para revisar qué sucedió con la transacción."
+      },
+      {
+        "speaker": "customer",
+        "text": "Dale, gracias! Es raro porque tengo fondos suficientes en la cuenta"
+      },
+      {
+        "speaker": "agent",
+        "text": "Ya revisé y veo que el rechazo se debe a que las compras internacionales están desactivadas en tu tarjeta ✨ ¿Quieres que te ayude a activarlas? Es súper rápido, solo toma un tap en la app"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah mirá, no sabía! Sí por favor, ¿cómo lo hago?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Claro! Solo tienes que ir a la sección 'Tarjetas' en tu app → tocar en tu tarjeta → 'Configuración' → activar 'Compras internacionales' 🌎 Una vez que lo hagas, podrás comprar en Amazon sin problemas. ¿Necesitas ayuda con algo más?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:30:39.600422+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_002",
+    "intent": "card_arrival",
+    "category": "card_management",
+    "sentiment": "positive",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_positive",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I ordered my metal card on Monday - any idea when it'll get here? Super excited to start using it!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hello! I can feel your excitement! 🌟 I've just checked and your Metal card was shipped this morning via priority delivery. You should receive it by Friday at the latest."
+      },
+      {
+        "speaker": "customer",
+        "text": "Awesome, thanks! Can't wait to try out the contactless payments"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:30:51.300654+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "card_delivery_estimate",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-curious-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Solicité mi tarjeta hace 2 días por la app, ¿sabes cuánto tarda en llegar?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Claro, te ayudo a revisar el estado de tu tarjeta 💳 ¿Me podrías confirmar el correo electrónico asociado a tu cuenta?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, es maria.lopez@email.com"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Gracias Maria! Ya encontré tu solicitud. Tu tarjeta fue aprobada y está en proceso de envío. El tiempo estimado de entrega es de 5 a 7 días hábiles. Podrás seguir el envío desde la sección 'Mi tarjeta' en la app 📱"
+      },
+      {
+        "speaker": "customer",
+        "text": "Perfecto, muchas gracias por la info!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:31:36.859342+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "card_linking",
+    "category": "card_management",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Acabo de recibir mi tarjeta física y quiero vincularla a Apple Pay, pero no encuentro cómo hacerlo en la app"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Me alegro que ya tengas tu tarjeta física 🎉 Te ayudo a vincularla a Apple Pay en unos simples pasos"
+      },
+      {
+        "speaker": "customer",
+        "text": "Genial, gracias! Ya intenté desde la wallet de Apple pero no me aparece la opción de agregar"
+      },
+      {
+        "speaker": "agent",
+        "text": "No te preocupes, es súper fácil 😊 Abre nuestra app → Tarjetas → Tu tarjeta física → 'Agregar a Apple Pay'. También puedes escanear la tarjeta directamente desde la app de Wallet. ¿Quieres que te guíe paso a paso?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ahh perfecto, ya lo vi! Ya está agregada, muchísimas gracias por la ayuda"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:31:52.988498+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "card_not_working",
+    "category": "card_management",
+    "sentiment": "positive",
+    "complexity": "complex",
+    "language": "en",
+    "turn_count": 8,
+    "customer_emotion_arc": "frustrated_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! My card keeps getting declined at shops but I can see I have enough money in my account. What's going on?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I'm Sam, and I'll help you sort this out. 👋 Could you tell me when you last tried to use the card and what happened?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Just tried to buy lunch at Pret for £7.50 and it was declined. Then tried at Tesco for groceries (£23.40) - same thing. Both contactless payments"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details! I can see that our system flagged some unusual activity on your card last night - a series of small online transactions from different countries. To protect your account, we temporarily restricted your card. I can help get this sorted!"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh wow - I haven't made any international purchases! Were they fraudulent?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I've checked those transactions and they do look suspicious. I'll block them right away and issue you a new card with a different number. In the meantime, I can temporarily enable your current card for the next 2 hours so you can get your lunch. Would that help?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please! That would be great. How soon will the new card arrive?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I've just enabled your current card for the next 2 hours ✅ Your new card will arrive within 2-3 business days. I've also refunded those suspicious transactions - you'll see the money back in your account within 24 hours. Is there anything else you need help with?"
+      },
+      {
+        "speaker": "customer",
+        "text": "That's perfect - thanks so much for sorting it out so quickly!"
+      },
+      {
+        "speaker": "agent",
+        "text": "You're welcome! Always happy to help keep your money safe 😊 Don't hesitate to reach out if you need anything else!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:32:43.007316+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "card_swallowed",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola, el cajero del Oxxo de Reforma se tragó mi tarjeta. Qué puedo hacer?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Lamento el inconveniente con tu tarjeta. No te preocupes, voy a ayudarte. Lo primero es bloquearla por seguridad - ya lo hice por ti. ¿Quieres que te enviemos una nueva sin costo? 💳"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí por favor, gracias. A cuánto tiempo llega?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Con gusto. Ya solicité tu nueva tarjeta, llegará en 3-5 días hábiles a la dirección registrada. Mientras tanto puedes seguir usando tu tarjeta virtual en la app para tus compras online 👍"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:32:55.404850+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "compromised_card",
+    "category": "card_management",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "concerned_to_relieved",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I just got a notification about a $89 charge at a store in Miami, but I'm in New York. I don't think I made this purchase"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hello! I understand your concern about this unfamiliar charge - I'll help you secure your account right away 🔒 First, I've temporarily frozen your card to prevent any further unauthorized charges. Can you confirm this is the transaction you're seeing from 'Miami Beachwear' at 2:45 PM today?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes that's the one! I definitely didn't make that purchase. What should I do next?"
+      },
+      {
+        "speaker": "agent",
+        "text": "No worries, I'll help you get this sorted! I've permanently blocked your compromised card and I'm initiating a dispute for the $89 charge. A new card will be express shipped to your address on file. You should receive it within 1-2 business days 📬"
+      },
+      {
+        "speaker": "customer",
+        "text": "That was super quick! Can I still use my virtual card for online purchases in the meantime?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Absolutely! Your virtual card is separate and still safe to use. You'll find it in the 'Cards' section of your app. The disputed amount should be credited back to your account within 24 hours. Is there anything else you need help with? 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:33:39.886389+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "contactless_not_working",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Mi tarjeta contactless no está funcionando desde ayer. Intento pagar en comercios y no responde"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana, gracias por contactarnos 👋 Entiendo que estás teniendo problemas con los pagos sin contacto. ¿Podrías decirme si el chip y la banda magnética funcionan normalmente?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, con chip y banda funciona bien. Solo falla cuando intento pagar sin contacto, y antes funcionaba perfectamente"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por confirmarlo. Para solucionar esto, necesitamos reactivar la función contactless. ¿Podrías abrir la app, ir a 'Configuración de tarjeta' y verificar si la opción de pagos sin contacto aparece activa? ✨"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ya lo revisé, dice que está activa pero igual no funciona cuando intento pagar"
+      },
+      {
+        "speaker": "agent",
+        "text": "En ese caso, voy a reiniciar la función contactless desde nuestro sistema. Por favor, espera 5 minutos y luego realiza una compra pequeña (menor a $20) para probar. Si aún persiste el problema, podemos enviarte una tarjeta de reemplazo sin costo. ¿Te parece bien intentar esto primero? 🔄"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:33:58.560852+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_873",
+    "intent": "get_disposable_virtual_card",
+    "category": "card_management",
+    "sentiment": "negative",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 4,
+    "customer_emotion_arc": "frustrated_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Necesito crear una tarjeta virtual YA para una compra urgente y la app me tira error. No puedo esperar!"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Entiendo tu urgencia y lo frustrante que puede ser este error 😔 Voy a ayudarte a crear tu tarjeta virtual ahora mismo. ¿Podrías cerrar completamente la app y volver a abrirla? A veces esto resuelve el problema."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, ya la cerré y abrí de nuevo pero sigue igual"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por intentarlo. He forzado un reinicio desde el sistema y ya desbloqueé la función en tu cuenta 👍 Ahora sí podrás crear tu tarjeta virtual. Solo ve a la sección 'Tarjetas' → 'Nueva tarjeta virtual'. ¿Podrías intentarlo y confirmarme si ya funciona?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:34:37.319661+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_734",
+    "intent": "get_physical_card",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I'd like to order a physical card. I've been using the virtual one for a while but need the actual card now"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! I'd be happy to help you get your physical card set up 🙂 Can you confirm if you'd like the standard free card (arrives in 5-7 business days) or the premium metal card?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Just the standard card is fine. Do I need to pay anything for shipping?"
+      },
+      {
+        "speaker": "agent",
+        "text": "The standard card comes with free shipping! I can see your verified address is 123 Pine Street - is that still correct for delivery?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes that's right. Will my virtual card still work while I wait for the physical one?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Absolutely! Your virtual card will continue working normally while your physical card is on its way. I've just processed your order - you'll get a notification when it ships. Is there anything else you'd like to know? 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:34:56.575750+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "getting_spare_card",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Quería saber si puedo pedir una tarjeta adicional para mi esposa"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Claro que sí, puedes solicitar una tarjeta adicional desde la app 💳 Solo ve a Tarjetas > Solicitar adicional y completa los datos. Es gratis para usuarios Plus y Premium."
+      },
+      {
+        "speaker": "customer",
+        "text": "Perfecto, gracias! Voy a hacer eso entonces"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:35:34.099769+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_vc782",
+    "intent": "getting_virtual_card",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Quiero saber cómo puedo crear una tarjeta virtual para compras online"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Con gusto te ayudo a crear tu tarjeta virtual 💳 ¿Ya tienes una cuenta verificada con nosotros?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, ya tengo mi cuenta verificada hace como 2 meses y uso la app seguido"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Perfecto! Para crear tu tarjeta virtual solo tienes que: 1) Ir a la sección 'Tarjetas' en la app 2) Tocar en '+Nueva Tarjeta' 3) Seleccionar 'Tarjeta Virtual' 4) Confirmar con tu código de seguridad ¡Y listo! 🌟 La tarjeta se genera al instante"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah genial, ya lo encontré! Súper fácil, gracias!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:35:56.761324+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "lost_or_stolen_card",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola, perdí mi tarjeta ayer en el super. Necesito bloquearla"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! No te preocupes, te ayudo a bloquearla ahora mismo. Ya la bloqueé desde mi sistema por seguridad. También puedes hacerlo tú mismo desde la app en cualquier momento (Tarjetas → Configuración → Bloquear) 🔒"
+      },
+      {
+        "speaker": "customer",
+        "text": "Gracias! Y cómo pido el reemplazo?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Con gusto! Solo ve a la sección de Tarjetas en la app y toca 'Solicitar reemplazo'. Te llegará gratis en 3-5 días hábiles. Mientras tanto puedes seguir usando tu tarjeta virtual para compras online 💳"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:36:36.837375+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "order_physical_card",
+    "category": "card_management",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I just joined and I'd love to get one of those cool metal cards I've seen. How do I order one?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! Welcome aboard! 🎉 I'd be happy to help you get set up with our metal card. Could you confirm if you're currently on our Premium or Standard plan?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh - I'm on the Standard plan right now. Do I need to upgrade?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes, the metal card is a Premium feature! I can walk you through upgrading to Premium - it's £12.99/month and includes lots of other perks like travel insurance and 1% cashback. Would you like to learn more about the upgrade process?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please! The metal card looks so nice, and the cashback sounds great too"
+      },
+      {
+        "speaker": "agent",
+        "text": "Awesome! 😊 Just tap the Profile tab in your app, then 'Upgrade to Premium'. Once you've upgraded, you can order your metal card right away - it'll arrive in 3-5 business days. The card comes in Space Grey, Rose Gold, or Midnight Black. Let me know if you need help with anything else!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:36:59.017438+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_vc782",
+    "intent": "virtual_card_not_working",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "complex",
+    "language": "en",
+    "turn_count": 8,
+    "customer_emotion_arc": "neutral->frustrated->satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I just created a virtual card for online shopping but it keeps getting declined. I've tried using it on Amazon and ASOS"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hello! I'm Alex, and I'll help you with your virtual card issue. Could you tell me when you created the card and when you first tried to use it? 🤔"
+      },
+      {
+        "speaker": "customer",
+        "text": "I created it about an hour ago and tried to use it right away. The card number shows up fine in the app but every payment gets rejected"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details. I can see your virtual card was created at 2:47 PM today. Sometimes new virtual cards need a few minutes to fully activate in the system. I also notice that 3D Secure verification hasn't been set up yet - that's likely why the transactions are being declined."
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I didn't know about 3D Secure. How do I set that up?"
+      },
+      {
+        "speaker": "agent",
+        "text": "No worries! I'll guide you through it. First, go to the Cards tab in your app, select the virtual card, then tap 'Security Settings'. You should see a '3D Secure Setup' option there. Once you tap that, you'll need to verify your identity with either Face ID or by entering an SMS code."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok done - I got through the verification. Should it work now?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes, your virtual card should work perfectly now! 👍 I can see the 3D Secure setup is complete. Try making your purchase again, and you should receive a push notification to approve the transaction. Let me know if you need anything else!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:37:41.341761+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_742",
+    "intent": "visa_or_mastercard",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-curious-satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Quería saber si la tarjeta que me van a enviar es Visa o Mastercard"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Gracias por escribirnos 👋 En este momento estamos emitiendo tarjetas Mastercard Gold para nuevos usuarios. ¿Es para tu primera tarjeta con nosotros?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, es mi primera tarjeta. Y funciona igual que Visa? Es que varios comercios me dicen que solo aceptan Visa"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡No te preocupes! 😊 Tu Mastercard Gold será aceptada en prácticamente todos los comercios, igual que Visa. Ambas redes son globales y tienen la misma cobertura en Argentina. Si alguna vez encuentras un comercio que no la acepta, ¡avísanos!"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah perfecto, eso me deja más tranquilo. ¿Y cuándo me llegaría la tarjeta?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Tu tarjeta llegará en 5-7 días hábiles a la dirección que registraste. Podrás hacer seguimiento del envío desde la sección 'Tarjetas' en tu app. ¿Necesitas ayuda con algo más?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:37:58.341121+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_874",
+    "intent": "card_payment_fee_charged",
+    "category": "card_payments",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me apareció un cargo de $29 en mi último pago con la tarjeta en Starbucks. No entiendo por qué"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana, gracias por contactarnos 👋 Déjame revisar ese cargo por ti. ¿El pago lo realizaste ayer en Starbucks Argentina?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, fue ayer por la tarde. Pagué $850 por un café y un sándwich, pero me apareció un cargo extra de $29"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por la aclaración. Ya revisé la transacción y veo que el cargo de $29 es una comisión que se aplica cuando el comercio está configurado para cobrar en dólares 💳 Aunque el pago figure en pesos, Starbucks procesa como comercio internacional"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah ok, ahora entiendo. No lo sabía. ¿Hay forma de evitar ese cargo la próxima vez?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Claro! Puedes evitar la comisión pidiendo específicamente que te cobren en pesos argentinos al momento del pago. También te recomiendo usar nuestra tarjeta virtual para compras internacionales, que tiene 0% de comisión 😉"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:38:39.943422+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_7392",
+    "intent": "card_payment_not_recognised",
+    "category": "card_payments",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 6,
+    "customer_emotion_arc": "confused_to_relieved",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I've got a weird charge on my account from yesterday - says 'AMZN Digital' for £29.99 but I don't remember buying anything from Amazon recently"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hello! Thanks for reaching out about this charge. I'll help you look into it right away! 👋 Could you confirm if anyone else has access to your Amazon account or if you have any subscriptions set up?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh wait - I just checked my Amazon account. I think it might be that annual Prime subscription renewal. I totally forgot about that!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Ah yes! That makes sense 😊 Amazon Prime subscriptions do auto-renew annually. Would you like me to show you how to check your upcoming subscription renewal dates in the app to avoid any surprises in the future?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please, that would be really helpful! I should probably keep better track of these things"
+      },
+      {
+        "speaker": "agent",
+        "text": "Of course! Just tap the 'Subscriptions' tab in your app menu, then 'Scheduled Payments'. You'll see all your upcoming renewals there. You can even set up notifications 30 days before any subscription renewal. Would you like me to help you set that up?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:39:00.232241+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "card_payment_wrong_exchange_rate",
+    "category": "card_payments",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I made a purchase in Paris yesterday for €85 but the exchange rate seems off. The app shows £78 but I checked online and the rate should've been closer to £73"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hello! Thanks for reaching out about the exchange rate. I'll check the transaction details for you right away 👋"
+      },
+      {
+        "speaker": "agent",
+        "text": "I can see your purchase at Galleries Lafayette on Jan 15th. The rate includes our weekend exchange fee of 1% and the standard markup of 0.5% for non-EUR transactions. This is why there's a small difference from the base market rate you might see online."
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I didn't know about the weekend fee. Where can I find info about these fees?"
+      },
+      {
+        "speaker": "agent",
+        "text": "You can find all our exchange fees in the app: Settings > Fees & Charges > Foreign Exchange. Pro tip: if you upgrade to our Plus account, you get fee-free weekend exchanges! Let me know if you need anything else 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:39:39.152901+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "declined_card_payment",
+    "category": "card_payments",
+    "sentiment": "negative",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "frustrated_to_relieved",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "My card just got declined at Tesco for £47.50 but I definitely have enough money in my account! This is so embarrassing 😠"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I'm really sorry for the embarrassing situation - I know how frustrating that can be! 😔 I can see the decline was triggered by our fraud protection system due to an unusual pattern. I've gone ahead and approved your card for use now. Could you please try the payment again?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Just tried again and it worked, thanks for sorting it so quickly!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:39:54.467181+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "pending_card_payment",
+    "category": "card_payments",
+    "sentiment": "positive",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_positive",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I just bought something at Target for $43.50 but it's showing as pending in my app for $48. Will this change?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! 👋 No worries - this is totally normal. Some merchants place a temporary hold that's a bit higher than the actual amount. Once the payment is fully processed (usually 1-2 business days), it'll show the correct $43.50!"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh that makes sense! Thanks for explaining 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:40:34.897839+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_738",
+    "intent": "reverted_card_payment?",
+    "category": "card_payments",
+    "sentiment": "neutral",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 8,
+    "customer_emotion_arc": "neutral->confused->satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Tengo una duda sobre un pago que hice ayer. En mi app aparece como que se realizó pero en mi cuenta veo que el dinero volvió"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana 👋 Gracias por contactarnos. Te ayudo a revisar esa transacción. ¿Me podrías indicar el monto y el comercio donde realizaste el pago?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, fue una compra en Amazon por $2,499.50 ayer a las 15:30 aproximadamente"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por los detalles. Efectivamente, veo la transacción en tu historial y noto que el comercio reversó el cargo automáticamente. Esto suele pasar cuando hay una validación adicional de seguridad o el comercio cancela la transacción 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah ok, pero entonces mi compra no se procesó? Porque en Amazon me aparece como confirmada"
+      },
+      {
+        "speaker": "agent",
+        "text": "Entiendo tu confusión. Déjame explicarte: a veces los comercios online hacen una validación inicial (que es lo que ves como confirmada) pero el cargo real se procesa después. En este caso, parece que hubo un problema con la validación y por eso se reversó el cargo"
+      },
+      {
+        "speaker": "customer",
+        "text": "Y entonces qué tengo que hacer? Necesito volver a pagar o se procesará solo?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Te recomiendo que esperes 24 horas, ya que Amazon suele reintentar el cargo automáticamente. Si después de ese tiempo no ves el cargo en tu cuenta y el pedido sigue confirmado, puedes: 1) Verificar el estado en tu cuenta de Amazon 2) Intentar un nuevo pago o 3) Contactar al soporte de Amazon para confirmar el estado de tu orden 💳"
+      },
+      {
+        "speaker": "customer",
+        "text": "Vale, esperaré entonces las 24 horas. Gracias por explicarme!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:41:03.650229+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_108",
+    "intent": "transaction_charged_twice",
+    "category": "card_payments",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "angry_to_relieved",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Estoy HARTA! Me cobraron 2 veces una compra de $1,890 en Zara online. No puede ser que siempre pase esto!!"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Entiendo completamente tu frustración, yo también me sentiría así. 😣 Dame un momento para revisar esos cargos y solucionarlo cuanto antes."
+      },
+      {
+        "speaker": "customer",
+        "text": "La compra fue hace 2 horas, como a las 3pm. Necesito ese dinero para pagar otras cosas"
+      },
+      {
+        "speaker": "agent",
+        "text": "Ya encontré los dos cargos. Efectivamente hay un cargo duplicado por error del comercio. Ya inicié el reembolso express de los $1,890 - por ser cliente frecuente, lo tendrás de vuelta en tu cuenta en máximo 2 horas ✨"
+      },
+      {
+        "speaker": "customer",
+        "text": "Bueno, al menos esta vez lo resolvieron rápido. Gracias"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:41:39.230018+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_247",
+    "intent": "atm_support",
+    "category": "cash_atm",
+    "sentiment": "negative",
+    "complexity": "complex",
+    "language": "en",
+    "turn_count": 7,
+    "customer_emotion_arc": "angry_to_relieved",
+    "resolution_time_category": "extended",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "The ATM just ate my card and took £200 from my account but gave me no cash!! I'm stranded in central London with no money!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Oh no, I'm so sorry this happened to you! 😔 This must be really stressful, especially being stranded. Can you tell me which ATM this was and exactly when this happened?"
+      },
+      {
+        "speaker": "customer",
+        "text": "It was at Liverpool Street station, about 20 mins ago. The ATM is showing some error now and my app shows the money was taken!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details. I can see the pending transaction for £200 at 19:45 at Liverpool St. I'm going to put an immediate dispute on this transaction and contact the ATM operator. Have you contacted the bank that owns the ATM?"
+      },
+      {
+        "speaker": "customer",
+        "text": "No I haven't, there's no one there, it's just a machine in the station. I need this money tonight, I'm supposed to meet friends for dinner and now I'm stuck!"
+      },
+      {
+        "speaker": "agent",
+        "text": "I understand the urgency. I'm activating our emergency cash feature right now - this will let you withdraw £200 from any other ATM with a special code. Would that help? 💳 Meanwhile, I'll work on recovering your card and the original transaction."
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please, that would be amazing. Thank you for helping so quickly!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:42:02.204891+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "cash_withdrawal_charge",
+    "category": "cash_atm",
+    "sentiment": "positive",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 8,
+    "customer_emotion_arc": "confused_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me apareció un cargo de $8.50 por sacar plata del cajero ayer, pero tengo el plan premium que incluye retiros gratis 🤔"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana 👋 Entiendo tu confusión por el cargo. Me gustaría revisar esto contigo. ¿Podrías decirme en qué cajero realizaste el retiro?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Fue en un Santander, en el shopping Abasto. Saqué $15000 como a las 19:30"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por los detalles. Efectivamente, veo el retiro que mencionas. El plan Premium incluye 8 retiros gratis por mes en cajeros de la red Banelco/Link. Al revisar tu cuenta, noto que ya utilizaste los 8 retiros gratuitos este mes, por eso se aplicó el cargo en esta transacción."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah mirá, no sabía que eran solo 8! Pensé que eran ilimitados. ¿Dónde puedo ver cuántos retiros gratis me quedan?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Claro! Podés ver tus retiros disponibles en la app: Menu → Mi Plan → Beneficios. Ahí aparece el contador actualizado mes a mes 📱 ¿Te gustaría que te explique cómo configurar notificaciones cuando estés por llegar al límite?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, por favor! Eso me vendría genial para no pasarme la próxima vez"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Por supuesto! Andá a Configuración → Notificaciones → Límites y beneficios. Activá la opción 'Alertas de beneficios' y listo. Te avisaremos cuando te queden 2 retiros gratis 😊 ¿Hay algo más en lo que pueda ayudarte?"
+      },
+      {
+        "speaker": "customer",
+        "text": "No, eso es todo! Gracias por explicarme tan claramente. Ya configuré las notificaciones!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:44:43.407521+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "cash_withdrawal_not_recognised",
+    "category": "cash_atm",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "worried_to_relieved",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hey there's a $200 ATM withdrawal on my account from last night but I didn't take any cash out?? I was home all evening"
+      },
+      {
+        "speaker": "agent",
+        "text": "I understand how concerning an unrecognized withdrawal can be! 😊 Let me check this transaction right away. Can you confirm if you still have your card with you?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes I have my card right here, haven't lost it or anything. The withdrawal says it was at 11:45pm at a 7-Eleven ATM on Madison Ave"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for confirming. I can see this withdrawal attempt was actually declined by our fraud system - the $200 is just a temporary hold. Since you've confirmed you didn't make this transaction, I'll remove the hold right now."
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh thank goodness. Will you block my card just in case someone has my details?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I've already frozen your card for security 🔒 The hold will clear in the next hour, and I'm sending a new card that'll arrive in 2-3 business days. You can still use your virtual card in the app for any purchases you need to make!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:45:00.658249+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "declined_cash_withdrawal",
+    "category": "cash_atm",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "frustrated_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Acabo de intentar sacar plata del cajero pero me rechazó la operación. Mi saldo es suficiente, no entiendo qué pasó 🤔"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana 👋 Entiendo tu preocupación por el retiro rechazado. ¿Podrías decirme en qué cajero intentaste y hace cuánto fue?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Fue hace 10 minutos en el Santander de Av. Corrientes 2500. Intenté sacar $15.000"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por los detalles! Revisé tu cuenta y veo que el límite diario de retiro está configurado en $10.000. Por eso se rechazó la operación 😊 ¿Querés que te ayude a aumentarlo?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah mirá, no sabía! Sí porfa, me gustaría aumentarlo"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Listo! Acabo de aumentar tu límite diario a $20.000. Ya podés hacer el retiro sin problemas. El cambio es inmediato 🎉 ¿Necesitás ayuda con algo más?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:45:26.766256+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "pending_cash_withdrawal",
+    "category": "cash_atm",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I withdrew $200 from an ATM 20 mins ago but it's still showing as pending in my app. How long does it usually take to clear?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! ATM withdrawals typically show as pending for about 1-2 hours before they fully clear. This is totally normal and you should see the final transaction soon 👍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok perfect, thanks for letting me know!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:45:53.809111+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "wrong_amount_of_cash_received",
+    "category": "cash_atm",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I just tried to withdraw $80 from the ATM at Target but only got $60. The app shows $80 was taken from my account"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! Sorry to hear about the ATM issue. I can help you with this. Could you confirm the date and time of the withdrawal? I'll check the ATM transaction logs right away 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "It was today at 2:45 PM at the Target on Madison Ave"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks! I've checked the transaction and can see the discrepancy. I'll initiate a refund of $20 to your account right now - you should see it within 1-2 business days. If you'd like, you can also file a dispute through the app under 'Card settings > Dispute transaction' for future reference."
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:46:23.286420+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_734",
+    "intent": "wrong_exchange_rate_for_cash_withdrawal",
+    "category": "cash_atm",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I withdrew 200 USD from an ATM in New York yesterday, but I think the exchange rate used was different from what I saw in the app"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hello! Thanks for reaching out about the exchange rate. I'll help you check this withdrawal. Could you tell me roughly what time you made the withdrawal yesterday? 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "It was around 3pm at a Chase ATM near Times Square. The app shows I was charged £164.82 but when I checked the rate beforehand it should have been closer to £159"
+      },
+      {
+        "speaker": "agent",
+        "text": "I understand your concern about the rate difference. Let me explain what happened. The rate you saw in the app was the interbank rate, but ATM withdrawals use our standard exchange rate plus a 0.5% conversion fee during weekdays. This is why you see a small difference in the final amount."
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I see - I didn't realize there was an extra fee for ATM withdrawals. Is this mentioned somewhere in the app?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes! You can find all our fees and exchange rates in the app under Settings > Fees & Charges. For future reference, you can also tap on any transaction to see the exact exchange rate and fees applied. Is there anything else you'd like to know? 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:46:59.334822+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_347",
+    "intent": "beneficiary_not_allowed",
+    "category": "transfers",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Estoy intentando agregar a mi hermana como beneficiaria para transferencias pero me sale un mensaje de error"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Gracias por contactarnos 👋 Lamento las molestias con el registro de beneficiario. ¿Podrías decirme qué mensaje de error específico estás viendo?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Dice algo como 'no se puede verificar la identidad del beneficiario'. Ya intenté 3 veces y nada"
+      },
+      {
+        "speaker": "agent",
+        "text": "Entiendo la situación. Este error suele aparecer cuando hay alguna discrepancia en los datos ingresados. ¿Podrías confirmar si el DNI y nombre completo que estás usando coinciden exactamente con los documentos oficiales de tu hermana? 🤔"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah, puede ser eso... estaba poniendo su nombre como lo tengo en WhatsApp. Voy a intentar con su nombre completo como está en el DNI"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Exacto! Es importante usar el nombre exacto como aparece en el DNI. Si aún así tienes problemas, no dudes en volver a escribirnos. ¿Hay algo más en lo que pueda ayudarte? 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:47:26.881383+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_783",
+    "intent": "cancel_transfer",
+    "category": "transfers",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-to-relieved",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Necesito cancelar una transferencia que acabo de hacer por error. Envié $3,500 a la cuenta equivocada 😫"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana, entiendo tu preocupación por la transferencia errónea 💙 ¿Me podrías confirmar cuándo realizaste la transferencia exactamente?"
+      },
+      {
+        "speaker": "customer",
+        "text": "La hice hace 2 minutos, a las 14:23. Fue a la cuenta de Juan Pérez pero me equivoqué, era para Juan González"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Gracias por los detalles! Buenas noticias - como la transferencia fue hace menos de 15 minutos, puedo cancelarla inmediatamente ✨ ¿Confirmas que quieres cancelar la transferencia de $3,500 realizada a las 14:23?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, por favor! Necesito cancelarla"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Listo! He cancelado la transferencia con éxito. El dinero volverá a tu cuenta en los próximos 2 minutos. Recibirás una notificación cuando esté disponible 💫 ¿Hay algo más en lo que pueda ayudarte?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:47:58.524040+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_t487",
+    "intent": "declined_transfer",
+    "category": "transfers",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "confused_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Estoy intentando hacer una transferencia de $5000 a la cuenta de mi hermana pero me sale error. Es raro porque ayer pude transferirle sin problema 🤔"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Gracias por contactarnos 👋 Entiendo tu confusión con la transferencia rechazada. ¿Me podrías confirmar si intentaste hacer la transferencia desde tu saldo disponible o con tarjeta de débito?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Desde el saldo disponible. Tengo más de $8000 en la cuenta así que no debería haber problema con el monto"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Gracias por la aclaración! Acabo de revisar y veo que el sistema de transferencias tuvo una breve interrupción hace unos minutos. Ya está resuelto 😊 ¿Podrías intentar hacer la transferencia nuevamente?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, acabo de intentar y funcionó perfectamente. ¡Gracias por la ayuda!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:48:24.950046+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "failed_transfer",
+    "category": "transfers",
+    "sentiment": "positive",
+    "complexity": "complex",
+    "language": "en",
+    "turn_count": 8,
+    "customer_emotion_arc": "concerned->relieved",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I tried to send £2,500 to my sister's account but it's showing as failed? The money left my account but hasn't reached her"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hello! I'm Sam, and I'll help you track down this transfer. 🔍 Could you share when you initiated the transfer and your sister's bank name?"
+      },
+      {
+        "speaker": "customer",
+        "text": "I made it yesterday around 8pm to her Barclays account. My transaction history shows it as 'pending' but she hasn't received anything"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details! I can see the transfer was temporarily held by our security system due to it being a first-time payment to this recipient. Let me run a quick verification to release it"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I see! Yes, it's the first time I'm sending her money. Will it go through now?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I've verified the transfer details and approved it. The funds should reach your sister's account within the next 2 hours. You'll get a notification when it's completed ✅"
+      },
+      {
+        "speaker": "customer",
+        "text": "That's great, thank you! Should I do anything special next time to avoid this?"
+      },
+      {
+        "speaker": "agent",
+        "text": "To make future transfers smoother, you can add your sister as a trusted payee in the app: Menu > Payees > Add New. First-time payments over £2000 usually trigger these checks, but trusted payees have higher limits 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:48:59.658239+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "pending_transfer",
+    "category": "transfers",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Hice una transferencia hace 20 min a mi cuenta de Santander y todavía no me llega. Es normal?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! No te preocupes, las transferencias SPEI pueden tardar hasta 30 minutos en días hábiles. ¿Me podrías compartir el folio de la operación para revisarlo? Lo encuentras en el comprobante 📱"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah ok, gracias! Acaba de llegarme justo ahora la notificación de que se completó. Todo bien 👍"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:49:21.611692+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "receiving_money",
+    "category": "transfers",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me pueden decir cuánto tarda en llegar una transferencia SPEI? Me hicieron una hace 15 minutos"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Las transferencias SPEI normalmente llegan en menos de 5 minutos. ¿Me podrías compartir el monto aproximado y la hora exacta de la transferencia para revisarlo? 💫"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah ya llegó! Justo me acaba de caer la notificación por $2,850. Gracias!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:49:54.533093+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_108",
+    "intent": "transfer_fee_charged",
+    "category": "transfers",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "angry_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Oigan, por qué me cobraron $35 de comisión por una transferencia?? Se supone que son gratis!!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hola! Entiendo tu molestia, las transferencias son gratis entre cuentas del mismo banco. ¿Me ayudas con la fecha y el banco destino de la transferencia para revisar? 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Fue ayer a Bancomer, transferí $2800. Pero igual nunca me habían cobrado antes"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por los datos. Ya veo qué pasó - el cobro se aplicó porque la transferencia se hizo después de las 6pm, que es cuando empiezan los SPEI urgentes. ¡Pero tienes razón! Como eres cliente Plus, no deberían cobrarte. Ya estoy procesando el reembolso 😊"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah ok, no sabía eso del horario. Gracias por el reembolso!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:50:24.752521+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "transfer_into_account",
+    "category": "transfers",
+    "sentiment": "negative",
+    "complexity": "complex",
+    "language": "en",
+    "turn_count": 7,
+    "customer_emotion_arc": "angry_to_relieved",
+    "resolution_time_category": "extended",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Where's my money?? I transferred $2,450 from my Chase account TWO DAYS ago and it's still not showing up!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I understand how concerning it is when transfers don't arrive as expected. Let me look into this transfer for you right away 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "I have bills to pay and this is really stressing me out. The money left my Chase account already"
+      },
+      {
+        "speaker": "agent",
+        "text": "I can see the ACH transfer was initiated on Tuesday for $2,450. There seems to be a verification hold due to this being a larger amount than your usual transfers. I'll need to check something with our payments team."
+      },
+      {
+        "speaker": "customer",
+        "text": "This is ridiculous. Nobody told me there would be holds. When will I get my money?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I completely understand your frustration. I've just spoken with our payments team and I can override the hold since I can verify the source account matches your previous transfers. Would you like me to release the funds now? They should appear within 15 minutes."
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please do that. And can you make sure this doesn't happen for future transfers? This was really stressful"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:50:58.242772+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_783",
+    "intent": "transfer_not_received_by_recipient",
+    "category": "transfers",
+    "sentiment": "neutral",
+    "complexity": "complex",
+    "language": "en",
+    "turn_count": 8,
+    "customer_emotion_arc": "neutral_to_relieved",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I made a transfer to my friend's account yesterday but she says she hasn't received it yet. The money left my account though"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I'll help you track down this transfer. Could you please share the transfer amount and when exactly you sent it?"
+      },
+      {
+        "speaker": "customer",
+        "text": "It was £175.50 and I sent it around 3pm yesterday to Sarah Williams"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details. I can see the transfer was initiated from your account. Could you confirm if you sent it using your friend's sort code and account number, or using their email/phone number through PayLink?"
+      },
+      {
+        "speaker": "customer",
+        "text": "I used her email address through PayLink. She's received money from me this way before"
+      },
+      {
+        "speaker": "agent",
+        "text": "I see the issue now - the transfer is actually pending because Sarah hasn't accepted it yet. Since you sent it via PayLink, she needs to click the link in the email to claim the money. The link is valid for 7 days 📧"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I see! Could you maybe resend the email to her? She says she can't find it"
+      },
+      {
+        "speaker": "agent",
+        "text": "Of course! I've just resent the PayLink email to sarah.williams@email.com. She should receive it within the next few minutes. Once she accepts it, the money will be in her account instantly 👍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Perfect, thank you! I'll let her know to check her email"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:51:26.398016+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "transfer_timing",
+    "category": "transfers",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "anxious_to_relieved",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hey I sent $2800 to my landlord yesterday evening and it still hasn't arrived. He's getting really impatient about the rent!"
+      },
+      {
+        "speaker": "agent",
+        "text": "I understand this is stressful, especially with rent involved! Let me check the status of your transfer right away. Could you confirm if you sent it as a standard or instant transfer?"
+      },
+      {
+        "speaker": "customer",
+        "text": "I used the standard transfer because instant had a fee. The app said 1-2 business days but my landlord needs it today"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for clarifying. I can see your transfer was initiated at 7:45 PM yesterday. Since it's a standard transfer, it should arrive by end of day today. Would you like me to upgrade this to an instant transfer? I'll waive the express fee given the situation 💫"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please! That would be amazing thank you"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:51:56.603428+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_382",
+    "intent": "automatic_top_up",
+    "category": "top_up",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I'd like to set up auto top-up for my account. I want it to add £100 whenever my balance goes below £50. Can you help me with that?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! 👋 Of course, I'll help you set up automatic top-up. That's a smart way to make sure you never run low on funds!"
+      },
+      {
+        "speaker": "customer",
+        "text": "Great! Do I need to add my debit card first? I already have one saved for regular top-ups"
+      },
+      {
+        "speaker": "agent",
+        "text": "You can use your saved card! Just tap the 'Auto top-up' option in your Balance tab, set £50 as your trigger amount and £100 as your top-up amount. Your saved card should appear automatically as a funding source. Would you like me to guide you through each step? 💫"
+      },
+      {
+        "speaker": "customer",
+        "text": "Found it! Just set it up. Thanks for making it so easy!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:52:24.211061+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_827",
+    "intent": "balance_not_updated_after_bank_transfer",
+    "category": "top_up",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I made a bank transfer to my account about 30 mins ago but my balance hasn't updated yet. The transfer was for £250"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hello! Thanks for reaching out. I'll help you track down that £250 transfer. Could you please share the reference number from your bank transfer or the last 4 digits of the sending account? 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "The reference is TRANSFER-23OCT-250 and it's from my Barclays account ending in 4832"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details! I can see your transfer is actually in our system and is being processed. Bank transfers typically take 1-2 hours to appear during business hours. I can confirm it's on its way and should be visible in your balance very soon ✨"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh ok, that's good to know. I'll check back in an hour then"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:52:57.389132+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "balance_not_updated_after_cheque_or_cash_deposit",
+    "category": "top_up",
+    "sentiment": "positive",
+    "complexity": "complex",
+    "language": "en",
+    "turn_count": 8,
+    "customer_emotion_arc": "uncertain_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I deposited a cheque for £450 at the Post Office yesterday afternoon but it's still not showing in my app. Is this normal?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hello! Thanks for reaching out about your cheque deposit. I'd be happy to look into this for you 😊 Could you please tell me roughly what time you made the deposit yesterday?"
+      },
+      {
+        "speaker": "customer",
+        "text": "It was around 3:30 PM at the Post Office on High Street. I got a receipt and everything"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thank you for those details! I can see your deposit was successfully received by the Post Office. Cheque deposits typically take 1-2 working days to appear in your balance, as they need to be processed and cleared by both banks. Since you deposited it yesterday afternoon, it should be visible by end of day today."
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I see! I thought it would be instant like when I deposit cash. Will I get a notification when it's processed?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes, you'll get a push notification as soon as the cheque clears and the money is added to your balance! Cash deposits are indeed instant, but cheques need that extra processing time. Is there anything else you'd like to know about the process?"
+      },
+      {
+        "speaker": "customer",
+        "text": "That explains it perfectly, thanks! One last thing - for future reference, is there a cut-off time for same-day processing of cheques?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Great question! Yes, cheques deposited before 2 PM on working days typically start processing the same day. Anything after that (like your 3:30 PM deposit) starts processing the next working day. You can always check the expected clearing time in the 'Deposits' section of your app 💫"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:53:27.027918+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_387",
+    "intent": "pending_top_up",
+    "category": "top_up",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Hice una recarga de $500 hace como 20 minutos por Rapipago pero todavía no me aparece en la app"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Gracias por contactarnos 👋 Te ayudo a revisar el estado de tu recarga. ¿Me podrías compartir el número de comprobante de Rapipago?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, es 0034589267"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Gracias! Ya encontré tu operación ✅ Las recargas por Rapipago pueden demorar hasta 30 minutos en acreditarse. Veo que tu pago ya está procesado y debería reflejarse en tu cuenta en los próximos 5-10 minutos"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah perfecto, gracias! Esperaré un ratito entonces"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:53:56.112910+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "top_up_by_bank_transfer_charge",
+    "category": "top_up",
+    "sentiment": "negative",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 4,
+    "customer_emotion_arc": "frustrated_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me acaban de cobrar $35 por hacer una transferencia a mi cuenta. No entiendo por qué, si siempre ha sido gratis cargar saldo 😠"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Entiendo tu molestia por el cargo inesperado 🙂 Déjame explicarte: las transferencias desde algunos bancos tradicionales tienen una pequeña comisión. Para evitar cargos, te recomiendo usar Mercado Pago o SPEI, que son completamente gratis."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah ok, no sabía. Pero igual deberían avisar antes, no?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Tienes toda la razón, debemos ser más claros con esa información. Ya agregué un recordatorio para que el equipo actualice los avisos en la app. ¿Te gustaría que te explique las otras opciones gratuitas para cargar saldo? 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:54:24.116094+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_247",
+    "intent": "top_up_by_card_charge",
+    "category": "top_up",
+    "sentiment": "negative",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 7,
+    "customer_emotion_arc": "angry_to_relieved",
+    "resolution_time_category": "extended",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Me acaban de hacer un cargo doble!!! Intenté recargar $500 a mi cuenta y me cobraron DOS VECES. Necesito mi dinero de vuelta YA"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hola! Entiendo tu preocupación por el cargo duplicado 😟 Voy a revisar inmediatamente qué pasó con esas transacciones"
+      },
+      {
+        "speaker": "customer",
+        "text": "La app se trabó cuando estaba recargando y al parecer procesó dos veces el pago. Tengo los comprobantes de mi banco"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por la info. Efectivamente veo dos cargos de $500 procesados hoy a las 14:23 y 14:24. El segundo cargo aparece como duplicado en nuestro sistema. ¿La tarjeta que usaste termina en 4832?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, esa es. ¿Cuánto tiempo va a tomar que me devuelvan mi dinero?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Ya inicié la devolución del cargo duplicado de $500. Por ser cargo con tarjeta, el reembolso tarda entre 3-5 días hábiles en reflejarse en tu cuenta bancaria. Te enviaré por email el comprobante de la devolución 👍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, gracias. Por favor asegúrense que esto no vuelva a pasar"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:54:59.812931+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "top_up_by_cash_or_cheque",
+    "category": "top_up",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, can I deposit a check into my account? Just got paid from my side gig"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! You can easily deposit checks using our mobile check deposit feature in the app. Just tap the + button, select 'Deposit Check', and follow the camera prompts to snap photos of the front and back 📱"
+      },
+      {
+        "speaker": "customer",
+        "text": "Perfect, found it. Thanks!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:55:22.132631+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_876",
+    "intent": "top_up_failed",
+    "category": "top_up",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I tried to top up my account with £200 from my Barclays debit card but it's not working. The money got taken from Barclays but hasn't shown up in my account yet"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! Thanks for reaching out about this. I understand it can be worrying when money seems to be in limbo! 🙂 Let me look into this top-up attempt for you right away."
+      },
+      {
+        "speaker": "agent",
+        "text": "I can see the £200 top-up attempt from your Barclays card about 20 minutes ago. It looks like there was a temporary delay in our payment processing system. Good news - the transaction has just cleared and should appear in your account within the next 2-3 minutes! Would you mind checking your balance?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Just checked and you're right - it's there now! That was quick, thanks for helping"
+      },
+      {
+        "speaker": "agent",
+        "text": "Perfect! Happy to help 😊 If you experience any delays with future top-ups, feel free to reach out. Have a great rest of your day!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:55:57.914139+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "top_up_limits",
+    "category": "top_up",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Cuál es el límite máximo para recargar mi cuenta por mes?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! 👋 El límite mensual de recarga depende de tu nivel de cuenta. Con cuenta verificada básica puedes recargar hasta $15,000 por mes. ¿Te gustaría que te explique cómo aumentar este límite?"
+      },
+      {
+        "speaker": "customer",
+        "text": "No gracias, con eso me alcanza por ahora. ¡Gracias!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:56:20.500397+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "top_up_reverted",
+    "category": "top_up",
+    "sentiment": "neutral",
+    "complexity": "complex",
+    "language": "en",
+    "turn_count": 8,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I tried to top up my account with £500 from my Barclays debit card but the money got returned to my card. Not sure what happened?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I'll help you figure out what happened with your top-up. Could you tell me when you tried to make this £500 top-up? 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "It was yesterday evening around 8pm. I got a notification saying the top-up was successful but then this morning I saw the money back in my Barclays account"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details. I can see that the top-up was initially processed but then reversed due to a security check. This sometimes happens when there's unusual activity or when the issuing bank has additional verification requirements."
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I see. But I've used this card before to top up my account. What should I do now?"
+      },
+      {
+        "speaker": "agent",
+        "text": "You're right, and I understand this is unexpected. I can see your card has a good history with us. I'd recommend trying these steps: 1) Make sure you're using the latest version of our app 2) Try a smaller amount first, like £100 3) If that works, you can then try the full amount"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, I'll try with £100 first. Should I wait a bit before attempting the larger amount?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes, that's a good idea! I'd suggest waiting about 30 minutes between the transactions. If you have any issues with the smaller amount, please come back to this chat and I'll help you right away. Is there anything else you'd like to know? 😊"
+      },
+      {
+        "speaker": "customer",
+        "text": "No that's all, thanks for explaining!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:57:03.087354+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "topping_up_by_card",
+    "category": "top_up",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-confused-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I'm trying to top up my account with my Chase credit card but it's not going through. I've used it before without issues"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I'll help you sort this out. Could you tell me when you last successfully topped up with this card and if you're getting any specific error message? 💭"
+      },
+      {
+        "speaker": "customer",
+        "text": "I topped up last week for £200, worked fine then. Now I'm trying to add £350 and it just says 'Transaction declined' with no other info"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details! I've checked your account and I can see that your card issuer has recently added some new verification steps. Could you try adding the amount in two separate transactions? For example, £175 twice. This sometimes helps when there are new card limits in place 🔄"
+      },
+      {
+        "speaker": "customer",
+        "text": "ok let me try that... yes! it worked with the smaller amounts. thanks for the tip"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:57:26.243158+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "verify_top_up",
+    "category": "top_up",
+    "sentiment": "neutral",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 8,
+    "customer_emotion_arc": "neutral-confused-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Hice una recarga de $5000 hace 20 minutos por Rapipago pero no me aparece en la app"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana, gracias por contactarnos 👋 Voy a ayudarte a verificar tu recarga. ¿Me podrías compartir el número de comprobante de Rapipago?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, el número es 8456729301"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias! Dame un momento mientras reviso en nuestro sistema 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, es que necesito usar el dinero para hacer una transferencia urgente"
+      },
+      {
+        "speaker": "agent",
+        "text": "Entiendo la urgencia. Ya encontré tu operación - veo que la recarga está en estado pendiente porque hubo una demora en la confirmación de Rapipago. Voy a forzar una actualización del estado para acelerar el proceso."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah ok, ¿cuánto tiempo más tengo que esperar?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Listo! Acabo de confirmar que los $5000 ya están disponibles en tu cuenta. Deberías ver la recarga reflejada si refrescas la app. ¿Podrías verificarlo por favor? 😊"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, ya lo veo! Muchas gracias por la ayuda"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Me alegro de haber podido ayudarte! Si necesitas algo más, no dudes en escribirnos. ¡Que tengas un excelente día! 👋"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:58:00.644324+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "exchange_charge",
+    "category": "exchange_currency",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I just noticed a 0.5% fee on my currency exchange from yesterday. I thought exchanges were free?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! Let me explain - free exchanges are available up to $1,000 per month on our standard plan. I can see you've exchanged $1,200 this month, which is why the 0.5% fee kicked in for the amount over the limit. 💡"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh that makes sense, thanks for explaining! I'll keep an eye on my monthly limit"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:58:21.534694+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "exchange_rate",
+    "category": "exchange_currency",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "angry_to_resigned",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Why is your exchange rate for USD so terrible?? I just lost like $40 converting £500 compared to Google's rate!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I understand your frustration about the exchange rate difference. Let me explain what's happening and check your specific transaction 💡"
+      },
+      {
+        "speaker": "customer",
+        "text": "I converted the money at 2pm today. Google showed 1.27 but you gave me 1.23. That's a huge difference when converting larger amounts"
+      },
+      {
+        "speaker": "agent",
+        "text": "I see the conversion you're referring to. You're right that there's a difference - we add a 0.5% fee on weekdays and 1% on weekends to the interbank rate (what Google shows). For larger amounts like yours, have you considered our Premium plan? It gives you unlimited fee-free currency exchange"
+      },
+      {
+        "speaker": "customer",
+        "text": "No thanks, I'll just use a different service next time. Would've been nice to know about these fees upfront"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:58:57.482135+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "exchange_via_app",
+    "category": "exchange_currency",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Quiero cambiar 500 dólares a euros en la app pero no encuentro dónde hacerlo 🤔"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Con gusto te ayudo a hacer el cambio de divisas 😊 El proceso es muy sencillo. ¿Ya tienes los dólares en tu cuenta?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, están en mi cuenta en dólares. Solo necesito saber cómo hacer el cambio"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Perfecto! Solo tienes que seguir estos pasos:\n1. En la app, toca 'Cambiar' en el menú inferior\n2. Selecciona la cuenta origen (USD) y destino (EUR)\n3. Ingresa el monto de 500 USD\n4. Verifica la tasa de cambio y confirma 💱"
+      },
+      {
+        "speaker": "customer",
+        "text": "¡Ah ya lo vi! Súper fácil, gracias. ¿La tasa de cambio se actualiza en tiempo real?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Así es! La tasa se actualiza cada 60 segundos para darte siempre el mejor precio del mercado 💪 ¿Hay algo más en lo que pueda ayudarte?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T20:59:25.744108+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_452",
+    "intent": "fiat_currency_support",
+    "category": "exchange_currency",
+    "sentiment": "neutral",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 8,
+    "customer_emotion_arc": "neutral-curious-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Tengo una duda sobre el cambio de divisas. ¿Puedo mantener saldos en euros y dólares al mismo tiempo en mi cuenta?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Por supuesto, te ayudo con eso 😊 En nuestra app puedes mantener saldos en múltiples divisas simultáneamente. ¿Qué monedas te interesan específicamente?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Genial, quiero tener euros y dólares. ¿Hay algún límite de cuánto puedo tener en cada divisa? Y otra cosa, ¿cómo funciona el tipo de cambio cuando muevo dinero entre las cuentas?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Los límites son: hasta USD 10,000 y EUR 8,500 por cuenta. Sobre el tipo de cambio, usamos tasas en tiempo real y te mostramos el valor exacto antes de confirmar la operación. ¿Te gustaría que te explique el proceso paso a paso? 💱"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, por favor. Y también quiero saber si hay comisiones por cambiar de una moneda a otra"
+      },
+      {
+        "speaker": "agent",
+        "text": "Claro que sí. Para cambiar divisas, vas a 'Cambio de moneda' en el menú principal. Seleccionas las monedas y el monto, y verás la tasa actual. Cobramos 0.5% por operaciones hasta USD 1,000, y 0.3% para montos mayores. Los fines de semana puede variar un poco la tasa."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, entiendo. ¿Y si quiero programar un cambio automático cuando el tipo de cambio llegue a cierto valor?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Buena pregunta! Sí, tenemos la función 'Alertas de cambio'. En la sección 'Preferencias de cambio' puedes configurar alertas y órdenes automáticas. ¿Te gustaría que te guíe para configurar una? 🔔"
+      },
+      {
+        "speaker": "customer",
+        "text": "No por ahora, ya entendí todo. ¡Gracias por la explicación tan clara!"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Me alegro de haber podido ayudarte! Si tienes más preguntas sobre divisas o cualquier otro tema, no dudes en contactarnos. ¡Que tengas un excelente día! 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:00:03.550105+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "supported_cards_and_currencies",
+    "category": "exchange_currency",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I'm going to Thailand next month. Can I use my card there and what currencies do you support?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! 👋 Absolutely - you can use your card in Thailand! We support Thai Baht (THB) and you can withdraw cash at local ATMs. Our app automatically converts at the real exchange rate when you pay."
+      },
+      {
+        "speaker": "customer",
+        "text": "Perfect, thanks! And I can see the exchange rate in the app before I travel?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Exactly! Just open the app and tap 'Exchange' to see live rates for THB or any other currency. You can even set up rate alerts if you want to exchange at a specific rate 📊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:00:24.019027+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_857",
+    "intent": "change_pin",
+    "category": "account_security",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Necesito cambiar el PIN de mi tarjeta pero no encuentro la opción en la app 🤔"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana, encantada de ayudarte 👋 Te guiaré paso a paso para cambiar tu PIN. ¿Es para tu tarjeta física o virtual?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Para la física, la que uso en cajeros"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Perfecto! Para cambiar el PIN de tu tarjeta física, sigue estos pasos:\n1. Abre el menú 'Tarjetas'\n2. Selecciona tu tarjeta física\n3. Toca en 'Configuración'\n4. Elige 'Gestionar PIN'\n\n¿Puedes ver estas opciones? 😊"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah sí! Ya lo encontré, qué tonto no haberlo visto antes. Muchísimas gracias!"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡No hay problema! Me alegro de haber podido ayudarte 😊 Recuerda que por seguridad, el nuevo PIN se activará en 2 horas. ¿Necesitas ayuda con algo más?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:00:58.829613+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "lost_or_stolen_phone",
+    "category": "account_security",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I lost my phone yesterday. Need to make sure my account is secure"
+      },
+      {
+        "speaker": "agent",
+        "text": "I'll help you secure your account right away! I've just logged you out of the app on all devices. Have you already set up the app on a new phone?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Not yet, just got my new phone today. Will I need to verify my identity again?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes, you'll need to verify your identity when setting up the app on your new phone - just take a quick selfie and photo of your ID. For extra security, I recommend changing your password too! 🔐"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:01:23.179261+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_7392",
+    "intent": "passcode_forgotten",
+    "category": "account_security",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral_to_relieved",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I can't get into my app - I think I forgot my passcode and now it's locked me out"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! No worries, I'll help you regain access to your account. Could you confirm the email address linked to your account? 🔐"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sure, it's mark.thompson@gmail.com"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks Mark! I've just sent a secure reset link to your email. Once you click it, you'll be able to set up a new passcode. The link is valid for 30 minutes. Let me know when you've got the email!"
+      },
+      {
+        "speaker": "customer",
+        "text": "Got it, just clicked the link. Do I need to do anything else after setting the new passcode?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Nope, once you've set your new passcode you're all set! You'll be able to log straight back into the app. Just remember to keep your new passcode safe 😊 Is there anything else you need help with?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:01:56.703105+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_739",
+    "intent": "pin_blocked",
+    "category": "account_security",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I tried entering my PIN at the store but it got blocked after 3 attempts. I'm sure I was using the right one but it wouldn't work"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I understand how frustrating it can be when your PIN gets blocked. Don't worry, I'll help you sort this out 👍 Could you confirm the last 4 digits of your card so I can check what's happening?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yeah it's 4721"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks! I can see your card was blocked at 2:15 PM today after multiple incorrect PIN attempts. I can help you set up a new PIN right now. Would you like to do that?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please, that would be great"
+      },
+      {
+        "speaker": "agent",
+        "text": "Perfect! I've just sent you a secure link via the app to set up your new PIN. Once you tap it, you'll be able to choose a new PIN. The link is valid for 30 minutes. Your card will be ready to use right after you set the new PIN 🔐 Let me know if you need anything else!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:02:24.432086+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_123",
+    "intent": "unable_to_verify_identity",
+    "category": "verification_identity",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Estoy intentando verificar mi identidad en la app pero me sale error al subir mi DNI. Ya lo intenté varias veces"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana 👋 Gracias por contactarnos. Entiendo que estás teniendo problemas con la verificación de identidad. ¿Podrías decirme qué mensaje de error específico ves cuando intentas subir tu DNI?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Dice 'No podemos leer claramente tu documento'. Ya probé con buena luz y todo"
+      },
+      {
+        "speaker": "agent",
+        "text": "Comprendo la situación. Para ayudarte, te sugiero estos tips para la foto del DNI 📸: \n1. Usa un fondo oscuro\n2. Evita reflejos\n3. Asegúrate que los 4 bordes del DNI sean visibles\n4. La foto debe estar bien enfocada\n¿Te gustaría intentar nuevamente con estas recomendaciones?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, voy a intentar sobre un fondo negro. Dame un momento"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Perfecto! Aquí estoy para ayudarte si tienes alguna otra duda. Si el problema persiste después de intentarlo, podemos probar otras alternativas de verificación 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:02:58.987517+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "verify_my_identity",
+    "category": "verification_identity",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Necesito verificar mi cuenta. Ya subí mi INE pero no sé si hay algo más que deba hacer"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Gracias por contactarnos 👋 Déjame revisar el estado de tu verificación... Veo que la foto de tu INE está correcta, solo falta una selfie para completar el proceso. ¿Te gustaría que te explique cómo tomarla?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí por favor, dime qué necesito hacer"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Claro! Es muy sencillo: abre la app, ve a Perfil → Verificación y toca en 'Tomar selfie'. Asegúrate de estar en un lugar bien iluminado y mira directo a la cámara. La app te guiará paso a paso. En 24 horas máximo tendrás tu cuenta verificada ✅"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:03:23.539652+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "verify_source_of_funds",
+    "category": "verification_identity",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I just got a notification asking me to verify my source of funds for a $5000 deposit I made yesterday. What do I need to do?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! Thanks for reaching out about this. For deposits over $5000, we just need a quick verification - you can upload either your latest payslip or a screenshot of the bank transfer in the app. Just tap the notification and it'll take you to the upload screen 📱"
+      },
+      {
+        "speaker": "customer",
+        "text": "Perfect, I'll upload my payslip now. Thanks!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:03:55.058122+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_857",
+    "intent": "why_verify_identity",
+    "category": "verification_identity",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral->curious->satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me están pidiendo verificar mi identidad en la app pero no entiendo muy bien por qué es necesario"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Entiendo tu duda sobre la verificación 👋 La verificación de identidad es un requisito regulatorio que nos permite proteger tu cuenta y cumplir con las normas bancarias. ¿Te gustaría que te explique el proceso?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí por favor, ¿qué documentos necesito tener a mano?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Claro! Necesitarás tu DNI vigente y estar en un lugar con buena luz para tomarte una selfie. El proceso es súper simple 📱: primero tomarás fotos del frente y dorso de tu DNI, y luego una selfie para el reconocimiento facial. ¡Toma solo 2 minutos!"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah perfecto, ahora me queda más claro. Voy a hacer la verificación entonces"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:04:23.735973+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_731",
+    "intent": "age_limit",
+    "category": "account_management",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! My daughter is turning 13 next month and I'd love to get her started with managing money. Can she have an account with you guys?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! That's fantastic that you want to teach your daughter about money management early! 🌟 We offer teen accounts for ages 13-17 that are linked to a parent's account."
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh perfect! What features would she have access to? And do I need to provide any documents for her?"
+      },
+      {
+        "speaker": "agent",
+        "text": "She'll get her own debit card and app access with spending notifications. You can set spending limits and monitor all activity. For documents, we'll need her birth certificate and your ID. You can upload these right in the app when opening the teen account! 📱"
+      },
+      {
+        "speaker": "customer",
+        "text": "This sounds exactly what I was looking for! I'll get those documents ready and set it up next month when she turns 13. Thanks for your help!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:04:56.911914+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_247",
+    "intent": "country_support",
+    "category": "account_management",
+    "sentiment": "negative",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 7,
+    "customer_emotion_arc": "angry_to_relieved",
+    "resolution_time_category": "extended",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Me pueden explicar por qué mi tarjeta dejó de funcionar en Brasil??? Avisé que iba a viajar y ahora estoy varado sin poder pagar el hotel!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hola! Lamento muchísimo esta situación, entiendo lo estresante que debe ser estar en el extranjero sin acceso a tus fondos 😣 Déjame revisar inmediatamente qué sucedió con tu notificación de viaje."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ya registré el viaje hace una semana en la app. Tengo el screenshot y todo. No puede ser que ahora no pueda usar la tarjeta, necesito pagar 2800 reales del hotel"
+      },
+      {
+        "speaker": "agent",
+        "text": "Encontré tu notificación de viaje, pero veo que hubo un error en nuestro sistema - no se activó correctamente la cobertura para Brasil. Lo siento mucho por este inconveniente 🙏 Estoy habilitando ahora mismo los pagos en Brasil"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, y cuánto tengo que esperar? El hotel está presionando por el pago"
+      },
+      {
+        "speaker": "agent",
+        "text": "La habilitación tarda aproximadamente 30 minutos en hacer efecto. Como compensación por este error, voy a aplicar un reembolso del 5% en tu próxima compra en Brasil. ¿Necesitas que te envíe un email al hotel explicando la situación?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí por favor, mándales un mail. El hotel es Copacabana Palace y mi reserva está a nombre de Juan Martínez. Espero que en verdad funcione en 30 min"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:05:28.040577+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_734",
+    "intent": "disposable_card_limits",
+    "category": "account_management",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I'm planning a trip to Thailand next month and want to use virtual cards for online bookings. What's the spending limit on disposable cards?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! 👋 Great question about virtual cards for your Thailand trip! The default limit is $2,000 per virtual card, but we can adjust that based on your needs. How much are you planning to spend on bookings?"
+      },
+      {
+        "speaker": "customer",
+        "text": "I'll probably need around $3,500 for hotel bookings and some tour reservations. Can we increase the limit?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Absolutely! I can increase your virtual card limit to $4,000 right away since you're a verified user. This will give you some extra buffer for your bookings ✨ Would you like me to make that adjustment now?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please, that would be perfect!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Done! I've increased your virtual card limit to $4,000. You can create new virtual cards right away in the Cards tab of your app. Have an amazing trip to Thailand! Let me know if you need anything else 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:05:57.653676+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_245",
+    "intent": "edit_personal_details",
+    "category": "account_management",
+    "sentiment": "positive",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_positive",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I just got married and need to update my last name on my account. How can I do this?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there, and congratulations on your marriage! 🎊 I'll help you update that. You can upload your marriage certificate right in the app - just go to Profile > Personal Details > Edit Name and tap 'Upload Document'"
+      },
+      {
+        "speaker": "customer",
+        "text": "That's super easy, thanks! Will do it now"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:06:20.772713+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "terminate_account",
+    "category": "account_management",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me mudo al extranjero y necesito cerrar mi cuenta. ¿Me pueden ayudar con el proceso?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Por supuesto, te ayudo con el cierre de tu cuenta 👋 ¿Te vas de viaje largo o es una mudanza permanente?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Me voy a vivir a Canadá por trabajo. Quiero asegurarme de dejar todo en orden antes de irme en 3 semanas"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Qué bueno! Te felicito por esta nueva etapa 🌟 Para cerrar tu cuenta, primero necesitamos verificar que no tengas pagos pendientes o servicios automáticos activos. ¿Me confirmas tu número de cuenta para revisarlo?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Claro, mi número es 1234-5678-90. Ya transferí casi todo mi dinero, solo dejé como $500 para cualquier cargo pendiente"
+      },
+      {
+        "speaker": "agent",
+        "text": "Perfecto, ya revisé tu cuenta. No tienes servicios automáticos activos ni pagos pendientes. Podemos proceder con el cierre ahora mismo. Solo necesito que confirmes por mensaje que deseas cerrar la cuenta terminada en 90 y transferiré el saldo restante a la cuenta que nos indiques. ¿Continuamos?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:07:00.402139+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_203",
+    "intent": "apple_pay_or_google_pay",
+    "category": "payment_methods",
+    "sentiment": "positive",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_positive",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Vi que ahora tienen Apple Pay, cómo hago para configurarlo en mi iPhone?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! 👋 ¡Sí! Agregar tu tarjeta a Apple Pay es súper fácil. Solo abre Wallet en tu iPhone, toca el + arriba a la derecha y escanea tu tarjeta. ¿Quieres que te guíe paso a paso?"
+      },
+      {
+        "speaker": "customer",
+        "text": "No, con eso me alcanza! Ya lo estoy haciendo. Gracias!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:07:20.802090+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_dp782",
+    "intent": "direct_debit_payment_not_recognised",
+    "category": "payment_methods",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 6,
+    "customer_emotion_arc": "confused_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me apareció un cargo automático de $849 de Netflix pero yo lo pago con otra tarjeta 🤔"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana, entiendo tu confusión por este cargo inesperado 😊 ¿Me podrías confirmar la fecha en que apareció el cargo?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, fue ayer 15 de marzo. Lo raro es que mi suscripción de Netflix la pago el 22 de cada mes con mi tarjeta del banco tradicional"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por el detalle. Veo que Netflix actualizó el método de pago cuando realizaste una compra reciente usando nuestra tarjeta en su plataforma. Por eso el cargo automático se movió a esta cuenta 💡"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah! Ya entiendo, es que el mes pasado alquilé una película extra con esta tarjeta. ¿Cómo puedo cambiarlo de vuelta a mi otra tarjeta?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Te explico! Necesitarás entrar a Netflix.com → Cuenta → Información de facturación → Administrar información de pago. Ahí podrás seleccionar tu tarjeta preferida 😊 ¿Necesitas ayuda con algo más?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:08:00.314273+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_108",
+    "intent": "refund_not_showing_up",
+    "category": "refunds",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 6,
+    "customer_emotion_arc": "anxious_to_relieved",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola, devolví unos audífonos a Amazon hace 5 días y todavía no veo el reembolso de $1,299. En Amazon dice que ya lo procesaron"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Entiendo tu preocupación por el reembolso. Déjame revisar el status ahora mismo. ¿Me confirmas si Amazon te dio algún número de referencia del reembolso? 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, es REF-458721. Amazon dice que lo mandaron el martes pasado y que debería verse reflejado en 1-2 días máximo"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Gracias! Ya encontré la transacción - el reembolso está en proceso pero se quedó pendiente por una validación adicional de seguridad. No te preocupes, ya lo desbloquee y estará en tu cuenta en las próximas 12 horas ✨"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah ok, menos mal. Me avisas cuando esté listo por favor?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Claro! Te llegará una notificación en la app en cuanto el dinero esté disponible. También agregué una nota para que esto no vuelva a pasar con futuros reembolsos de Amazon 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:08:26.309482+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "request_refund",
+    "category": "refunds",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola, hice una compra en Amazon por $1,299 hace dos días pero cancelé el pedido casi inmediatamente. Amazon ya me confirmó el reembolso pero aún veo el cargo en la app"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Gracias por contactarnos 👋 Entiendo la situación con tu reembolso de Amazon. ¿Me podrías confirmar la fecha exacta de la compra y cancelación?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, la compra fue el 15 de marzo a las 20:43 y la cancelé como a las 21:10 del mismo día"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por los detalles. Ya encontré la transacción en el sistema. Efectivamente, cuando un comercio procesa un reembolso, puede tomar entre 3 a 5 días hábiles en reflejarse en tu cuenta. Como Amazon ya confirmó el reembolso, solo es cuestión de esperar el proceso bancario 😊"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah ok, entonces debo esperar unos días más. ¿Me avisarán cuando se aplique el reembolso?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Claro! Recibirás una notificación en la app cuando el reembolso se acredite en tu cuenta. Si para el 21 de marzo no ves reflejado el dinero, no dudes en contactarnos nuevamente 👍"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:09:00.938228+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "extra_charge_on_statement",
+    "category": "refunds",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "angry_to_relieved",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "What the hell is this $14.99 charge from 'Digital Plus Services'?? I never signed up for anything like that!"
+      },
+      {
+        "speaker": "agent",
+        "text": "I hear your frustration about this unexpected charge! Let me look into this right away for you. I can see the charge was processed on March 15th - it looks like it might be a subscription trial that converted to paid. Have you signed up for any free trials recently? 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh wait... actually I think I did try some streaming service last month. But I thought I cancelled it!"
+      },
+      {
+        "speaker": "agent",
+        "text": "That happens more often than you'd think! I can help you get this refunded. I've just submitted a dispute for the $14.99 charge. You should see the money back in 3-5 business days. Would you also like me to block any future charges from this merchant?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please block them. Thanks for sorting this out so quickly!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:09:27.561720+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_783",
+    "intent": "activate_my_card",
+    "category": "card_management",
+    "sentiment": "positive",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 8,
+    "customer_emotion_arc": "confused_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Acabo de recibir mi tarjeta pero no logro activarla desde la app 🤔"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana, un gusto ayudarte 👋 Entiendo que estás teniendo problemas para activar tu nueva tarjeta. ¿Podrías decirme qué mensaje te aparece cuando intentas activarla en la app?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Cuando escaneo el código QR me dice 'error de lectura' y cuando intento ingresar el número manualmente me sale 'tarjeta no reconocida'"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por los detalles. ¿Me podrías confirmar los últimos 4 dígitos de tu tarjeta? También necesito saber si ya verificaste tu identidad en la app con una selfie."
+      },
+      {
+        "speaker": "customer",
+        "text": "La tarjeta termina en 5432 y sí, ya hice la verificación de identidad hace como 3 días"
+      },
+      {
+        "speaker": "agent",
+        "text": "Perfecto, ya encontré el problema. Veo que la tarjeta se emitió antes de completar tu verificación de identidad. Voy a hacer un reset del sistema de activación para que puedas intentarlo nuevamente. Dame un momento. ✨"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, espero! Gracias por la ayuda"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Listo! Ya puedes intentar activar tu tarjeta nuevamente. Por favor, cierra la app completamente y vuelve a abrirla. Luego ve a 'Mis tarjetas' → 'Activar nueva tarjeta'. Esta vez debería funcionar sin problemas. ¿Me confirmas si pudiste activarla? 😊"
+      },
+      {
+        "speaker": "customer",
+        "text": "Siii! Ya quedó activada. Muchísimas gracias Ana!"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Qué bueno! Me alegro de haber podido ayudarte. Tu tarjeta está lista para usar. ¿Necesitas ayuda con algo más? 💳"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:10:08.999815+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "card_about_to_expire",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me llegó una notificación de que mi tarjeta vence pronto. Cómo es el proceso de renovación?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Gracias por contactarnos 👋 Con gusto te explico el proceso de renovación. ¿Me podrías confirmar los últimos 4 dígitos de tu tarjeta?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Claro, es la que termina en 5432"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Perfecto! Veo que tu tarjeta vence en febrero 2024. Ya iniciamos el proceso de renovación automáticamente y tu nueva tarjeta será enviada a tu domicilio registrado en las próximas 2 semanas 📬 La recibirás antes del vencimiento y podrás seguir usando la actual hasta entonces"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah genial, gracias! Y tengo que hacer algo cuando me llegue la nueva?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Cuando recibas la nueva tarjeta, solo debes activarla desde la app en la sección 'Mis tarjetas' → 'Activar tarjeta'. Tu tarjeta anterior se desactivará automáticamente. ¿Hay algo más en lo que pueda ayudarte? 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:10:26.412122+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "card_acceptance",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Intenté pagar en Spotify con mi tarjeta pero me la rechazó. Es normal?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Para usar tu tarjeta en servicios digitales como Spotify necesitas activar los pagos internacionales. Es súper fácil - solo ve a la sección Seguridad de la app y activa el toggle 'Pagos internacionales' 🔒"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah perfecto, ya lo encontré. Gracias!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:10:54.145980+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_247",
+    "intent": "card_arrival",
+    "category": "card_management",
+    "sentiment": "negative",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 7,
+    "customer_emotion_arc": "angry_to_relieved",
+    "resolution_time_category": "extended",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Solicité mi tarjeta hace 3 SEMANAS y todavía no llega. Ya me perdí el cashback del super y tengo un viaje en 5 días!!!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hola! Entiendo tu frustración, sobre todo por el viaje próximo 😟 Déjame revisar el estado de tu tarjeta ahora mismo"
+      },
+      {
+        "speaker": "customer",
+        "text": "En la app dice 'en camino' desde hace 15 días. La dirección está bien, ya la revisé mil veces"
+      },
+      {
+        "speaker": "agent",
+        "text": "Acabo de verificar y veo que hubo un problema con el courier en tu zona. La tarjeta fue devuelta a nuestro centro de distribución hace 3 días sin intentar la entrega 😕"
+      },
+      {
+        "speaker": "customer",
+        "text": "¿¿¿Qué??? Y por qué nadie me avisó? Necesito esa tarjeta urgente!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Tienes razón, deberíamos haberte notificado. Como tienes el viaje en 5 días, puedo solicitar un envío express sin costo adicional. Llegaría en 48 horas y coordinaríamos un horario específico contigo. ¿Te gustaría que lo programe?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí por favor, que sea lo antes posible. Estaré en casa todo el día mañana y pasado"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:11:27.682484+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "card_delivery_estimate",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "complex",
+    "language": "en",
+    "turn_count": 8,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I ordered a new metal card last week but haven't received any tracking info. The app just says 'processing'"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I'll help you track down your metal card order 👋 Could you please confirm your order date and delivery address?"
+      },
+      {
+        "speaker": "customer",
+        "text": "I ordered it on March 15th, shipping to 123 Park Avenue, New York. The $149 annual fee was already charged"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details! I can see your metal card order in our system. There's actually a slight delay with the personalized engraving process at our production facility. Would you like me to check the exact status?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please - I'm traveling internationally next month so hoping to have it by then"
+      },
+      {
+        "speaker": "agent",
+        "text": "I understand you need the card before your trip. The engraving should be complete by March 25th, and express shipping takes 2-3 business days. You should receive it by March 28th at the latest. I'll add a priority flag to your order 🚀"
+      },
+      {
+        "speaker": "customer",
+        "text": "Will I get tracking info once it ships? And can I still use my virtual card in the meantime?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes to both! You'll receive a push notification and email with tracking details once it ships. And your virtual card remains fully active until you activate the physical metal card. Is there anything else you need help with?"
+      },
+      {
+        "speaker": "customer",
+        "text": "That's all I needed to know, thanks for checking!"
+      },
+      {
+        "speaker": "agent",
+        "text": "You're welcome! Don't hesitate to reach out if you need anything else. Have a great rest of your day! 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:12:00.556837+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "card_linking",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I just got my new virtual card and want to add it to Apple Pay. Where do I find this option in the app?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Happy to help you with that! 📱 You can add your card to Apple Pay right from our app - just tap the card in your Wallet section, then select 'Add to Apple Pay'. The setup should take less than a minute."
+      },
+      {
+        "speaker": "customer",
+        "text": "Found it, thanks! Super easy."
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:12:21.123583+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_247",
+    "intent": "card_not_working",
+    "category": "card_management",
+    "sentiment": "negative",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 7,
+    "customer_emotion_arc": "angry_to_relieved",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Estoy varado en el super porque mi tarjeta no funciona!!! Ya me pasó 3 veces hoy, es vergonzoso"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hola! Entiendo lo incómodo de la situación 😓 Voy a ayudarte a resolver esto ya. ¿Me confirmas los últimos 4 dígitos de tu tarjeta?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Es la que termina en 5842. Ya intenté pagar en Walmart, una farmacia y ahora aquí. En todos lados me rechaza y tengo fondos!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por los datos. Veo que tu tarjeta se bloqueó automáticamente hace 2 horas por detectar un intento de cargo sospechoso de $4,999 en una tienda online. ¿Reconoces esta operación?"
+      },
+      {
+        "speaker": "customer",
+        "text": "No, yo no hice ninguna compra online hoy. Solo he intentado usar la tarjeta en comercios físicos"
+      },
+      {
+        "speaker": "agent",
+        "text": "Perfecto, entonces hicimos bien en bloquearla preventivamente 👍 Voy a desbloquearla ahora mismo y cancelar ese cargo sospechoso. También te enviaré una nueva tarjeta por seguridad."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok gracias. ¿Ya puedo usar la tarjeta actual para pagar aquí en el super?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Sí! Ya está desbloqueada y puedes usarla inmediatamente. La nueva tarjeta te llegará en 3-5 días hábiles. ¿Necesitas ayuda con algo más?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:13:01.140262+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "card_swallowed",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola, el cajero se tragó mi tarjeta en Plaza Centro. Qué puedo hacer?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! No te preocupes, voy a ayudarte con esto 👍 Por seguridad, ya bloqueé tu tarjeta física. Puedes seguir usando tu tarjeta virtual en la app mientras te enviamos una nueva sin costo."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah perfecto, gracias! En cuánto tiempo llega la nueva?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Tu nueva tarjeta llegará en 3-5 días hábiles a la dirección registrada. Te enviaremos el número de seguimiento por notificación. ¿Necesitas algo más? 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:13:21.966148+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "compromised_card",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I think I left my card at a restaurant last night. Need to block it just in case"
+      },
+      {
+        "speaker": "agent",
+        "text": "I'll help you secure your card right away! I've frozen your card ending in *4721. No one can use it now. Would you like me to order you a replacement card? 🔒"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please, that would be great. How long will the new one take?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I've ordered your new card - it should arrive within 3-5 business days. In the meantime, you can still use your virtual card in the app for online purchases. Let me know if you need anything else! 💳"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:13:56.073447+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "contactless_not_working",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 8,
+    "customer_emotion_arc": "neutral->frustrated->satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Mi tarjeta contactless no está funcionando desde ayer. La acerco al terminal y no pasa nada"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana, gracias por contactarnos 👋 Entiendo que estás teniendo problemas con los pagos sin contacto. ¿Podrías decirme si el chip y la banda magnética funcionan normalmente?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, con chip funciona bien. Solo falla cuando intento pagar sin contacto"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por confirmarlo. ¿Has intentado hacer pagos contactless en diferentes comercios o solo en uno específico?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Lo intenté en el super y en una farmacia. En ambos lugares tuve que usar el chip porque el contactless no respondía"
+      },
+      {
+        "speaker": "agent",
+        "text": "Ya veo. Voy a hacer una revisión del estado de tu tarjeta en el sistema. ¿Me das un momento? 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, espero"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por tu paciencia. He detectado que la antena NFC de tu tarjeta puede estar presentando fallas. Lo mejor será enviarte una tarjeta de reemplazo sin costo. La recibirás en 3-5 días hábiles. Mientras tanto, puedes seguir usando el chip sin problema. ¿Te parece bien?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, perfecto. Gracias por la ayuda"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Genial! Ya inicié el proceso de reemplazo. Recibirás un email con el número de seguimiento. Si necesitas algo más, estamos aquí para ayudarte 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:14:28.325154+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_vc7842",
+    "intent": "get_disposable_virtual_card",
+    "category": "card_management",
+    "sentiment": "positive",
+    "complexity": "complex",
+    "language": "es",
+    "turn_count": 8,
+    "customer_emotion_arc": "curious->excited",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me interesa crear una tarjeta virtual para una compra online. ¿Me podrías ayudar?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Por supuesto, te ayudo con la tarjeta virtual 😊 ¿Es para una compra específica o la quieres para usar en varios sitios?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Es para comprar unos boletos de avión. Me da un poco de cosa usar mi tarjeta principal en páginas web"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Excelente decisión! Te recomiendo crear una tarjeta virtual desechable, que es perfecta para compras únicas como la tuya 🛡️ ¿Te gustaría que te explique cómo funciona?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí por favor! Y también me gustaría saber si tiene algún límite de monto"
+      },
+      {
+        "speaker": "agent",
+        "text": "La tarjeta virtual desechable se puede crear al instante desde la app y funciona solo para una compra. El límite es el saldo disponible en tu cuenta. Para crearla, ve a la sección 'Tarjetas' → 'Nueva tarjeta virtual' → 'Desechable' y defines el monto exacto que necesitas. ¿Cuánto planeas gastar en los boletos?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Serían como 1200 euros. ¿Y después de la compra la tarjeta se cancela automáticamente?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Exacto! Una vez realizada la compra, la tarjeta se desactiva automáticamente. Es súper seguro porque incluso si alguien obtiene los datos después, no podrá usarlos. ¿Quieres que te guíe paso a paso mientras creas la tarjeta?"
+      },
+      {
+        "speaker": "customer",
+        "text": "¡Genial! Sí, voy a abrir la app ahora"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Perfecto! Estoy aquí para ayudarte en cada paso. Avísame cuando tengas la app abierta en la sección de tarjetas y seguimos juntos el proceso 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:15:02.121947+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "get_physical_card",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! How do I order a physical card? I've been using the virtual one but need a plastic card too"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! I'll help you get your physical card 💳 Just tap the Cards tab in your app, then hit 'Order physical card'. It's free and usually arrives in 3-5 business days!"
+      },
+      {
+        "speaker": "customer",
+        "text": "Perfect, just ordered it. Thanks!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:15:21.164987+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_452",
+    "intent": "getting_spare_card",
+    "category": "card_management",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "¡Hola! Me gustaría saber si puedo pedir una tarjeta adicional para mi esposa"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Por supuesto, te ayudo con eso 😊 Para solicitar una tarjeta adicional solo necesitas tener tu cuenta activa por más de 3 meses. ¿Cumples con este requisito?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, soy cliente desde hace 8 meses y tengo la cuenta Plus"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Perfecto! 👍 Como tienes cuenta Plus, la tarjeta adicional no tiene costo. Solo necesito que me confirmes el nombre completo y DNI de tu esposa para procesar la solicitud"
+      },
+      {
+        "speaker": "customer",
+        "text": "Genial, es María Laura Suárez, DNI 28456789"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Listo! He procesado la solicitud de la tarjeta adicional para María Laura. Llegará en 5-7 días hábiles a tu domicilio registrado. Podrás seguir el envío desde la sección 'Tarjetas' en tu app. ¿Necesitas algo más?"
+      },
+      {
+        "speaker": "customer",
+        "text": "No, eso es todo. ¡Gracias por la ayuda!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:15:57.923408+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_vc2023",
+    "intent": "getting_virtual_card",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-curious-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me gustaría saber cómo puedo crear una tarjeta virtual para compras online"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Con gusto te ayudo a crear tu tarjeta virtual 💳 Es super fácil y rápido. ¿Ya tienes una cuenta verificada con nosotros?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, ya tengo mi cuenta verificada desde hace 2 meses. Uso la app regularmente para transferencias"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Perfecto! Para crear tu tarjeta virtual solo necesitas: 1) Abrir la app 2) Tocar el ícono '+' en la sección Tarjetas 3) Seleccionar 'Nueva Tarjeta Virtual' y seguir los pasos. En 2 minutos estará lista para usar en tus compras online 🛍️ ¿Quieres que te guíe durante el proceso?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah genial, ya lo encontré. Se está generando la tarjeta. ¿Tiene algún límite de compras?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Tu tarjeta virtual tiene el mismo límite que tu cuenta principal. Puedes ajustar el límite en cualquier momento desde la configuración de la tarjeta, e incluso desactivarla después de cada compra para mayor seguridad. ¿Hay algo más en lo que pueda ayudarte?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:16:25.676474+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "lost_or_stolen_card",
+    "category": "card_management",
+    "sentiment": "negative",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "frustrated_to_relieved",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Help! I just realized I lost my card somewhere at the mall. I need to block it ASAP!"
+      },
+      {
+        "speaker": "agent",
+        "text": "I understand this is stressful! 😔 Don't worry, I'll help you block your card right away. I've just frozen your card to prevent any unauthorized use. Would you like me to order a replacement card to be delivered to your registered address?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes please, that would be great. How long will the new card take?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I've ordered your replacement card and it should arrive within 3-5 business days 📬 In the meantime, you can still use your digital card for online purchases, and Apple/Google Pay for in-store payments. Is there anything else you need help with?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:16:56.399687+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "order_physical_card",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi! I'd like to order a physical card. I've been using the virtual one for a few months but now need the plastic version for some places that don't take contactless."
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! 👋 I'll help you get your physical card sorted right away. Could you confirm if you'd like the standard free card (arrives in 5-7 business days) or the premium metal card (arrives in 2-3 business days)?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Just the standard card is fine. Do I need to pay anything for shipping?"
+      },
+      {
+        "speaker": "agent",
+        "text": "The standard card comes with free shipping! 🎉 I can see your verified address is 123 Pine Street - is that still where you'd like us to send it?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes that's correct"
+      },
+      {
+        "speaker": "agent",
+        "text": "Perfect! I've just ordered your physical card. You'll receive a tracking number via push notification once it ships. Your virtual card will continue working normally while you wait. Is there anything else you need help with?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:17:24.348082+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "virtual_card_not_working",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I just created a virtual card but it's getting declined when I try to use it on Amazon. Is there something wrong?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! Let me help you with that. New virtual cards need to be activated before their first use - have you tapped the 'Activate Card' button in the Cards tab? 💳"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I didn't know that! Just activated it and it worked. Thanks!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:17:53.743568+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_284",
+    "intent": "visa_or_mastercard",
+    "category": "card_management",
+    "sentiment": "negative",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "frustrated_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "why did you send me a mastercard?? i specifically wanted visa because it's accepted in more places. this is so annoying"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I understand your frustration about receiving a Mastercard instead of Visa. 🙂 I want to clarify that both Mastercard and Visa are actually accepted at the same number of merchants worldwide - over 40 million locations! Is there a specific place where you're concerned about card acceptance?"
+      },
+      {
+        "speaker": "customer",
+        "text": "oh really? i thought visa was more widely accepted. if they're the same then i guess that's fine. thanks for explaining"
+      },
+      {
+        "speaker": "agent",
+        "text": "You're welcome! Yes, both are equally accepted globally. Your Mastercard will work just as well as a Visa would. Let me know if you have any other questions! 👍"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:18:22.825433+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_247",
+    "intent": "card_payment_fee_charged",
+    "category": "card_payments",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "angry_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Why was I charged a $4.99 fee for my purchase at Tesco??? I thought there were no fees with this card!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I understand your concern about unexpected fees 😊 Let me check that transaction for you. Could you tell me when you made the purchase?"
+      },
+      {
+        "speaker": "customer",
+        "text": "It was yesterday evening around 8pm. I used my blue card and got charged in pounds but I'm in the US"
+      },
+      {
+        "speaker": "agent",
+        "text": "Ah, I see what happened! The $4.99 was charged because the transaction was processed as a cross-border payment. However, I notice you're on our Basic plan - if you upgrade to Premium, you get unlimited free international transactions. But I can refund this fee for you this time!"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I didn't realize that was considered international! Thanks for the refund, that's really helpful. I'll look into the Premium plan since I travel a lot"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:18:58.056459+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "card_payment_not_recognised",
+    "category": "card_payments",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me apareció un cargo de $349 en Netflix pero yo ya había cancelado la suscripción hace como 2 semanas"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Déjame revisar ese cargo por ti 👋 Efectivamente veo un cargo de Netflix por $349 del día de hoy. Te recomiendo verificar en tu cuenta de Netflix si la cancelación se procesó correctamente, ya que a veces quedan ciclos pendientes."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah ok, voy a revisar eso entonces. Gracias!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:19:22.014770+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "card_payment_wrong_exchange_rate",
+    "category": "card_payments",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "angry_to_neutral",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "I just got charged way more than I should have for a purchase in euros! The exchange rate you used is totally wrong"
+      },
+      {
+        "speaker": "agent",
+        "text": "I understand your concern about the exchange rate! Could you tell me which transaction you're looking at? I'll check the exact rate that was applied 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "It was at ZARA in Paris yesterday for €85. You charged me $98 when the rate should be more like $92!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details. I can see the transaction - you're right that something looks off. The rate applied was 1.15 instead of our standard 1.08 rate. This appears to be because the merchant offered to charge in USD (called Dynamic Currency Conversion) rather than letting our system handle the conversion."
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh... so what should I do next time?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Always choose to pay in the local currency (EUR in this case) and decline if the merchant offers to convert to USD. That way you'll get our better exchange rate! As a goodwill gesture, I'll refund the $6 difference to your account right now ✨"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:19:59.415455+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_789",
+    "intent": "declined_card_payment",
+    "category": "card_payments",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, my card payment just got declined at Tesco for £47.82 but I definitely have enough money in my account. What's going on?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I'll help you figure out what happened with that declined payment. Could you confirm if this was about 20 minutes ago at Tesco? 🔍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Yes that's right, it was at the Tesco Express on High Street around 2:30pm. Had to use my other bank's card instead which was a bit annoying"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for confirming! I can see that our fraud detection system temporarily blocked this payment as it was slightly different from your usual shopping pattern. I've gone ahead and adjusted your security settings, so you shouldn't have this issue again at Tesco. ✅"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I see, that makes sense. Thanks for sorting it out!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:20:24.124090+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_738",
+    "intent": "pending_card_payment",
+    "category": "card_payments",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 6,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Hice una compra en Amazon hace 2 días por $899 pero sigue apareciendo como pendiente en la app. Es normal que tarde tanto?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Gracias por contactarnos 👋 Entiendo tu consulta sobre la compra pendiente. Es normal que algunos comercios, especialmente internacionales como Amazon, tarden entre 3-5 días hábiles en confirmar la transacción. ¿La compra aparece en la sección 'Transacciones pendientes'?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, está en pendientes desde el martes. O sea que no debo preocuparme?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Exacto! No hay de qué preocuparse 😊 El cargo está pre-autorizado y se confirmará automáticamente. Si para el viernes no se ha confirmado, escríbenos nuevamente y lo revisaremos con más detalle."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah perfecto, me quedo más tranquilo entonces. Gracias!"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Me alegro de haber podido ayudarte! Si tienes cualquier otra duda, estamos aquí 24/7. ¡Que tengas un excelente día! 👋"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T21:20:58.887543+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  }
+]

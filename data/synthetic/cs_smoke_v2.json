@@ -1,0 +1,388 @@
+[
+  {
+    "conversation_id": "conv_127",
+    "intent": "direct_debit_payment_not_recognised",
+    "category": "payment_methods",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I've got a direct debit payment of £29.99 on my account from yesterday but I don't recognize it. The reference says 'DD SPOTIFY GB'"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! Let me help you check that payment. The DD SPOTIFY GB payment is from Spotify - it looks like your music streaming subscription. It's set up as a monthly direct debit. Would you like me to show you where you can view all your active direct debits in the app? 🎵"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh right - totally forgot I switched to the family plan last month. That explains the new amount. Thanks!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T19:28:36.250955+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_183",
+    "intent": "age_limit",
+    "category": "account_management",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Quería saber si mi hijo de 16 años puede abrir una cuenta en la app"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Gracias por contactarnos 👋 Con gusto te explico sobre las cuentas para menores de edad. ¿Tu hijo tiene DNI propio?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, tiene su DNI y también CUIL. ¿Qué más necesitaría?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Perfecto! 😊 A partir de los 13 años los menores pueden tener una cuenta con autorización de sus padres. Necesitaremos: 1) DNI del menor 2) Tu DNI como padre/madre 3) Completar el formulario de autorización en la app. ¿Te gustaría que te explique el proceso paso a paso?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, por favor. ¿Cómo empezamos?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Con gusto 👍 Primero descarga nuestra app y selecciona 'Nueva cuenta para menor'. Luego sigue estos pasos:\n1. Escanea el DNI de tu hijo\n2. Escanea tu DNI como tutor\n3. Tómate una selfie con tu hijo\n4. Firma digital del formulario de autorización\nEl proceso toma unos 10 minutos y la cuenta estará lista en 24 horas. ¿Comenzamos?"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T19:28:52.922178+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_7392",
+    "intent": "change_pin",
+    "category": "account_security",
+    "sentiment": "neutral",
+    "complexity": "medium",
+    "language": "en",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, I need to change my PIN for my metal card. Can't seem to find where to do it in the app"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hey there! 👋 I'll help you change your PIN. Have you tried going to Cards > Your Metal Card > Card Settings? The PIN change option should be there"
+      },
+      {
+        "speaker": "customer",
+        "text": "I'm in Card Settings but I don't see it. I only see freeze card and view details"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for checking that. You'll need to tap on 'View Details' first, then scroll down - you should see 'Change PIN' there. If you're still not seeing it, could you try force-closing the app and opening it again? Sometimes that helps refresh the menu options"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah got it now! It was under View Details. Thanks for your help"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T19:29:33.031383+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_203",
+    "intent": "transaction_charged_twice",
+    "category": "card_payments",
+    "sentiment": "positive",
+    "complexity": "simple",
+    "language": "es",
+    "turn_count": 3,
+    "customer_emotion_arc": "concerned_to_relieved",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Me acaba de aparecer dos veces el cargo de Netflix por $219 en mi cuenta. Es normal?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! 👋 Entiendo tu preocupación por el cargo duplicado. Dame un momento para revisar... Efectivamente veo dos cargos idénticos de Netflix. ¡No te preocupes! Ya inicié la reversión del cargo duplicado y se verá reflejado en tu cuenta en las próximas 24 horas 😊"
+      },
+      {
+        "speaker": "customer",
+        "text": "Genial, gracias por resolverlo tan rápido!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T19:29:47.282357+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_127",
+    "intent": "disposable_card_limits",
+    "category": "account_management",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hey! What's the spending limit on virtual disposable cards? Want to make an online purchase"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! 👋 The default limit on disposable virtual cards is $1,000 per transaction. You can create up to 5 disposable cards per day."
+      },
+      {
+        "speaker": "customer",
+        "text": "Perfect, that works for what I need. Thanks!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T19:30:28.824610+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_108",
+    "intent": "get_physical_card",
+    "category": "card_management",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "frustrated_to_neutral",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Solicité mi tarjeta física hace 3 semanas y todavía no llega. Ya me cansé de usar solo la virtual!"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hola! Entiendo tu frustración, la espera puede ser muy molesta 😓 Dame un momento para revisar el estado de tu tarjeta física"
+      },
+      {
+        "speaker": "customer",
+        "text": "La app dice que está en camino desde el 12 de enero, pero no me da más detalles ni número de seguimiento"
+      },
+      {
+        "speaker": "agent",
+        "text": "Ya encontré el problema - hubo un error con el código postal que retrasó el envío. Veo que fue devuelta a nuestro centro de distribución. La buena noticia es que podemos enviar una nueva hoy mismo sin costo adicional 👍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, pero necesito estar seguro que llegará esta vez. Cuánto tardará?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Entiendo, esta vez me aseguraré personalmente que todo esté correcto. El envío toma 5-7 días hábiles y te llegará por DHL. En cuanto salga te envío por chat el número de seguimiento para que puedas rastrearla 📦"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T19:30:55.011562+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_452",
+    "intent": "wrong_exchange_rate_for_cash_withdrawal",
+    "category": "cash_atm",
+    "sentiment": "negative",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 3,
+    "customer_emotion_arc": "frustrated_to_satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hey, I just withdrew 100 EUR from an ATM in Paris but you charged me way more than the current exchange rate! The rate shown in Google is 1.07 but you charged me 1.15. What's going on?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I understand your concern about the exchange rate 👋 Let me explain - ATM withdrawals have a 2.5% currency conversion fee added to the base exchange rate, which is why you're seeing a difference. This fee is listed in our pricing section under 'International ATM withdrawals'"
+      },
+      {
+        "speaker": "customer",
+        "text": "Oh I see, I didn't know about the extra fee. Thanks for explaining!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T19:31:32.062485+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_238",
+    "intent": "balance_not_updated_after_cheque_or_cash_deposit",
+    "category": "top_up",
+    "sentiment": "negative",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "anxious_to_relieved",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Deposité $3000 en efectivo hace 2 horas en el Oxxo y todavía no me aparece en la app 😠"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Entiendo tu preocupación por el dinero. Voy a revisar el status de tu depósito ahora mismo. ¿Me confirmas el Oxxo donde lo hiciste y si guardaste el ticket? 💪"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, fue en el Oxxo de Av. Reforma 234. Tengo el ticket aquí, el número es 876543"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Gracias! Ya encontré tu depósito. Hay un pequeño retraso en la red de Oxxo hoy, pero tu dinero está seguro. Estoy forzando la actualización manual ahora mismo."
+      },
+      {
+        "speaker": "customer",
+        "text": "Ya me apareció! Gracias, me tenía preocupado porque necesito hacer un pago urgente"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T19:31:50.917632+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_457",
+    "intent": "contactless_not_working",
+    "category": "card_management",
+    "sentiment": "neutral",
+    "complexity": "complex",
+    "language": "en",
+    "turn_count": 8,
+    "customer_emotion_arc": "neutral_to_satisfied",
+    "resolution_time_category": "standard",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hi, my contactless payments stopped working today. The card chip still works but when I try to tap, nothing happens"
+      },
+      {
+        "speaker": "agent",
+        "text": "Hi there! I'm Alex, and I'll help you get your contactless payments working again. Could you tell me when you first noticed this issue and if you've tried the card at different stores? 🤔"
+      },
+      {
+        "speaker": "customer",
+        "text": "It started this morning at Starbucks. I tried again at the grocery store and pharmacy, same thing. Had to insert the chip each time"
+      },
+      {
+        "speaker": "agent",
+        "text": "Thanks for those details! I can see your card ending in 4721 has been used at those locations today. Let's check a few things - have you recently activated a new card or made any changes in your app settings?"
+      },
+      {
+        "speaker": "customer",
+        "text": "No new card, but I did update the app yesterday evening when I got a notification"
+      },
+      {
+        "speaker": "agent",
+        "text": "Ah, that might be the cause! We've seen some cases where the latest app update temporarily affects contactless settings. Could you try this: 1) Go to Card Settings 2) Tap 'Security Features' 3) Toggle contactless payments off, wait 10 seconds, then back on"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ok, just did that. Should I try making a payment now?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes, please try a contactless payment now. If it doesn't work, we'll need to refresh your card's security certificate - I can help with that too 👍"
+      },
+      {
+        "speaker": "customer",
+        "text": "Just tried at the coffee shop downstairs - it's working now! Thanks for the help"
+      },
+      {
+        "speaker": "agent",
+        "text": "That's great news! Happy I could help get your contactless payments back up and running. Is there anything else you need assistance with? 😊"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T19:32:39.736148+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  },
+  {
+    "conversation_id": "conv_t458",
+    "intent": "pending_transfer",
+    "category": "transfers",
+    "sentiment": "positive",
+    "complexity": "medium",
+    "language": "es",
+    "turn_count": 5,
+    "customer_emotion_arc": "neutral-to-satisfied",
+    "resolution_time_category": "quick",
+    "resolution_status": "resolved",
+    "turns": [
+      {
+        "speaker": "customer",
+        "text": "Hola! Hice una transferencia hace 20 minutos a mi cuenta de Santander pero todavía no me llegó. Es normal que tarde tanto?"
+      },
+      {
+        "speaker": "agent",
+        "text": "¡Hola! Soy Ana 👋 Claro, te ayudo a revisar la transferencia. ¿Me podrías decir el monto y la hora exacta de la operación?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Sí, fueron $15.400 a las 14:25hs. El comprobante me llegó pero la plata no aparece en la otra cuenta"
+      },
+      {
+        "speaker": "agent",
+        "text": "Gracias por los datos! 😊 Acabo de verificar y veo que la transferencia está en proceso. Como es interbancaria, puede demorar hasta 30 minutos en acreditarse. ¡No te preocupes! Ya está todo en orden y debería reflejarse en tu cuenta Santander muy pronto"
+      },
+      {
+        "speaker": "customer",
+        "text": "Ah perfecto, me quedo más tranquilo entonces. Gracias por confirmar!"
+      }
+    ],
+    "metadata": {
+      "generated_at": "2025-12-21T19:32:55.418773+00:00",
+      "model": "claude_35_sonnet",
+      "generator_version": "1.0.0"
+    }
+  }
+]
