@@ -9,7 +9,8 @@
 - [Día 0 — Setup Inicial](#día-0--setup-inicial)
 - [Día 1 — Schemas, Templates y Reference Datasets](#día-1--schemas-templates-y-reference-datasets)
 - [Día 2 — Motor de Generación + AWS Bedrock](#día-2--motor-de-generación--aws-bedrock)
-- [Próximos Pasos — Día 3](#próximos-pasos--día-3)
+- [Día 3 — Validation Pipeline + Training Baseline](#día-3--validation-pipeline--training-baseline)
+- [Próximos Pasos — Día 4](#próximos-pasos--día-4)
 
 ---
 
@@ -323,37 +324,197 @@ UnicodeEncodeError: 'charmap' codec can't encode character '\u2705'
 
 ---
 
-## Próximos Pasos — Día 3
+## Día 3 — Validation Pipeline + Training Baseline
+
+**Fecha:** 2024-12-21
+
+### Resumen
+
+Pipeline completo de validación y primer modelo de clasificación. Generación de 100 conversaciones bilingües con validación en tiempo real, detección de sesgos, y baseline de clasificación de intents.
+
+### Accomplishments
+
+#### Módulos Implementados
+
+| Módulo | Descripción | Líneas |
+|--------|-------------|--------|
+| `src/validation/quality.py` | QualityValidator con métricas JSD | ~500 |
+| `src/validation/bias.py` | BiasDetector con análisis de distribuciones | ~500 |
+| `src/registry/database.py` | DatasetRegistry con SQLite | ~400 |
+| `src/training/intent_classifier.py` | TF-IDF + LogisticRegression | ~560 |
+
+#### Dataset Generado
+
+| Métrica | Valor |
+|---------|-------|
+| **Total conversaciones** | 100 |
+| **Idiomas** | 50 EN + 50 ES |
+| **Intents cubiertos** | 77/77 (100%) |
+| **Success rate** | 100% |
+| **Tiempo de generación** | 51.5 minutos |
+| **Costo estimado** | ~$1.00 |
+
+**Archivo:** `data/synthetic/customer_service_100.json`
+
+### Quality Metrics
+
+| Métrica | Score | Descripción |
+|---------|-------|-------------|
+| **Completeness** | 1.00 | Todos los campos requeridos presentes |
+| **Consistency** | 1.00 | Turnos alternados, primer speaker = customer |
+| **Realism** | 0.43 | Distribución uniforme vs Banking77 skewed (esperado) |
+| **Diversity** | 0.83 | Vocabulario variado, mensajes únicos |
+| **OVERALL** | **81.3/100** | Weighted average |
+
+> **Nota sobre Realism:** El score de 0.43 es esperado porque generamos distribución uniforme (1-2 ejemplos por intent) mientras que Banking77 tiene distribución sesgada. Esto es óptimo para training de clasificadores.
+
+### Bias Analysis
+
+| Check | Resultado | Target | Status |
+|-------|-----------|--------|--------|
+| Sentiment | 30% pos / 50% neu / 20% neg | 30/50/20 | ✅ Perfect match |
+| Language | 50% EN / 50% ES | 50/50 | ✅ Balanced |
+| Complexity | 30% simple / 50% med / 20% complex | 30/50/20 | ✅ Perfect match |
+| Intent Coverage | 77/77 | 100% | ✅ Complete |
+
+**Bias Detected:** No (severity: none)
+
+### Training Results: Intent Classifier
+
+| Métrica | Valor |
+|---------|-------|
+| **Test Accuracy** | 15.0% |
+| **F1 Score (macro)** | 10.3% |
+| **Training samples** | 80 |
+| **Test samples** | 20 |
+| **Unique intents** | 77 |
+| **TF-IDF features** | 1,297 |
+
+**Model:** `models/trained/intent_classifier.pkl`
+
+> **Nota sobre Accuracy:** 15% es esperado con 77 clases y solo 100 muestras (~1.3 por clase). Random baseline sería 1.3% (1/77), así que nuestro modelo es 11× mejor que random. Para 85%+ accuracy se necesitan 5,000+ muestras.
+
+### Issues Encountered & Solutions
+
+#### 1. AWS Throttling
+
+**Problema:** 50% failure rate en smoke tests iniciales.
+
+**Diagnóstico:** Script `diagnose_throttling.py` probó delays de 3s, 6s, 10s.
+
+**Solución:**
+- Delay óptimo: 5 segundos entre llamadas
+- Batch size: 1 (secuencial)
+- `.env` actualizado: `BEDROCK_DELAY_SECONDS=5.0`
+
+**Resultado:** 100% success rate en generación de 100 items.
+
+#### 2. Stratified Split Error
+
+```
+ValueError: The least populated classes in y have only 1 member
+```
+
+**Solución:** Deshabilitar stratification cuando min_count < 2 por clase.
+
+#### 3. sklearn API Change
+
+```
+TypeError: LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'
+```
+
+**Solución:** Remover parámetro `multi_class` (deprecated en sklearn 1.8).
+
+#### 4. PowerShell Quote Escaping
+
+**Problema:** Comandos inline con comillas fallaban en PowerShell.
+
+**Solución:** Crear scripts Python dedicados en lugar de one-liners.
+
+### Files Created
+
+| Archivo | Descripción |
+|---------|-------------|
+| `src/validation/quality.py` | QualityValidator con Jensen-Shannon divergence |
+| `src/validation/bias.py` | BiasDetector para sentiment, intent, language |
+| `src/validation/__init__.py` | Exports del módulo |
+| `src/registry/database.py` | DatasetRegistry con SQLite |
+| `src/registry/__init__.py` | Exports del módulo |
+| `src/training/intent_classifier.py` | TF-IDF + LogisticRegression baseline |
+| `src/training/__init__.py` | Exports del módulo |
+| `scripts/generate_100.py` | Generación con checkpointing |
+| `scripts/diagnose_throttling.py` | Diagnóstico de rate limiting |
+| `scripts/health_check.py` | Verificación de sistema |
+| `scripts/validate_100.py` | Validación de dataset |
+| `scripts/register_datasets.py` | Registro en SQLite |
+| `scripts/register_training.py` | Registro de training runs |
+| `data/synthetic/customer_service_100.json` | 100 conversaciones bilingües |
+| `data/registry.db` | Base de datos SQLite |
+| `models/trained/intent_classifier.pkl` | Modelo entrenado |
+
+### Files Modified
+
+| Archivo | Cambio |
+|---------|--------|
+| `pyproject.toml` | Añadido scikit-learn |
+| `uv.lock` | Actualizado con scipy, joblib, threadpoolctl |
+| `scripts/smoke_test.py` | Mejorado con bilingüismo y delays |
+
+### Git Commit
+
+```
+[main 3126a10] Day 3: Validation pipeline + training baseline
+ 21 files changed, 8869 insertions(+), 107 deletions(-)
+```
+
+### Checklist Día 3
+
+| Entregable | Estado |
+|------------|--------|
+| QualityValidator funcional | ✅ |
+| BiasDetector funcional | ✅ |
+| DatasetRegistry con SQLite | ✅ |
+| Generación 100 conversaciones | ✅ |
+| IntentClassifier baseline | ✅ |
+| Registro en database | ✅ |
+| Unit tests passing | ✅ |
+| Documentación actualizada | ✅ |
+
+---
+
+## Próximos Pasos — Día 4
 
 ### Prioridad Alta
 
-1. **Validation Module** (`src/validation/quality.py`)
-   - Comparar sintéticos vs reference datasets
-   - Métricas: completeness, consistency, realism, diversity
-   - Usar schemas QualityMetrics y BiasMetrics
+1. **Escalar a 1K Conversaciones**
+   - Ejecutar `generate_100.py` modificado para 1000 items
+   - Estimar tiempo: ~8-9 horas con delay 5s
+   - Considerar overnight run
+   - Expected accuracy improvement: ~60-70%
 
-2. **Bias Detection** (`src/validation/bias.py`)
-   - Sesgos en distribución de sentimientos
-   - Cobertura de intents/series types
-   - Alertas si bias > threshold
+2. **Time Series Pipeline Completo**
+   - Generar 100 series temporales
+   - Implementar TimeSeriesValidator
+   - Entrenar forecasting baseline
 
 ### Prioridad Media
 
-3. **Dataset Completo**
-   - Generar 100 conversaciones + 100 series
-   - Ejecutar overnight para evitar throttling
-   - Guardar en formato JSON Lines
+3. **Mejorar Intent Classifier**
+   - Probar XGBoost como alternativa
+   - Añadir embeddings (sentence-transformers)
+   - Cross-validation para mejor estimación
 
-4. **Prompt Caching**
-   - Cachear prompts frecuentes
-   - Reducir tokens y costos
+4. **UI Streamlit Básico**
+   - Dashboard de visualización de métricas
+   - Gráficas de distribución de intents
+   - Trigger manual de generación
 
 ### Prioridad Baja
 
-5. **UI Streamlit**
-   - Dashboard de visualización
-   - Triggers de generación manual
-   - Gráficas de métricas
+5. **Optimizaciones**
+   - Prompt caching para reducir costos
+   - Batch processing paralelo (si AWS permite)
+   - Export a HuggingFace Hub
 
 ---
 
