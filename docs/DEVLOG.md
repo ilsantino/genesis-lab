@@ -171,3 +171,346 @@ Las versiones de dependencias instaladas son pydantic para validación de schema
 El archivo punto env debe contener AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, y AWS_REGION configurados con tus credenciales de AWS Bedrock. El archivo punto cursorrules define la arquitectura modular del proyecto y debe mantenerse actualizado si hacemos cambios arquitecturales.
 
 Usamos uv como gestor de dependencias en lugar de pip, por lo que todos los comandos de instalación usan uv add en lugar de pip install. El archivo pyproject punto toml es gestionado automáticamente por uv.
+
+---
+
+## 📅 Día 2 — Motor de Generación + AWS Bedrock
+
+**Fecha:** 2024-12-20
+
+### Resumen Ejecutivo
+
+Completamos exitosamente la implementación del motor de generación con integración a AWS Bedrock. Se crearon los generadores CustomerServiceGenerator y TimeSeriesGenerator, ambos funcionales y validados con smoke tests y unit tests. Se resolvieron múltiples problemas técnicos incluyendo throttling de AWS y configuración de cross-region inference para Claude 3.5 Sonnet.
+
+---
+
+### Archivos Creados
+
+| Archivo | Descripción | Líneas |
+|---------|-------------|--------|
+| `src/generation/generator.py` | BaseGenerator abstracto + CustomerServiceGenerator | ~500 |
+| `src/generation/timeseries_generator.py` | TimeSeriesGenerator para series temporales | ~570 |
+| `src/generation/__init__.py` | Exports de generadores y schemas | ~45 |
+| `scripts/smoke_test.py` | Test de humo con throttling protection | ~220 |
+| `scripts/test_batch_generation.py` | Script de prueba para batch de conversaciones | ~40 |
+| `scripts/test_timeseries_generation.py` | Script de prueba para series temporales | ~106 |
+| `tests/test_generators.py` | Unit tests con mocks (16 tests) | ~508 |
+
+### Archivos Modificados
+
+| Archivo | Cambio |
+|---------|--------|
+| `src/utils/config/loader.py` | Fix modelo Claude 3.5 Sonnet → prefijo `us.` |
+| `pyproject.toml` | Fix typo en línea 33 (`s]` → `]`) |
+
+---
+
+### Implementación: BedrockClient
+
+El cliente AWS Bedrock ya existía en `src/utils/aws_client.py` con las siguientes características:
+
+- **Rate limiting**: Control de tasa de requests
+- **Retry logic**: 3 intentos con backoff exponencial (2s, 4s, 8s)
+- **Manejo de errores**: Captura específica de ThrottlingException y ValidationException
+- **Configuración desde env**: Usa variables de entorno via `get_config()`
+
+---
+
+### Implementación: CustomerServiceGenerator
+
+Generador de conversaciones estilo Banking77 para neobanks/fintech.
+
+**Características:**
+- Soporte para 77 intents de Banking77 organizados en 11 categorías
+- Bilingüe (inglés/español)
+- Few-shot prompting con 2 ejemplos por defecto
+- Configuración de sentimiento, complejidad y emotion_arc
+- Validación automática de schema con `validate_conversation_schema()`
+- Corrección automática de campos faltantes con `_fix_conversation_schema()`
+
+**Estructura de salida:**
+```python
+{
+    "conversation_id": "conv_abc123",
+    "intent": "card_arrival",
+    "category": "cards",
+    "sentiment": "neutral",
+    "complexity": "simple",
+    "language": "en",
+    "turn_count": 4,
+    "customer_emotion_arc": "stable_neutral",
+    "resolution_status": "resolved",
+    "turns": [
+        {"speaker": "customer", "text": "..."},
+        {"speaker": "agent", "text": "..."}
+    ],
+    "metadata": {...}
+}
+```
+
+---
+
+### Implementación: TimeSeriesGenerator
+
+Generador de series temporales multi-dominio compatible con formato HuggingFace.
+
+**Características:**
+- 16 tipos de series en 4 dominios:
+  - **electricity** (50%): residential_consumption, commercial_consumption, industrial_load, grid_demand
+  - **energy** (20%): solar_generation, wind_generation, gas_consumption, heating_demand
+  - **sensors** (20%): temperature, pressure, humidity, air_quality
+  - **financial** (10%): stock_price, crypto_price, exchange_rate, trading_volume
+- Patrones configurables: seasonality (daily, weekly, annual), trends, anomalías
+- Valores estandarizados (mean~0, std~1) para ML
+- Bilingüe (inglés/español)
+
+**Estructura de salida:**
+```python
+{
+    "series_id": "ts_abc123",
+    "domain": "electricity",
+    "series_type": "residential_consumption",
+    "frequency": "1H",
+    "length": 24,
+    "target": [0.2, 0.1, -0.1, ...],  # 24 valores
+    "seasonality_types": ["daily"],
+    "trend_type": "none",
+    "anomaly_types": [],
+    "metadata": {...}
+}
+```
+
+---
+
+### Smoke Test: Resultados
+
+Se ejecutó `scripts/smoke_test.py` con configuración conservadora para evitar throttling:
+
+**Configuración:**
+- Batch size: 2 items
+- Delay entre batches: 3 segundos
+- Total: 10 conversaciones + 10 series temporales
+
+**Resultados:**
+
+| Dominio | Generados | Validados | Throttled |
+|---------|-----------|-----------|-----------|
+| Customer Service | 5/10 | 5/5 ✓ | 5 |
+| Time Series | 5/10 | 5/5 ✓ | 5 |
+| **Total** | **10/20** | **10/10** | **10** |
+
+**Tiempo total:** 9.3 minutos (~558 segundos)
+
+**Archivos generados:**
+- `data/synthetic/customer_service_smoke_test.json` (5 conversaciones)
+- `data/synthetic/timeseries_smoke_test.json` (5 series temporales)
+
+**Conclusión:** El 50% de pérdida se debe a throttling de AWS Bedrock, no a errores de código. Todos los items generados pasaron validación Pydantic.
+
+---
+
+### Unit Tests: Resultados
+
+Se creó `tests/test_generators.py` con 16 tests usando mocks (sin llamadas reales a AWS).
+
+**Ejecución:**
+```bash
+uv run pytest tests/test_generators.py -v
+```
+
+**Resultados:** 16/16 passed en 5.32 segundos
+
+| Clase de Test | Tests | Estado |
+|---------------|-------|--------|
+| TestCustomerServiceGenerator | 6 | ✅ Passed |
+| TestTimeSeriesGenerator | 6 | ✅ Passed |
+| TestJSONParsing | 2 | ✅ Passed |
+| TestErrorHandling | 2 | ✅ Passed |
+
+**Tests incluidos:**
+1. `test_generate_single_returns_valid_structure`
+2. `test_generate_single_with_specific_intent`
+3. `test_generate_batch_returns_list`
+4. `test_invalid_intent_handled_gracefully`
+5. `test_generator_metrics`
+6. `test_all_intents_are_valid` (verifica 77 intents)
+7. `test_generate_single_returns_valid_structure` (time series)
+8. `test_generate_single_with_specific_type`
+9. `test_generate_batch_returns_list` (time series)
+10. `test_generator_properties`
+11. `test_get_series_types_for_domain`
+12. `test_all_series_types_defined` (verifica 16 tipos)
+13. `test_parse_json_in_markdown_block`
+14. `test_parse_raw_json`
+15. `test_generation_failure_raises_runtime_error`
+16. `test_batch_continues_on_error`
+
+---
+
+### Problemas Encontrados y Soluciones
+
+#### 1. ValidationException: Cross-Region Inference
+
+**Error:**
+```
+ValidationException: Invocation of model ID anthropic.claude-3-5-sonnet-20241022-v2:0 
+with on-demand throughput isn't supported.
+```
+
+**Causa:** Claude 3.5 Sonnet v2 requiere prefijo regional para cross-region inference.
+
+**Solución:** Cambiar el model ID en `src/utils/config/loader.py`:
+```python
+# Antes
+"claude_35_sonnet": "anthropic.claude-3-5-sonnet-20241022-v2:0"
+
+# Después
+"claude_35_sonnet": "us.anthropic.claude-3-5-sonnet-20241022-v2:0"
+```
+
+#### 2. ThrottlingException: Rate Limiting
+
+**Error:**
+```
+ThrottlingException: Too many requests, please wait before trying again.
+```
+
+**Causa:** Límites de tasa de AWS Bedrock excedidos.
+
+**Solución implementada:**
+- Retry logic con backoff exponencial (2s, 4s, 8s)
+- Delays entre batches en smoke test (3s)
+- Flag `continue_on_error=True` para generación parcial
+
+**Recomendación futura:** Solicitar aumento de cuota en AWS o usar batch sizes más pequeños.
+
+#### 3. TypeError: from_config() missing argument
+
+**Error:**
+```
+TypeError: BaseGenerator.from_config() missing 1 required positional argument: 'domain'
+```
+
+**Causa:** El método `from_config()` de BaseGenerator requería `domain` pero las subclases no lo pasaban.
+
+**Solución:** Override de `from_config()` en cada subclase:
+```python
+@classmethod
+def from_config(cls) -> "CustomerServiceGenerator":
+    client = BedrockClient.from_config()
+    return cls(client=client, domain="customer_service")
+```
+
+#### 4. pyproject.toml Corrupted
+
+**Error:**
+```
+TOML parse error at line 33: string values must be quoted
+```
+
+**Causa:** Línea 33 tenía `s]` en lugar de `]` (typo/corrupción).
+
+**Solución:** Corregir la línea en `pyproject.toml`.
+
+#### 5. UnicodeEncodeError en Windows
+
+**Error:**
+```
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705'
+```
+
+**Causa:** Emoji ✅ no soportado en consola PowerShell por defecto.
+
+**Solución:** Reemplazar emojis por texto ASCII `[OK]` en scripts.
+
+---
+
+### Git: Commits del Día 2
+
+| Commit | Descripción |
+|--------|-------------|
+| `e537a62` | Day 2: Add unit tests for generators (16 tests, mocked AWS) |
+| `d591a78` | Day 2: Bedrock client + generators + smoke test |
+| `63b4163` | Day 2: Bedrock client + generators + smoke test |
+
+Todos los commits pusheados a `origin/main`.
+
+---
+
+### Checklist Día 2
+
+| Entregable | Estado |
+|------------|--------|
+| Cliente AWS Bedrock con rate limiting y retry | ✅ |
+| Clase base BaseGenerator | ✅ |
+| CustomerServiceGenerator funcional | ✅ |
+| TimeSeriesGenerator funcional | ✅ |
+| Smoke test script | ✅ |
+| Tests unitarios (16 tests) | ✅ |
+| Fix cross-region inference Claude 3.5 | ✅ |
+| Caching de prompts | ⬜ Pendiente |
+| Generación de 100 conversaciones + 100 series | ⬜ Parcial (10+10 en smoke test) |
+
+---
+
+### Recomendaciones para Día 3
+
+#### Prioridad Alta
+
+1. **Implementar Validation Module** (`src/validation/quality.py`)
+   - Comparar datos sintéticos vs reference datasets
+   - Calcular métricas: completeness, consistency, realism, diversity
+   - Usar los schemas QualityMetrics y BiasMetrics ya definidos
+
+2. **Implementar Bias Detection** (`src/validation/bias.py`)
+   - Detectar sesgos en distribución de sentimientos
+   - Verificar cobertura de intents/series types
+   - Alertas automáticas si bias > threshold
+
+#### Prioridad Media
+
+3. **Generar Dataset Completo**
+   - Ejecutar generación de 100 conversaciones + 100 series en batches pequeños
+   - Guardar en `data/synthetic/` en formato JSON Lines
+   - Considerar ejecutar overnight para evitar throttling
+
+4. **Implementar Prompt Caching**
+   - Cachear prompts frecuentes para reducir tokens
+   - Almacenar en memoria o archivo local
+
+#### Prioridad Baja
+
+5. **UI Básica en Streamlit**
+   - Dashboard para visualizar datos generados
+   - Botones para trigger generación manual
+   - Gráficas de métricas de calidad
+
+---
+
+### Notas Técnicas Día 2
+
+**Modelos Bedrock disponibles:**
+- `us.anthropic.claude-3-5-sonnet-20241022-v2:0` (default, requiere prefijo `us.`)
+- `anthropic.claude-3-sonnet-20240229-v1:0`
+- `anthropic.claude-3-haiku-20240307-v1:0`
+- `us.amazon.nova-pro-v1:0`
+
+**Límites de throttling observados:**
+- ~2-3 requests/minuto sin throttling
+- Con batches de 2 + delay 3s: ~50% éxito
+- Recomendación: delay 5-10s para >80% éxito
+
+**Comandos útiles:**
+```bash
+# Ejecutar smoke test
+uv run python -m scripts.smoke_test
+
+# Ejecutar unit tests
+uv run pytest tests/test_generators.py -v
+
+# Ejecutar todos los tests (excluyendo integration)
+uv run pytest -m "not integration"
+
+# Verificar modelo configurado
+uv run python -c "from src.utils.config import get_config; print(get_config().aws.bedrock_model_ids)"
+```
