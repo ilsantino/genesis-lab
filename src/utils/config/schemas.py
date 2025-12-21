@@ -115,7 +115,7 @@ class AWSConfig(BaseModel):
     )
     bedrock_model_ids: Dict[ModelName, str] = Field(
         default_factory=lambda: {
-            "claude_35_sonnet": "anthropic.claude-3-5-sonnet-20241022-v2:0",
+            "claude_35_sonnet": "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
             "claude_3_sonnet": "anthropic.claude-3-sonnet-20240229-v1:0",
             "claude_haiku": "anthropic.claude-3-haiku-20240307-v1:0",
             "llama_32_90b": "meta.llama3-2-90b-instruct-v1:0",

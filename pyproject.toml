@@ -18,3 +18,16 @@ dependencies = [
 
 [tool.uv]
 managed = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not integration'"
+markers = [
+    "integration: marks tests as integration tests",
+]
+
+[dependency-groups]
+dev = [
+    "botocore>=1.42.5",
+    "pytest>=9.0.2",
+]
