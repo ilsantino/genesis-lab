@@ -240,7 +240,8 @@ class TimeSeriesGenerator(BaseGenerator):
         domain_context: Optional[str] = None,
         start_date: str = "2024-01-01T00:00:00Z",
         use_standardized: bool = True,
-        num_examples: int = 2
+        num_examples: int = 2,
+        stationary: bool = False
     ) -> Dict[str, Any]:
         """
         Generate a single time series.
@@ -260,6 +261,7 @@ class TimeSeriesGenerator(BaseGenerator):
             start_date: Starting timestamp
             use_standardized: Whether to use standardized values
             num_examples: Number of few-shot examples to include
+            stationary: If True, force no trends/anomalies for stationary output
         
         Returns:
             Generated time series dictionary with structure:
@@ -301,6 +303,14 @@ class TimeSeriesGenerator(BaseGenerator):
         selected_trend = trend_type or params["trend_type"]
         selected_anomaly_types = anomaly_types if anomaly_types is not None else params["anomaly_types"]
         selected_anomaly_count = anomaly_count if anomaly_count > 0 else params["anomaly_count"]
+        
+        # Force stationary properties if requested
+        if stationary:
+            selected_trend = "none"
+            selected_seasonality = ["daily"]  # Mild seasonality only
+            selected_anomaly_types = []
+            selected_anomaly_count = 0
+            selected_complexity = "simple"
         
         # Get domain context from series specs if not provided
         if not domain_context:
