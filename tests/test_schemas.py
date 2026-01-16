@@ -9,8 +9,6 @@ from datetime import datetime, timezone
 from src.generation.schemas import (
     ConversationTurn,
     CustomerServiceConversation,
-    TimeSeriesPoint,
-    TimeSeries,
     QualityMetrics,
     BiasMetrics,
     DatasetMetadata,
@@ -112,80 +110,6 @@ class TestCustomerServiceConversation:
             assert conv.language == lang
 
 
-class TestTimeSeriesPoint:
-    def test_valid_point(self):
-        point = TimeSeriesPoint(
-            timestamp=datetime.now(timezone.utc),
-            value=42.5
-        )
-        assert point.value == 42.5
-
-    def test_value_bounds(self):
-        with pytest.raises(ValueError):
-            TimeSeriesPoint(
-                timestamp=datetime.now(timezone.utc),
-                value=1e11
-            )
-
-    def test_naive_timestamp_converted(self):
-        naive_dt = datetime(2024, 6, 15, 10, 30, 0)
-        point = TimeSeriesPoint(timestamp=naive_dt, value=100.0)
-        assert point.timestamp.tzinfo is not None
-
-
-class TestTimeSeries:
-    @pytest.fixture
-    def valid_points(self):
-        base = datetime(2024, 1, 1, tzinfo=timezone.utc)
-        return [
-            TimeSeriesPoint(
-                timestamp=base.replace(hour=i),
-                value=float(i * 10)
-            )
-            for i in range(15)
-        ]
-
-    def test_valid_series(self, valid_points):
-        series = TimeSeries(
-            series_id="ts_001",
-            series_type="sensor_temperature",
-            frequency="1hour",
-            points=valid_points
-        )
-        assert len(series.points) == 15
-
-    def test_unsorted_timestamps_rejected(self):
-        base = datetime(2024, 1, 1, tzinfo=timezone.utc)
-        unsorted_points = [
-            TimeSeriesPoint(timestamp=base.replace(hour=5), value=50.0),
-            TimeSeriesPoint(timestamp=base.replace(hour=2), value=20.0),
-        ] + [
-            TimeSeriesPoint(timestamp=base.replace(hour=i), value=float(i))
-            for i in range(6, 15)
-        ]
-        with pytest.raises(ValueError, match="ascending order"):
-            TimeSeries(
-                series_id="ts_002",
-                series_type="stock_price",
-                frequency="1hour",
-                points=unsorted_points
-            )
-
-    def test_too_few_points_rejected(self):
-        base = datetime(2024, 1, 1, tzinfo=timezone.utc)
-        few_points = [
-            TimeSeriesPoint(timestamp=base.replace(hour=i), value=float(i))
-            for i in range(5)
-        ]
-        with pytest.raises(ValueError):
-            TimeSeries(
-                series_id="ts_003",
-                series_type="energy_consumption",
-                frequency="1hour",
-                points=few_points
-            )
-
-
 class TestQualityMetrics:
     def test_valid_metrics(self):
         metrics = QualityMetrics(
@@ -219,13 +143,20 @@ class TestSchemaInfo:
     def test_pydantic_version_detected(self):
         info = get_schema_info()
         assert isinstance(info["pydantic_v2"], bool)
+    
+    def test_customer_service_is_active_domain(self):
+        info = get_schema_info()
+        assert "customer_service" in info["domains"]
+    
+    def test_time_series_is_archived(self):
+        info = get_schema_info()
+        assert "time_series" in info.get("domains_archived", [])
 
 
 class TestConstants:
     def test_constants_exist(self):
         assert SchemaConstants.MIN_TURNS == 2
         assert SchemaConstants.MAX_TURNS == 20
-        assert SchemaConstants.MIN_SERIES_POINTS == 10
 
     def test_supported_languages_is_frozenset(self):
         assert isinstance(SchemaConstants.SUPPORTED_LANGUAGES, frozenset)

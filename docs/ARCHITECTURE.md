@@ -41,8 +41,7 @@ GENESIS-LAB/
 ├── src/
 │   ├── generation/
 │   │   ├── templates/
-│   │   │   ├── customer_service_prompts.py
-│   │   │   └── timeseries_prompts.py
+│   │   │   └── customer_service_prompts.py
 │   │   ├── generator.py
 │   │   └── schemas.py
 │   ├── validation/
@@ -79,7 +78,7 @@ GENESIS-LAB/
 |---------------|-----------|
 | `data/raw/` | Datos originales o datasets base utilizados como referencia o comparación |
 | `data/synthetic/` | Salida generada por el módulo de generación sintética. Incluye versiones, metadatos y logs |
-| `data/reference/` | Datasets externos descargados o utilizados como ground truth (Banking77, electricity_hourly) |
+| `data/reference/` | Datasets externos descargados o utilizados como ground truth (Banking77) |
 
 Este directorio no contiene lógica; solo almacenamiento estructurado.
 
@@ -108,7 +107,6 @@ Funcionalidad principal de generación sintética.
 | `generator.py` | Interacción con Bedrock, construcción de prompts, control de parámetros, retorno estandarizado |
 | `schemas.py` | Schemas Pydantic para validación de datos generados |
 | `templates/customer_service_prompts.py` | Prompts para conversaciones Banking77 (77 intents, bilingüe) |
-| `templates/timeseries_prompts.py` | Prompts para series temporales (4 dominios, 16 types, bilingüe) |
 
 #### b) `src/validation/`
 
@@ -202,7 +200,7 @@ En fases posteriores se incluirán pruebas automáticas de CI/CD.
 | **boto3** | SDK para comunicación con Bedrock, S3 y servicios auxiliares |
 | **Streamlit** | Framework para la interfaz interactiva del MVP |
 | **uv + pyproject.toml** | Manejo moderno de entornos y dependencias |
-| **HuggingFace Datasets** | Datasets de referencia (Banking77, electricity_hourly) |
+| **HuggingFace Datasets** | Datasets de referencia (Banking77) |
 
 ---
 
@@ -278,23 +276,10 @@ En fases posteriores se incluirán pruebas automáticas de CI/CD.
 - account_security (4), verification_identity (4)
 - account_management (5), payment_methods (2), refunds (3)
 
-### 9.2 Time Series: Electricity Hourly
+### 9.2 Time Series (ARCHIVADO)
 
-| Atributo | Valor |
-|----------|-------|
-| **Fuente** | `LeoTungAnh/electricity_hourly` (HuggingFace) |
-| **Dominio** | Consumo eléctrico Portugal |
-| **Series** | 370 clientes individuales |
-| **Período** | 2012-2014 (3 años) |
-| **Frecuencia** | Horaria (1H) |
-| **Preprocesamiento** | Estandarizado (mean≈0, std≈1) |
-| **Template** | `src/generation/templates/timeseries_prompts.py` |
-
-**Dominios extendidos para generación:**
-- electricity (50%): residential, commercial, industrial, grid
-- energy (20%): solar, wind, gas, heating
-- sensors (20%): temperature, pressure, humidity, air_quality
-- financial (10%): stock, crypto, exchange_rate, trading_volume
+> **Nota:** El dominio Time Series fue archivado debido a problemas técnicos.
+> Ver [DOMAIN2_TIMESERIES.md](DOMAIN2_TIMESERIES.md) para documentación completa.
 
 ---
 
@@ -304,7 +289,6 @@ Esta sección define las interfaces y expectativas entre módulos del sistema. C
 
 > **Referencias de implementación:**
 > - Schemas de conversaciones: `src/generation/templates/customer_service_prompts.py`
-> - Schemas de time series: `src/generation/templates/timeseries_prompts.py`
 > - Schemas Pydantic: `src/generation/schemas.py`
 
 ---
@@ -315,7 +299,7 @@ Esta sección define las interfaces y expectativas entre módulos del sistema. C
 
 ```python
 {
-    "domain": "customer_service" | "time_series",
+    "domain": "customer_service",
     "data": [<schema_objects>],  # Lista de objetos validados
     "metadata": {
         "model_used": str,               # e.g., "claude-3-5-sonnet-20241022"
@@ -353,28 +337,9 @@ Esta sección define las interfaces y expectativas entre módulos del sistema. C
 }
 ```
 
-#### Schema: Time Series
+#### Schema: Time Series (ARCHIVADO)
 
-```python
-{
-    "series_id": str,                    # "ts_XXX"
-    "domain": "electricity" | "energy" | "sensors" | "financial",
-    "series_type": str,                  # Uno de 16 series types
-    "frequency": "15min" | "30min" | "1H" | "1D" | "1W",
-    "complexity": "simple" | "medium" | "complex",
-    "data_quality": "clean" | "noisy" | "missing_values",
-    "language": "en" | "es",
-    "length": int,
-    "seasonality_types": List[str],      # ["daily", "weekly", "annual"]
-    "trend_type": "none" | "upward" | "downward" | "cyclic",
-    "anomaly_types": List[str],          # ["spike", "drop", "plateau", "drift", "outage"]
-    "anomaly_indices": List[int],
-    "domain_context": "residential" | "commercial" | "industrial" | "mixed",
-    "start": str,                        # ISO 8601 datetime
-    "target": List[float | None],        # Valores de la serie (compatible HuggingFace)
-    "metadata": dict
-}
-```
+> Ver [DOMAIN2_TIMESERIES.md](DOMAIN2_TIMESERIES.md) para el schema archivado.
 
 #### Output de Generation
 
@@ -407,7 +372,7 @@ Esta sección define las interfaces y expectativas entre módulos del sistema. C
 ```python
 {
     "dataset_id": str,                   # UUID único
-    "domain": str,                       # "customer_service" | "time_series"
+    "domain": str,                       # "customer_service"
     "data": [],                          # Raw data objects
     "generation_metadata": dict,         # From generator
     "quality_metrics": QualityMetrics,   # From quality.py
@@ -594,20 +559,9 @@ Todos los módulos deben seguir este patrón:
 }
 ```
 
-#### Time Series Specific Metrics
+#### Time Series Specific Metrics (ARCHIVADO)
 
-```python
-{
-    "autocorrelation_similarity": float, # 0.0-1.0: ACF comparison
-    "stationarity_score": float,         # 0.0-1.0: ADF test result
-    "dtw_distance": float,               # Dynamic Time Warping distance
-    "spectral_similarity": float,        # 0.0-1.0: Frequency domain comparison
-    "temporal_consistency": float,       # 0.0-1.0: Timestamp validation
-    "seasonality_accuracy": float,       # 0.0-1.0: Detected vs specified patterns
-    "anomaly_placement_score": float,    # 0.0-1.0: Anomalies at specified indices
-    "domain_realism_score": float        # 0.0-1.0: Values realistic for domain
-}
-```
+> Ver [DOMAIN2_TIMESERIES.md](DOMAIN2_TIMESERIES.md) para métricas archivadas.
 
 ---
 
@@ -620,7 +574,6 @@ Todos los módulos deben seguir este patrón:
 
 Ejemplos:
 - customer_service_a3f2e1d4_20240101_120000.jsonl
-- time_series_b7c9f3a2_20240101_120000.parquet
 ```
 
 #### Format Selection
@@ -629,7 +582,7 @@ Ejemplos:
 |---------|-----|-----------------|
 | **JSON** | Datasets pequeños (<1000 registros) | Legible, fácil debug |
 | **JSONL** | Datasets grandes (≥1000 registros) | Un objeto por línea, streaming |
-| **Parquet** | Time series y datos tabulares grandes | Compresión snappy, eficiente |
+| **Parquet** | Datos tabulares grandes | Compresión snappy, eficiente |
 
 #### Standards
 
@@ -685,9 +638,8 @@ Cada módulo debe tener:
 tests/
 ├── fixtures/
 │   ├── customer_service_sample.json
-│   ├── timeseries_sample.json
 │   └── reference_data/
-│       ├── banking77_sample.json
+│       └── banking77_sample.json
 │       └── electricity_sample.json
 └── test_*.py
 ```
@@ -707,7 +659,7 @@ def test_generation_to_validation_contract():
     
     # Data debe cumplir schema
     for item in generation_output["data"]:
-        errors = validate_conversation_schema(item)  # o validate_timeseries_schema
+        errors = validate_conversation_schema(item)
         assert len(errors) == 0, f"Schema errors: {errors}"
 ```
 
@@ -722,9 +674,9 @@ def test_generation_to_validation_contract():
 | Dependencias instaladas | ✅ Completado |
 | AWS conectado | ✅ Configurado |
 | UI inicial | ✅ Creada |
-| Templates de prompts | ✅ Customer Service + Time Series |
+| Templates de prompts | ✅ Customer Service |
 | Contratos documentados | ✅ Completado |
-| Datasets de referencia | ✅ Banking77 + electricity_hourly |
+| Datasets de referencia | ✅ Banking77 |
 | Schemas Pydantic | 🔄 En progreso |
 | Módulo de generación | 🔄 En progreso |
 | Módulo de validación | ⏳ Pendiente |
@@ -741,8 +693,8 @@ def test_generation_to_validation_contract():
 |-------|--------|
 | 2024-01-XX | Estructura inicial del proyecto |
 | 2024-01-XX | Templates de prompts: customer_service_prompts.py (77 intents Banking77, bilingüe) |
-| 2024-01-XX | Templates de prompts: timeseries_prompts.py (4 dominios, 16 types, bilingüe) |
 | 2024-01-XX | Documentación de contratos entre módulos |
+| 2026-01-16 | Refactor: archivado time series, enfoque en conversaciones |
 
 ---
 

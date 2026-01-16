@@ -1,6 +1,6 @@
 """
 Data schemas for synthetic data generation.
-Defines the structure and validation rules for each domain.
+Defines the structure and validation rules for customer service conversations.
 
 Compatibility: Pydantic v1.10+ and v2.x
 """
@@ -41,11 +41,6 @@ class SchemaConstants:
     MIN_TURNS: int = 2
     MAX_TURNS: int = 20
     
-    # Time series limits
-    MIN_SERIES_POINTS: int = 10
-    VALUE_LOWER_BOUND: float = -1e10
-    VALUE_UPPER_BOUND: float = 1e10
-    
     # Supported languages (ISO 639-1)
     SUPPORTED_LANGUAGES: frozenset = frozenset({
         "en", "es", "fr", "de", "pt", "it", "nl", "pl", "ru", "zh", 
@@ -69,16 +64,7 @@ IntentType = Literal[
 SentimentType = Literal["positive", "neutral", "negative"]
 ResolutionType = Literal["resolved", "escalated", "unresolved"]
 SpeakerType = Literal["customer", "agent"]
-FrequencyType = Literal["1min", "5min", "1hour", "1day"]
-SeriesType = Literal[
-    "sensor_temperature",
-    "sensor_pressure",
-    "stock_price",
-    "energy_consumption",
-    "network_traffic",
-    "manufacturing_output"
-]
-DomainType = Literal["customer_service", "time_series", "financial"]
+DomainType = Literal["customer_service"]
 FileFormatType = Literal["json", "jsonl", "parquet", "csv"]
 BiasSeverityType = Literal["none", "low", "medium", "high"]
 
@@ -114,7 +100,7 @@ else:
             extra = "forbid"
 
 # ============================================================================
-# DOMAIN 1: CUSTOMER SERVICE CONVERSATIONS
+# DOMAIN: CUSTOMER SERVICE CONVERSATIONS
 # ============================================================================
 
 class ConversationTurn(BaseSchema):
@@ -201,81 +187,6 @@ class CustomerServiceConversation(BaseSchema):
             return v
 
 # ============================================================================
-# DOMAIN 2: TIME-SERIES DATA
-# ============================================================================
-
-class TimeSeriesPoint(BaseSchema):
-    """Single point in a time series."""
-    
-    timestamp: datetime
-    value: float
-    
-    if PYDANTIC_V2:
-        @field_validator('timestamp')
-        @classmethod
-        def ensure_tz_aware(cls, v: datetime) -> datetime:
-            return ensure_timezone_aware(v)
-        
-        @field_validator('value')
-        @classmethod
-        def value_is_finite(cls, v: float) -> float:
-            if not (SchemaConstants.VALUE_LOWER_BOUND < v < SchemaConstants.VALUE_UPPER_BOUND):
-                raise ValueError(
-                    f"Value must be between {SchemaConstants.VALUE_LOWER_BOUND} "
-                    f"and {SchemaConstants.VALUE_UPPER_BOUND}"
-                )
-            return v
-    else:
-        @validator('timestamp')
-        def ensure_tz_aware(cls, v: datetime) -> datetime:
-            return ensure_timezone_aware(v)
-        
-        @validator('value')
-        def value_is_finite(cls, v: float) -> float:
-            if not (SchemaConstants.VALUE_LOWER_BOUND < v < SchemaConstants.VALUE_UPPER_BOUND):
-                raise ValueError(
-                    f"Value must be between {SchemaConstants.VALUE_LOWER_BOUND} "
-                    f"and {SchemaConstants.VALUE_UPPER_BOUND}"
-                )
-            return v
-
-
-class TimeSeries(BaseSchema):
-    """Complete time series dataset."""
-    
-    series_id: str
-    series_type: SeriesType
-    frequency: FrequencyType
-    points: List[TimeSeriesPoint] = Field(
-        ..., 
-        min_length=SchemaConstants.MIN_SERIES_POINTS
-    )
-    
-    # Statistical properties (computed during generation)
-    has_trend: bool = False
-    has_seasonality: bool = False
-    has_noise: bool = True
-    anomaly_indices: List[int] = Field(default_factory=list)
-    
-    metadata: Metadata = Field(default_factory=dict)
-    
-    if PYDANTIC_V2:
-        @field_validator('points')
-        @classmethod
-        def validate_timestamps_sorted(cls, v: List[TimeSeriesPoint]) -> List[TimeSeriesPoint]:
-            timestamps = [p.timestamp for p in v]
-            if timestamps != sorted(timestamps):
-                raise ValueError("Timestamps must be in ascending order")
-            return v
-    else:
-        @validator('points')
-        def validate_timestamps_sorted(cls, v: List[TimeSeriesPoint]) -> List[TimeSeriesPoint]:
-            timestamps = [p.timestamp for p in v]
-            if timestamps != sorted(timestamps):
-                raise ValueError("Timestamps must be in ascending order")
-            return v
-
-# ============================================================================
 # VALIDATION RESULT SCHEMAS
 # ============================================================================
 
@@ -354,7 +265,7 @@ class DatasetMetadata(BaseSchema):
 # SCHEMA VERSION (for tracking prompt/schema compatibility)
 # ============================================================================
 
-SCHEMA_VERSION = "1.1.0"
+SCHEMA_VERSION = "2.0.0"
 
 def get_schema_info() -> Dict[str, Any]:
     """Return schema version and compatibility info."""
@@ -362,6 +273,6 @@ def get_schema_info() -> Dict[str, Any]:
         "version": SCHEMA_VERSION,
         "pydantic_version": PYDANTIC_VERSION if 'PYDANTIC_VERSION' in dir() else "unknown",
         "pydantic_v2": PYDANTIC_V2,
-        "domains": ["customer_service", "time_series"],
-        "domains_planned": ["financial"],
+        "domains": ["customer_service"],
+        "domains_archived": ["time_series"],
     }

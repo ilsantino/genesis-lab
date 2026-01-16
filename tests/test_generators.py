@@ -8,10 +8,9 @@ import json
 import pytest
 from unittest.mock import MagicMock, patch
 
-from src.generation import CustomerServiceGenerator, TimeSeriesGenerator
-from src.generation.schemas import CustomerServiceConversation, TimeSeries
+from src.generation import CustomerServiceGenerator
+from src.generation.schemas import CustomerServiceConversation
 from src.generation.templates.customer_service_prompts import ALL_INTENTS
-from src.generation.templates.timeseries_prompts import ALL_SERIES_TYPES
 
 
 # =============================================================================
@@ -56,60 +55,6 @@ MOCK_CONVERSATION_SPECIFIC_INTENT = json.dumps({
         {"speaker": "customer", "text": "When will I actually see the money?"},
         {"speaker": "agent", "text": "The refund will appear in your account within 24-48 hours. I've also added a $10 credit for the inconvenience."}
     ]
-})
-
-MOCK_TIMESERIES_RESPONSE = json.dumps({
-    "series_id": "ts_test123456",
-    "domain": "electricity",
-    "series_type": "residential_consumption",
-    "frequency": "1H",
-    "complexity": "medium",
-    "data_quality": "clean",
-    "language": "en",
-    "length": 24,
-    "seasonality_types": ["daily"],
-    "trend_type": "none",
-    "anomaly_types": [],
-    "anomaly_indices": [],
-    "domain_context": "residential",
-    "start": "2024-01-01T00:00:00Z",
-    "target": [
-        0.2, 0.1, -0.1, -0.2, -0.15, 0.3,
-        0.8, 1.2, 1.0, 0.7, 0.5, 0.6,
-        0.8, 0.9, 0.7, 0.5, 0.9, 1.5,
-        1.8, 1.6, 1.2, 0.8, 0.5, 0.3
-    ],
-    "metadata": {
-        "unit": "kWh",
-        "description": "Residential electricity consumption"
-    }
-})
-
-MOCK_TIMESERIES_SPECIFIC_TYPE = json.dumps({
-    "series_id": "ts_sensor12345",
-    "domain": "sensors",
-    "series_type": "temperature",
-    "frequency": "1H",
-    "complexity": "simple",
-    "data_quality": "clean",
-    "language": "en",
-    "length": 24,
-    "seasonality_types": ["daily"],
-    "trend_type": "none",
-    "anomaly_types": [],
-    "anomaly_indices": [],
-    "domain_context": "industrial",
-    "start": "2024-01-01T00:00:00Z",
-    "target": [
-        20.5, 20.3, 20.1, 19.8, 19.5, 19.8,
-        20.2, 21.0, 22.0, 23.0, 23.5, 24.0,
-        24.2, 24.5, 24.3, 24.0, 23.5, 23.0,
-        22.5, 22.0, 21.5, 21.0, 20.8, 20.5
-    ],
-    "metadata": {
-        "unit": "Celsius",
-        "description": "Temperature sensor reading"
-    }
 })
 
 
@@ -283,132 +228,6 @@ class TestCustomerServiceGenerator:
 
 
 # =============================================================================
-# TIME SERIES GENERATOR TESTS
-# =============================================================================
-
-class TestTimeSeriesGenerator:
-    """Tests for TimeSeriesGenerator."""
-    
-    @patch('src.generation.timeseries_generator.get_config')
-    def test_generate_single_returns_valid_structure(self, mock_get_config, mock_bedrock_client, mock_config):
-        """Test that generate_single returns a valid time series structure."""
-        mock_get_config.return_value = mock_config
-        mock_bedrock_client.invoke_model.return_value = MOCK_TIMESERIES_RESPONSE
-        
-        generator = TimeSeriesGenerator(
-            client=mock_bedrock_client,
-            domain="time_series"
-        )
-        
-        result = generator.generate_single()
-        
-        # Verify structure
-        assert "series_id" in result
-        assert "domain" in result
-        assert "series_type" in result
-        assert "frequency" in result
-        assert "target" in result
-        
-        # Verify target is a list of numbers
-        assert isinstance(result["target"], list)
-        assert len(result["target"]) > 0
-        assert all(isinstance(v, (int, float)) for v in result["target"])
-        
-        # Verify invoke_model was called
-        mock_bedrock_client.invoke_model.assert_called_once()
-    
-    @patch('src.generation.timeseries_generator.get_config')
-    def test_generate_single_with_specific_type(self, mock_get_config, mock_bedrock_client, mock_config):
-        """Test generation with a specific series type."""
-        mock_get_config.return_value = mock_config
-        mock_bedrock_client.invoke_model.return_value = MOCK_TIMESERIES_SPECIFIC_TYPE
-        
-        generator = TimeSeriesGenerator(
-            client=mock_bedrock_client,
-            domain="time_series"
-        )
-        
-        result = generator.generate_single(series_type="temperature")
-        
-        # Verify series type is set correctly
-        assert result["series_type"] == "temperature"
-        assert result["domain"] == "sensors"
-        
-        # Verify data points
-        assert len(result["target"]) == 24
-    
-    @patch('src.generation.timeseries_generator.get_config')
-    def test_generate_batch_returns_list(self, mock_get_config, mock_bedrock_client, mock_config):
-        """Test that generate_batch returns a list of time series."""
-        mock_get_config.return_value = mock_config
-        mock_bedrock_client.invoke_model.return_value = MOCK_TIMESERIES_RESPONSE
-        
-        generator = TimeSeriesGenerator(
-            client=mock_bedrock_client,
-            domain="time_series"
-        )
-        
-        results = generator.generate_batch(count=3, continue_on_error=True)
-        
-        assert isinstance(results, list)
-        assert len(results) == 3
-        
-        for ts in results:
-            assert "series_id" in ts
-            assert "target" in ts
-        
-        # Verify invoke_model was called 3 times
-        assert mock_bedrock_client.invoke_model.call_count == 3
-    
-    @patch('src.generation.timeseries_generator.get_config')
-    def test_generator_properties(self, mock_get_config, mock_bedrock_client, mock_config):
-        """Test generator properties."""
-        mock_get_config.return_value = mock_config
-        
-        generator = TimeSeriesGenerator(
-            client=mock_bedrock_client,
-            domain="time_series"
-        )
-        
-        # Check available series types
-        assert generator.series_type_count == 16
-        assert len(generator.available_series_types) == 16
-        
-        # Check available domains
-        domains = generator.available_domains
-        assert "electricity" in domains
-        assert "sensors" in domains
-    
-    @patch('src.generation.timeseries_generator.get_config')
-    def test_get_series_types_for_domain(self, mock_get_config, mock_bedrock_client, mock_config):
-        """Test getting series types for a specific domain."""
-        mock_get_config.return_value = mock_config
-        
-        generator = TimeSeriesGenerator(
-            client=mock_bedrock_client,
-            domain="time_series"
-        )
-        
-        electricity_types = generator.get_series_types_for_domain("electricity")
-        assert len(electricity_types) > 0
-        assert "residential_consumption" in electricity_types
-        
-        sensor_types = generator.get_series_types_for_domain("sensors")
-        assert len(sensor_types) > 0
-    
-    def test_all_series_types_defined(self):
-        """Test that ALL_SERIES_TYPES contains expected types."""
-        # Should have 16 series types
-        assert len(ALL_SERIES_TYPES) == 16
-        
-        # Check a few known types from different domains
-        assert "residential_consumption" in ALL_SERIES_TYPES  # electricity
-        assert "temperature" in ALL_SERIES_TYPES  # sensors
-        assert "solar_generation" in ALL_SERIES_TYPES  # energy
-        assert "stock_price" in ALL_SERIES_TYPES  # financial
-
-
-# =============================================================================
 # JSON PARSING TESTS
 # =============================================================================
 
@@ -505,4 +324,3 @@ class TestErrorHandling:
         metrics = generator.get_metrics()
         assert metrics["total_generated"] == 2
         assert metrics["total_failed"] == 1
-

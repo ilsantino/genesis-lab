@@ -1,4 +1,4 @@
-# GENESIS-LAB — Development Log
+ñ# GENESIS-LAB — Development Log
 
 > Registro de desarrollo del proyecto de generación de datos sintéticos con AWS Bedrock.
 

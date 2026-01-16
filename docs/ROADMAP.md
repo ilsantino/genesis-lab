@@ -2,7 +2,7 @@
 
 Este documento describe las fases de desarrollo planificadas para GENESIS-LAB.
 
-**Última actualización:** 2024-12-21
+**Última actualización:** 2026-01-16
 
 ---
 
@@ -12,6 +12,10 @@ Este documento describe las fases de desarrollo planificadas para GENESIS-LAB.
 MVP (Días 0-3)     →     v1.0 (Días 4-7)     →     v2.0 (Futuro)
    ✅ Completado          🔄 En progreso           ⬜ Planificado
 ```
+
+**Enfoque actual:** Customer Service Conversations (Banking77)
+
+> **Nota:** El dominio Time Series fue archivado. Ver [DOMAIN2_TIMESERIES.md](DOMAIN2_TIMESERIES.md) para detalles.
 
 ---
 
@@ -31,13 +35,12 @@ MVP (Días 0-3)     →     v1.0 (Días 4-7)     →     v2.0 (Futuro)
 | Configuración AWS/Bedrock | ✅ | 0 |
 | GitHub setup | ✅ | 0 |
 | Schemas Pydantic | ✅ | 1 |
-| Reference datasets (Banking77, electricity) | ✅ | 1 |
+| Reference dataset (Banking77) | ✅ | 1 |
 | Prompt templates bilingües | ✅ | 1 |
 | BedrockClient con retry/rate limiting | ✅ | 2 |
 | CustomerServiceGenerator | ✅ | 2 |
-| TimeSeriesGenerator | ✅ | 2 |
 | Smoke tests | ✅ | 2 |
-| Unit tests (16 tests) | ✅ | 2 |
+| Unit tests | ✅ | 2 |
 | QualityValidator | ✅ | 3 |
 | BiasDetector | ✅ | 3 |
 | DatasetRegistry (SQLite) | ✅ | 3 |
@@ -55,31 +58,29 @@ MVP (Días 0-3)     →     v1.0 (Días 4-7)     →     v2.0 (Futuro)
 ## Fase 2: v1.0 (Días 4-7) 🔄
 
 ### Objetivos
-- Escalar generación a 1K+ items
-- Mejorar accuracy del clasificador
+- Escalar generación a 1K+ conversaciones
+- Mejorar accuracy del clasificador a 60-70%
 - UI básica con Streamlit
-- Pipeline de time series completo
+- Pipeline de entrenamiento completo
 
 ### Checklist
 
 | Feature | Estado | Prioridad |
 |---------|--------|-----------|
 | Generar 1K conversaciones | ⬜ | Alta |
-| TimeSeriesValidator | ⬜ | Alta |
-| Generar 100+ time series | ⬜ | Alta |
+| Mejorar calidad de generación | ⬜ | Alta |
+| XGBoost classifier | ⬜ | Alta |
+| Sentence embeddings | ⬜ | Alta |
 | UI Streamlit: Dashboard | ⬜ | Media |
 | UI Streamlit: Generación manual | ⬜ | Media |
-| XGBoost classifier | ⬜ | Media |
-| Sentence embeddings | ⬜ | Media |
-| Forecasting baseline | ⬜ | Media |
 | Prompt caching | ⬜ | Baja |
 | Export HuggingFace Hub | ⬜ | Baja |
 
 ### Metas
-- 1,000+ conversaciones
+- 1,000+ conversaciones generadas
 - Classifier accuracy: 60-70%
 - UI funcional para demos
-- Time series pipeline completo
+- Pipeline de training reproducible
 
 ---
 
@@ -100,7 +101,7 @@ MVP (Días 0-3)     →     v1.0 (Días 4-7)     →     v2.0 (Futuro)
 | Fairness metrics avanzadas | ⬜ | Demographic parity, etc. |
 | S3 export con versionamiento | ⬜ | Para producción |
 | Dashboard comparativo | ⬜ | Comparar versiones de datasets |
-| Financial transactions domain | ⬜ | Documentado, no implementado |
+| Financial transactions domain | ⬜ | Nuevo dominio planificado |
 | Multi-model support | ⬜ | Nova, Llama, etc. |
 
 ---
@@ -108,18 +109,28 @@ MVP (Días 0-3)     →     v1.0 (Días 4-7)     →     v2.0 (Futuro)
 ## Timeline Estimado
 
 ```
-Diciembre 2024
-├── Día 0-1: Setup + Schemas ✅
-├── Día 2: Generators + Tests ✅
-├── Día 3: Validation + Training ✅
-├── Día 4-5: Scale to 1K + UI
-├── Día 6-7: Time Series + Polish
+Enero 2026
+├── Fase 1 completada ✅
+├── Refactor: focus on conversations ✅
+├── Scale to 1K conversations
+├── Train classifier to 60-70%
+└── v1.0 Release
 
-Enero 2025
-├── v1.0 Release
+Febrero 2026
 ├── Agent integration
-└── RLHF experiments
+├── RLHF experiments
+└── v2.0 planning
 ```
+
+---
+
+## Dominios
+
+| Dominio | Estado | Notas |
+|---------|--------|-------|
+| Customer Service (Banking77) | ✅ Activo | Enfoque principal |
+| Time Series | ⚠️ Archivado | Ver DOMAIN2_TIMESERIES.md |
+| Financial Transactions | ⬜ Futuro | v2.0+ |
 
 ---
 
@@ -128,4 +139,4 @@ Enero 2025
 - [DEVLOG.md](DEVLOG.md) - Progreso detallado día a día
 - [PROJECTSTATUS.md](PROJECTSTATUS.md) - Estado actual del proyecto
 - [ARCHITECTURE.md](ARCHITECTURE.md) - Arquitectura técnica
-
+- [DOMAIN2_TIMESERIES.md](DOMAIN2_TIMESERIES.md) - Time Series (archivado)
