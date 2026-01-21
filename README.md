@@ -65,10 +65,19 @@ Nunca subas tu .env al repo.
 
 ```bash
 # Generar 10 conversaciones de prueba
-uv run python -m scripts.smoke_test
+uv run python scripts/generate_data.py --total 10 --delay 3
 
-# Generar 100 conversaciones bilingües (~50 min)
-uv run python scripts/generate_100.py
+# Generar 100 conversaciones bilingües (~1.5h)
+uv run python scripts/generate_data.py --total 100
+
+# Generación overnight (500 items con auto-pause)
+uv run python scripts/generate_data.py --total 500 --max-failures 10
+
+# Resumir generación interrumpida
+uv run python scripts/generate_data.py --total 500 --resume
+
+# Ver plan sin generar (dry run)
+uv run python scripts/generate_data.py --total 100 --dry-run
 
 # Validar calidad del dataset
 uv run python scripts/validate_100.py
@@ -88,8 +97,10 @@ Ejecutar: `uv run streamlit run ui/app.py`
 - **Home** - Dashboard con dominios y métricas
 - **Generate** - Configuración y generación de datos sintéticos
 - **Validate** - Análisis de calidad, sesgos y distribuciones
+- **Training** - Entrenamiento de clasificadores con presets y CV
 - **Registry** - Browse, search y export de datasets
 - **Compare** - Comparación side-by-side de datasets
+- **Help** - Documentación completa del sistema
 
 ### Características:
 - Tema oscuro con glassmorphism

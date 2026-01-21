@@ -740,7 +740,33 @@ print(f"Best: {search.best_params}")
 | src/training/trainer.py | ✅ Completo |
 | ui/pages/training.py | ✅ Train/Evaluate/History tabs |
 | ui/pages/help.py | ✅ Documentation page |
+| scripts/generate_data.py | ✅ Flexible generation with backoff |
 | All tests passing | ✅ 149/149 |
+
+### scripts/generate_data.py - Generación Flexible
+
+Script mejorado para generación overnight con configuración completa:
+
+| Feature | Descripción |
+|---------|-------------|
+| CLI args | `--total`, `--delay`, `--checkpoint-interval`, `--max-retries` |
+| Exponential backoff | Incrementa delay automáticamente en throttling |
+| Auto-pause | Pausa después de N failures consecutivos |
+| Cost tracking | Estima costo AWS por batch |
+| ETA display | Muestra tiempo estimado de finalización |
+| Dry run | `--dry-run` para ver plan sin generar |
+
+**Uso:**
+```bash
+# Quick test
+uv run python scripts/generate_data.py --total 10 --delay 3
+
+# Overnight run
+uv run python scripts/generate_data.py --total 500 --delay 5 --max-failures 10
+
+# Resume
+uv run python scripts/generate_data.py --total 500 --resume
+```
 
 ---
 
@@ -749,20 +775,13 @@ print(f"Best: {search.best_params}")
 ### Prioridad Alta (Bloqueado por AWS)
 
 1. **Escalar a 1K Conversaciones**
-   - Esperando quota increase
-   - Batch inference job submitted
-   - Rate limiting: 5s delay requerido
-
-### Prioridad Media (Sin Dependencia AWS)
-
-2. **Generación Automatizada**
-   - Decidir entre `trickle_generate.py` (nuevo) vs mejorar `generate_100.py`
-   - Exponential backoff para throttling
-   - Ejecución overnight
+   - Usar `scripts/generate_data.py --total 1000`
+   - Esperando quota increase para mayor velocidad
+   - Puede ejecutarse overnight con auto-pause
 
 ### Prioridad Baja
 
-3. **Optimizaciones**
+2. **Optimizaciones**
    - Prompt caching para reducir costos AWS
    - Export a HuggingFace Hub
 

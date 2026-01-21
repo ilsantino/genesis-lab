@@ -82,7 +82,8 @@ MVP (Días 0-3)     →     v1.0 (Días 4-7)     →     v2.0 (Futuro)
 | Cross-validation | ✅ | Media | 5 |
 | UI Streamlit: Training | ✅ | Media | 5 |
 | UI Streamlit: Help/Docs | ✅ | Baja | 5 |
-| Generar 1K conversaciones | ⏳ | Alta | Bloqueado (AWS) |
+| scripts/generate_data.py (flexible) | ✅ | Media | 5 |
+| Generar 1K conversaciones | ⏳ | Alta | Ready (usar generate_data.py) |
 | Sentence embeddings | ⬜ | Media | - |
 | Prompt caching | ⬜ | Baja | - |
 | Export HuggingFace Hub | ⬜ | Baja | - |
