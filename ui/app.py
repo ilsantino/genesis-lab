@@ -60,6 +60,7 @@ def render_sidebar():
             ("🏠 Home", "Home"),
             ("⚡ Generate", "Generate"),
             ("📊 Validate", "Validate"),
+            ("🎓 Training", "Training"),
             ("📁 Registry", "Registry"),
             ("🔄 Compare", "Compare"),
         ]
@@ -298,6 +299,9 @@ def main():
     elif page == "Validate":
         from ui.pages.validate import render_validate_page
         render_validate_page()
+    elif page == "Training":
+        from ui.pages.training import render_training_page
+        render_training_page()
     elif page == "Registry":
         from ui.pages.registry import render_registry_page
         render_registry_page()

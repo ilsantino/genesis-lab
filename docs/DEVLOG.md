@@ -11,7 +11,8 @@
 - [Día 2 — Motor de Generación + AWS Bedrock](#día-2--motor-de-generación--aws-bedrock)
 - [Día 3 — Validation Pipeline + Training Baseline](#día-3--validation-pipeline--training-baseline)
 - [Día 4 — UI Polish and Component System](#día-4--ui-polish-and-component-system-2026-01-20)
-- [Próximos Pasos — Día 5+](#próximos-pasos--día-5)
+- [Día 5 — Tests Completos + Training Module](#día-5--tests-completos--training-module-2026-01-21)
+- [Próximos Pasos — Día 6+](#próximos-pasos--día-6)
 
 ---
 
@@ -632,7 +633,109 @@ Implementación completa del sistema de UI con Streamlit. Arquitectura de compon
 
 ---
 
-## Próximos Pasos — Día 5+
+## Día 5 — Tests Completos + Training Module (2026-01-21)
+
+**Fecha:** 2026-01-21
+
+### Resumen
+
+Implementación completa de tests para registry, batch inference, y visualización. Training module expandido con configuraciones, orquestación de experimentos, y búsqueda de hiperparámetros.
+
+### Archivos Creados
+
+| Archivo | Descripción | Líneas |
+|---------|-------------|--------|
+| `tests/test_registry.py` | Unit tests para DatasetRegistry CRUD, métricas, training runs | ~300 |
+| `tests/test_batch.py` | Mock tests para BatchInputBuilder, BatchJobManager, BatchResultProcessor | ~350 |
+| `tests/test_visualization.py` | Tests para 12 funciones de visualización | ~350 |
+| `src/training/models.py` | ModelConfig, DataConfig, TrainingConfig, ExperimentConfig + PRESETS | ~430 |
+| `src/training/trainer.py` | Trainer, ExperimentTracker, HyperparameterSearch | ~700 |
+
+### Archivos Modificados
+
+| Archivo | Cambio |
+|---------|--------|
+| `src/training/__init__.py` | Exports expandidos (15 clases/funciones) |
+
+### Tests Implementados
+
+| Test File | Tests | Cobertura |
+|-----------|-------|-----------|
+| `test_registry.py` | 21 | CRUD, métricas, training runs, stats |
+| `test_batch.py` | 30 | BatchInputBuilder, BatchJobManager, BatchResultProcessor |
+| `test_visualization.py` | 40 | load, analyze, percentages, summaries, compare |
+| **Total nuevos** | **91** | |
+| **Total proyecto** | **149** | Todos passing |
+
+### Training Module
+
+#### models.py - Configuraciones
+
+| Componente | Descripción |
+|------------|-------------|
+| `ModelConfig` | Hiperparámetros de modelo (type, max_features, ngram_range) |
+| `DataConfig` | Preprocesamiento (language_filter, min_turns, stratify) |
+| `TrainingConfig` | Entrenamiento (test_size, random_state, cv_folds) |
+| `ExperimentConfig` | Configuración completa de experimento |
+| `PRESETS` | 5 configuraciones listas (fast, balanced, best, quick_test, cross_validation) |
+
+**Presets disponibles:**
+```python
+from src.training import get_preset
+
+config = get_preset("fast")      # LogisticRegression rápido
+config = get_preset("balanced")  # RandomForest equilibrado
+config = get_preset("best")      # XGBoost máxima precisión
+```
+
+#### trainer.py - Orquestación
+
+| Clase | Métodos |
+|-------|---------|
+| `Trainer` | train(), evaluate(), cross_validate(), grid_search(), random_search() |
+| `ExperimentTracker` | start_experiment(), log_metric(), end_experiment(), compare_experiments() |
+| `HyperparameterSearch` | grid_search(), random_search() con DEFAULT_PARAM_GRIDS |
+
+**Resultados dataclasses:**
+- `CVResult` - Cross-validation con mean/std accuracy/f1
+- `SearchResult` - Mejor params, score, tiempo
+- `ExperimentResult` - Experimento completo con métricas y artefactos
+
+**Ejemplo de uso:**
+```python
+from src.training import Trainer, get_preset
+
+trainer = Trainer(config=get_preset("best"))
+
+# Entrenamiento simple
+result = trainer.train(conversations)
+
+# Cross-validation
+cv = trainer.cross_validate(conversations, k=5)
+print(f"Accuracy: {cv.mean_accuracy:.2%} ± {cv.std_accuracy:.2%}")
+
+# Búsqueda de hiperparámetros
+search = trainer.grid_search(conversations, param_grid={
+    "max_features": [1000, 5000],
+    "ngram_range": [(1,1), (1,2)]
+})
+print(f"Best: {search.best_params}")
+```
+
+### Checklist Día 5
+
+| Entregable | Estado |
+|------------|--------|
+| tests/test_registry.py | ✅ 21 tests |
+| tests/test_batch.py | ✅ 30 tests |
+| tests/test_visualization.py | ✅ 40 tests |
+| src/training/models.py | ✅ Completo |
+| src/training/trainer.py | ✅ Completo |
+| All tests passing | ✅ 149/149 |
+
+---
+
+## Próximos Pasos — Día 6+
 
 ### Prioridad Alta (Bloqueado por AWS)
 
@@ -643,19 +746,14 @@ Implementación completa del sistema de UI con Streamlit. Arquitectura de compon
 
 ### Prioridad Media (Sin Dependencia AWS)
 
-2. **Tests Faltantes**
-   - `tests/test_registry.py` — Unit tests para DatasetRegistry
-   - `tests/test_batch.py` — Mock tests para BatchJobManager
-   - `tests/test_visualization.py` — Tests para utilidades UI
-
-3. **Training Module**
-   - Implementar `src/training/trainer.py` (vacío)
-   - Implementar `src/training/models.py` (vacío)
-   - Añadir XGBoost como alternativa a LogisticRegression
+2. **Generación Automatizada**
+   - Decidir entre `trickle_generate.py` (nuevo) vs mejorar `generate_100.py`
+   - Exponential backoff para throttling
+   - Ejecución overnight
 
 ### Prioridad Baja
 
-4. **Optimizaciones**
+3. **Optimizaciones**
    - Prompt caching para reducir costos AWS
    - Export a HuggingFace Hub
 

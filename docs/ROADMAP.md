@@ -2,7 +2,7 @@
 
 Este documento describe las fases de desarrollo planificadas para GENESIS-LAB.
 
-**Última actualización:** 2026-01-20
+**Última actualización:** 2026-01-21
 
 ---
 
@@ -75,19 +75,23 @@ MVP (Días 0-3)     →     v1.0 (Días 4-7)     →     v2.0 (Futuro)
 | Sistema de componentes UI | ✅ | Media | 4 |
 | Diseño responsivo | ✅ | Baja | 4 |
 | Estados de carga/error | ✅ | Baja | 4 |
+| Tests: registry, batch, visualization | ✅ | Media | 5 |
+| Training module completo | ✅ | Media | 5 |
+| XGBoost/RandomForest classifier | ✅ | Alta | 5 |
+| Hyperparameter search | ✅ | Media | 5 |
+| Cross-validation | ✅ | Media | 5 |
+| UI Streamlit: Training | ✅ | Media | 5 |
 | Generar 1K conversaciones | ⏳ | Alta | Bloqueado (AWS) |
-| XGBoost classifier | ⬜ | Alta | - |
-| Sentence embeddings | ⬜ | Alta | - |
-| Tests: registry, batch | ⬜ | Media | - |
-| Training module completo | ⬜ | Media | - |
+| Sentence embeddings | ⬜ | Media | - |
 | Prompt caching | ⬜ | Baja | - |
 | Export HuggingFace Hub | ⬜ | Baja | - |
 
 ### Metas
 - ✅ UI funcional para demos
+- ✅ Pipeline de training reproducible (Trainer + ExperimentTracker)
+- ✅ 149 tests passing
 - ⏳ 1,000+ conversaciones generadas (esperando AWS)
 - ⬜ Classifier accuracy: 60-70%
-- ⬜ Pipeline de training reproducible
 
 ---
 
@@ -120,6 +124,8 @@ Enero 2026
 ├── Fase 1 completada ✅
 ├── Refactor: focus on conversations ✅
 ├── UI Streamlit completa ✅ (Día 4)
+├── Tests + Training module ✅ (Día 5)
+├── Training UI + 149 tests ✅ (Día 5)
 ├── Scale to 1K conversations ⏳ (esperando AWS)
 ├── Train classifier to 60-70%
 └── v1.0 Release

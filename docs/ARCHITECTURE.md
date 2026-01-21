@@ -66,6 +66,7 @@ GENESIS-LAB/
 │   └── pages/
 │       ├── generate.py
 │       ├── validate.py
+│       ├── training.py
 │       ├── registry.py
 │       └── compare.py
 ├── .cursorrules
@@ -129,14 +130,20 @@ Estos módulos producen reportes estructurados que alimentan el registro.
 
 #### c) `src/training/`
 
-Módulos para entrenamiento ligero o ajuste interno.
+Módulos completos para entrenamiento de clasificadores de intents.
 
 | Archivo | Responsabilidad |
 |---------|-----------------|
-| `trainer.py` | Entrenamiento de modelos complementarios (clasificadores, embeddings) |
-| `models.py` | Estructuras internas para representar modelos entrenados |
+| `intent_classifier.py` | TF-IDF + LogisticRegression/RandomForest/XGBoost para clasificación de intents |
+| `trainer.py` | Orquestación de experimentos: `Trainer`, `ExperimentTracker`, `HyperparameterSearch` |
+| `models.py` | Configuraciones: `ModelConfig`, `DataConfig`, `TrainingConfig`, `ExperimentConfig`, `PRESETS` |
 
-Este módulo es opcional para el MVP inicial, pero la arquitectura ya lo considera para escalabilidad futura.
+**Funcionalidades:**
+- Entrenamiento con múltiples algoritmos (LogReg, RandomForest, XGBoost)
+- Cross-validation con k-folds configurable
+- Grid search y random search para hiperparámetros
+- Experiment tracking con métricas y artefactos
+- Presets predefinidos: `fast`, `balanced`, `best`
 
 #### d) `src/registry/`
 
@@ -177,6 +184,7 @@ ui/
 └── pages/
     ├── generate.py        # Generación de datos
     ├── validate.py        # Validación con métricas
+    ├── training.py        # Entrenamiento de modelos
     ├── registry.py        # Registro de datasets
     └── compare.py         # Comparación de datasets
 ```
@@ -226,6 +234,7 @@ Cada funcionalidad vive como una página independiente:
 |--------|---------------|
 | `generate.py` | Configuración y generación de datos sintéticos |
 | `validate.py` | Análisis de calidad, sesgos y distribuciones |
+| `training.py` | Entrenamiento de clasificadores con presets, CV, y tracking |
 | `registry.py` | Browse, search y export de datasets |
 | `compare.py` | Comparación side-by-side de datasets |
 

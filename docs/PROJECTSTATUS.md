@@ -2,7 +2,7 @@
 
 Este documento resume el estado actual del proyecto GENESIS-LAB, incluyendo el trabajo realizado, métricas clave, y próximos pasos.
 
-**Última actualización:** 2026-01-20 (Día 4)
+**Última actualización:** 2026-01-21 (Día 5)
 
 ---
 
@@ -97,7 +97,9 @@ El proyecto está listo para escalar a datasets más grandes (1K+). UI completad
 
 | Componente | Estado | Descripción |
 |------------|--------|-------------|
-| `intent_classifier.py` | ✅ | TF-IDF + LogisticRegression baseline |
+| `intent_classifier.py` | ✅ | TF-IDF + LogReg/RandomForest/XGBoost |
+| `models.py` | ✅ | ModelConfig, DataConfig, TrainingConfig, ExperimentConfig |
+| `trainer.py` | ✅ | Trainer, ExperimentTracker, HyperparameterSearch |
 
 ### Utils (`src/utils/`)
 
@@ -153,9 +155,9 @@ El proyecto está listo para escalar a datasets más grandes (1K+). UI completad
 
 ---
 
-## 5. Trabajo Pendiente (Día 5+)
+## 5. Trabajo Pendiente (Día 6+)
 
-### Completado (Día 4)
+### Completado (Día 4-5)
 
 - ✅ **UI Streamlit Completa**
   - Dashboard de métricas
@@ -164,6 +166,17 @@ El proyecto está listo para escalar a datasets más grandes (1K+). UI completad
   - Sistema de componentes reutilizables
   - Diseño responsivo
   - Estados de carga y error
+
+- ✅ **Tests Completos** (91 nuevos, 149 total)
+  - `tests/test_registry.py` — 21 tests para DatasetRegistry
+  - `tests/test_batch.py` — 30 tests para BatchJobManager
+  - `tests/test_visualization.py` — 40 tests para utilidades UI
+
+- ✅ **Training Module Completo**
+  - `src/training/models.py` — Configuraciones y presets
+  - `src/training/trainer.py` — Orquestación con experiment tracking
+  - HyperparameterSearch con grid_search y random_search
+  - Cross-validation integrada
 
 ### Prioridad Alta (Bloqueado por AWS)
 
@@ -175,23 +188,18 @@ El proyecto está listo para escalar a datasets más grandes (1K+). UI completad
 
 ### Prioridad Media (Sin Dependencia AWS)
 
-2. **Tests Faltantes**
-   - `tests/test_registry.py` — Unit tests para DatasetRegistry
-   - `tests/test_batch.py` — Mock tests para BatchJobManager
-   - `tests/test_visualization.py` — Tests para utilidades UI
+2. **Generación Automatizada**
+   - Decidir: trickle_generate.py vs mejorar generate_100.py
+   - Exponential backoff para throttling
+   - Ejecución overnight sin supervisión
 
-3. **Training Module**
-   - Implementar `src/training/trainer.py` (vacío)
-   - Implementar `src/training/models.py` (vacío)
-
-4. **Mejorar Intent Classifier**
-   - Probar XGBoost como alternativa
+3. **Mejorar Intent Classifier**
    - Añadir embeddings (sentence-transformers)
-   - Cross-validation
+   - Evaluar con 1K+ datos
 
 ### Prioridad Baja
 
-5. **Optimizaciones**
+4. **Optimizaciones**
    - Prompt caching para reducir costos
    - Export a HuggingFace Hub
    - Batch processing paralelo
