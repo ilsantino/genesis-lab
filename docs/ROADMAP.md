@@ -81,6 +81,7 @@ MVP (Días 0-3)     →     v1.0 (Días 4-7)     →     v2.0 (Futuro)
 | Hyperparameter search | ✅ | Media | 5 |
 | Cross-validation | ✅ | Media | 5 |
 | UI Streamlit: Training | ✅ | Media | 5 |
+| UI Streamlit: Help/Docs | ✅ | Baja | 5 |
 | Generar 1K conversaciones | ⏳ | Alta | Bloqueado (AWS) |
 | Sentence embeddings | ⬜ | Media | - |
 | Prompt caching | ⬜ | Baja | - |
@@ -125,7 +126,8 @@ Enero 2026
 ├── Refactor: focus on conversations ✅
 ├── UI Streamlit completa ✅ (Día 4)
 ├── Tests + Training module ✅ (Día 5)
-├── Training UI + 149 tests ✅ (Día 5)
+├── Training UI + Help/Docs ✅ (Día 5)
+├── 7 UI pages, 149 tests ✅
 ├── Scale to 1K conversations ⏳ (esperando AWS)
 ├── Train classifier to 60-70%
 └── v1.0 Release

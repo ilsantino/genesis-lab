@@ -722,6 +722,13 @@ search = trainer.grid_search(conversations, param_grid={
 print(f"Best: {search.best_params}")
 ```
 
+### UI Pages
+
+| Página | Descripción |
+|--------|-------------|
+| `ui/pages/training.py` | Entrenamiento de modelos con presets, CV, experiment tracking |
+| `ui/pages/help.py` | Documentación completa: Getting Started, Features, Concepts, FAQ |
+
 ### Checklist Día 5
 
 | Entregable | Estado |
@@ -731,6 +738,8 @@ print(f"Best: {search.best_params}")
 | tests/test_visualization.py | ✅ 40 tests |
 | src/training/models.py | ✅ Completo |
 | src/training/trainer.py | ✅ Completo |
+| ui/pages/training.py | ✅ Train/Evaluate/History tabs |
+| ui/pages/help.py | ✅ Documentation page |
 | All tests passing | ✅ 149/149 |
 
 ---

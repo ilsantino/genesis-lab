@@ -63,6 +63,7 @@ def render_sidebar():
             ("🎓 Training", "Training"),
             ("📁 Registry", "Registry"),
             ("🔄 Compare", "Compare"),
+            ("📚 Help", "Help"),
         ]
         
         for label, page in pages:
@@ -308,6 +309,9 @@ def main():
     elif page == "Compare":
         from ui.pages.compare import render_compare_page
         render_compare_page()
+    elif page == "Help":
+        from ui.pages.help import render_help_page
+        render_help_page()
     else:
         render_home()
 

@@ -186,7 +186,8 @@ ui/
     ├── validate.py        # Validación con métricas
     ├── training.py        # Entrenamiento de modelos
     ├── registry.py        # Registro de datasets
-    └── compare.py         # Comparación de datasets
+    ├── compare.py         # Comparación de datasets
+    └── help.py            # Documentación y guía de uso
 ```
 
 ### `/ui/app.py`
@@ -237,6 +238,7 @@ Cada funcionalidad vive como una página independiente:
 | `training.py` | Entrenamiento de clasificadores con presets, CV, y tracking |
 | `registry.py` | Browse, search y export de datasets |
 | `compare.py` | Comparación side-by-side de datasets |
+| `help.py` | Documentación: Getting Started, Features, Concepts, FAQ |
 
 ### Flujo de UI
 
