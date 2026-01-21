@@ -113,6 +113,10 @@ class AWSConfig(BaseModel):
         default=None,
         description="AWS secret access key"
     )
+    s3_bucket: Optional[str] = Field(
+        default=None,
+        description="S3 bucket for batch inference input/output"
+    )
     bedrock_model_ids: Dict[ModelName, str] = Field(
         default_factory=lambda: {
             "claude_35_sonnet": "us.anthropic.claude-3-5-sonnet-20241022-v2:0",

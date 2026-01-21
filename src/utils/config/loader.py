@@ -81,6 +81,7 @@ def load_aws_config() -> AWSConfig:
         region=os.getenv("AWS_REGION", "us-east-1"),
         access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
         secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
+        s3_bucket=os.getenv("S3_BUCKET"),
         bedrock_model_ids=model_ids,
         default_model=default_model_env  # type: ignore
     )

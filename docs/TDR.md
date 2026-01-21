@@ -63,3 +63,37 @@ Razón: simplicidad, interpretabilidad, velocidad de entrenamiento, sin GPU.
 Resultado: 15% accuracy con 100 samples (77 clases). Esperado.  
 Impacto: modelo guardado en `models/trained/intent_classifier.pkl`.  
 Siguiente paso: escalar datos o probar embeddings para mejorar accuracy.
+
+---
+TDR-011 — Arquitectura de componentes UI reutilizables
+Fecha: 2026-01-20  
+Alternativas consideradas: Inline HTML en cada página, uso directo de st.* widgets.  
+Razón: reutilización, consistencia visual, mantenibilidad, separación de responsabilidades.  
+Implementación: directorio `ui/components/` con tres módulos (cards.py, charts.py, styles.py).  
+Impacto: 12 componentes reutilizables, todas las páginas usan los mismos componentes.  
+Beneficio: cambios de estilo/comportamiento se hacen en un solo lugar.
+
+---
+TDR-012 — Tema oscuro con glassmorphism
+Fecha: 2026-01-20  
+Alternativas consideradas: Tema claro de Streamlit, tema oscuro sin efectos, Material Design.  
+Razón: modernidad, legibilidad en monitores de desarrollo, coherencia con herramientas DevOps.  
+Implementación: CSS personalizado en `styles.py` con:
+- Backdrop blur (glassmorphism)
+- CSS variables para paleta de colores
+- Gradientes primarios (#667eea → #764ba2)
+- Animaciones sutiles (fadeIn, pulse)
+Impacto: inyección de CSS vía `inject_custom_css()` en punto de entrada.  
+Trade-off: más código CSS que tema predeterminado, pero mejor experiencia visual.
+
+---
+TDR-013 — Diseño responsivo con media queries
+Fecha: 2026-01-20  
+Alternativas consideradas: Solo desktop, breakpoints de Bootstrap, CSS Grid.  
+Razón: accesibilidad móvil, demos en tablets, mejor UX general.  
+Implementación: media queries en `styles.py` para breakpoints:
+- 1024px (tablets landscape)
+- 768px (tablets portrait)
+- 480px (mobile)
+Impacto: tipografía, padding y elementos reducen tamaño proporcionalmente.  
+Limitación: Streamlit no es mobile-first, algunas limitaciones de layout persisten.

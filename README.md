@@ -80,12 +80,23 @@ uv run python -m src.training.intent_classifier
 uv run python scripts/health_check.py
 ```
 
-▶️ Cómo ejecutar la UI: uv run streamlit run ui/app.py
-La UI permite:
-- Probar generadores de datos
-- Visualizar métricas
-- Exportar datasets
-- Ejecutar validaciones
+## UI Streamlit
+
+Ejecutar: `uv run streamlit run ui/app.py`
+
+### Páginas disponibles:
+- **Home** - Dashboard con dominios y métricas
+- **Generate** - Configuración y generación de datos sintéticos
+- **Validate** - Análisis de calidad, sesgos y distribuciones
+- **Registry** - Browse, search y export de datasets
+- **Compare** - Comparación side-by-side de datasets
+
+### Características:
+- Tema oscuro con glassmorphism
+- 12 componentes UI reutilizables
+- 9 charts interactivos (Plotly)
+- Diseño responsivo
+- Estados de carga y error
 
 🧱 Módulos Principales
 1. generation/
@@ -131,7 +142,7 @@ docs/
 ├── ROADMAP.md
 └── TDR.md
 
-## 📊 Métricas Actuales (Día 3)
+## Métricas Actuales (Día 4)
 
 | Métrica | Valor |
 |---------|-------|
@@ -141,18 +152,22 @@ docs/
 | Idiomas | 50% EN / 50% ES |
 | Costo por conversación | ~$0.01 |
 
-🧩 Roadmap (High Level)
+## Roadmap (High Level)
+
 - [x] Integración Bedrock completa
 - [x] Sistema de scoring de calidad
 - [x] Validación de sesgos
 - [x] Dataset Registry (SQLite)
 - [x] Intent Classifier baseline
+- [x] **UI Streamlit completa** (Dashboard, Generate, Validate, Registry, Compare)
+- [x] **Dashboard comparativo de datasets**
+- [x] **Sistema de componentes UI reutilizables**
+- [x] **Diseño responsivo con tema oscuro**
+- [ ] Escalar a 1K+ conversaciones (esperando AWS quota)
 - [ ] Agente autónomo para iterar datasets
 - [ ] Entrenamiento RLHF
 - [ ] Export direct to S3 + version control
 - [ ] Métricas de fairness más avanzadas
-- [ ] Dashboard comparativo de datasets
-- [ ] UI Streamlit completa
 
 👤 Autor
 

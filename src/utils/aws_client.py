@@ -15,7 +15,7 @@ from botocore.exceptions import ClientError
 from .config import AWSConfig, GenerationConfig, get_config
 
 
-__all__ = ["BedrockClient", "RateLimiter"]
+__all__ = ["BedrockClient", "RateLimiter", "S3Client"]
 
 logger = logging.getLogger(__name__)
 
@@ -285,3 +285,176 @@ class BedrockClient:
             "total_retries": self.total_retries,
             "total_errors": self.total_errors
         }
+    
+    def get_bedrock_client(self) -> Any:
+        """
+        Get boto3 bedrock client (for job management).
+        
+        Note: This is different from bedrock-runtime (used for invoke_model).
+        The bedrock client is used for batch job operations.
+        
+        Returns:
+            boto3 bedrock client
+        """
+        session_kwargs: Dict[str, Any] = {
+            "region_name": self.aws_config.region
+        }
+        
+        if self.aws_config.access_key_id and self.aws_config.secret_access_key:
+            session_kwargs["aws_access_key_id"] = self.aws_config.access_key_id
+            session_kwargs["aws_secret_access_key"] = self.aws_config.secret_access_key
+        
+        return boto3.client("bedrock", **session_kwargs)
+    
+    def get_s3_client(self) -> Any:
+        """
+        Get boto3 S3 client.
+        
+        Returns:
+            boto3 S3 client
+        """
+        session_kwargs: Dict[str, Any] = {
+            "region_name": self.aws_config.region
+        }
+        
+        if self.aws_config.access_key_id and self.aws_config.secret_access_key:
+            session_kwargs["aws_access_key_id"] = self.aws_config.access_key_id
+            session_kwargs["aws_secret_access_key"] = self.aws_config.secret_access_key
+        
+        return boto3.client("s3", **session_kwargs)
+    
+    @property
+    def s3_bucket(self) -> Optional[str]:
+        """Get configured S3 bucket."""
+        return self.aws_config.s3_bucket
+
+
+class S3Client:
+    """
+    Simple S3 client for batch inference file operations.
+    
+    Handles upload/download of batch input/output files.
+    """
+    
+    def __init__(self, aws_config: AWSConfig):
+        """
+        Initialize S3 client.
+        
+        Args:
+            aws_config: AWS configuration
+        """
+        self.aws_config = aws_config
+        
+        session_kwargs: Dict[str, Any] = {
+            "region_name": aws_config.region
+        }
+        
+        if aws_config.access_key_id and aws_config.secret_access_key:
+            session_kwargs["aws_access_key_id"] = aws_config.access_key_id
+            session_kwargs["aws_secret_access_key"] = aws_config.secret_access_key
+        
+        self.client = boto3.client("s3", **session_kwargs)
+        self._bucket = aws_config.s3_bucket
+    
+    @classmethod
+    def from_config(cls) -> "S3Client":
+        """Create client from global configuration."""
+        config = get_config()
+        return cls(aws_config=config.aws)
+    
+    @property
+    def bucket(self) -> Optional[str]:
+        """Get configured S3 bucket."""
+        return self._bucket
+    
+    def upload_file(
+        self,
+        local_path: str,
+        s3_key: str,
+        bucket: Optional[str] = None
+    ) -> str:
+        """
+        Upload a file to S3.
+        
+        Args:
+            local_path: Local file path
+            s3_key: S3 object key
+            bucket: S3 bucket (uses configured bucket if None)
+        
+        Returns:
+            S3 URI (s3://bucket/key)
+        """
+        bucket = bucket or self._bucket
+        if not bucket:
+            raise ValueError("No S3 bucket configured. Set S3_BUCKET env var.")
+        
+        self.client.upload_file(local_path, bucket, s3_key)
+        s3_uri = f"s3://{bucket}/{s3_key}"
+        logger.info(f"Uploaded {local_path} to {s3_uri}")
+        return s3_uri
+    
+    def download_file(
+        self,
+        s3_key: str,
+        local_path: str,
+        bucket: Optional[str] = None
+    ) -> str:
+        """
+        Download a file from S3.
+        
+        Args:
+            s3_key: S3 object key
+            local_path: Local file path
+            bucket: S3 bucket (uses configured bucket if None)
+        
+        Returns:
+            Local file path
+        """
+        bucket = bucket or self._bucket
+        if not bucket:
+            raise ValueError("No S3 bucket configured. Set S3_BUCKET env var.")
+        
+        self.client.download_file(bucket, s3_key, local_path)
+        logger.info(f"Downloaded s3://{bucket}/{s3_key} to {local_path}")
+        return local_path
+    
+    def list_objects(
+        self,
+        prefix: str,
+        bucket: Optional[str] = None
+    ) -> List[Dict[str, Any]]:
+        """
+        List objects in S3 with a prefix.
+        
+        Args:
+            prefix: S3 key prefix
+            bucket: S3 bucket (uses configured bucket if None)
+        
+        Returns:
+            List of object metadata dictionaries
+        """
+        bucket = bucket or self._bucket
+        if not bucket:
+            raise ValueError("No S3 bucket configured. Set S3_BUCKET env var.")
+        
+        response = self.client.list_objects_v2(Bucket=bucket, Prefix=prefix)
+        return response.get("Contents", [])
+    
+    def delete_object(
+        self,
+        s3_key: str,
+        bucket: Optional[str] = None
+    ) -> None:
+        """
+        Delete an object from S3.
+        
+        Args:
+            s3_key: S3 object key
+            bucket: S3 bucket (uses configured bucket if None)
+        """
+        bucket = bucket or self._bucket
+        if not bucket:
+            raise ValueError("No S3 bucket configured. Set S3_BUCKET env var.")
+        
+        self.client.delete_object(Bucket=bucket, Key=s3_key)
+        logger.info(f"Deleted s3://{bucket}/{s3_key}")

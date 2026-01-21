@@ -2,10 +2,11 @@
 Bias detection module for synthetic data.
 
 Detects various biases in generated datasets including:
-- Sentiment distribution imbalance
+- Sentiment distribution imbalance (with TextBlob NLP analysis)
 - Intent coverage gaps
 - Language balance (EN/ES)
 - Complexity distribution
+- Underrepresented intent detection
 
 Usage:
     uv run python -m src.validation.bias
@@ -13,14 +14,40 @@ Usage:
 
 import json
 from collections import Counter
+from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Literal, Tuple
+from typing import Any, Dict, List, Literal, Optional, Tuple
 
 from src.generation.schemas import BiasMetrics
 from src.generation.templates.customer_service_prompts import ALL_INTENTS
 
+# TextBlob for real NLP sentiment analysis
+try:
+    from textblob import TextBlob
+    TEXTBLOB_AVAILABLE = True
+except ImportError:
+    TEXTBLOB_AVAILABLE = False
 
-__all__ = ["BiasDetector"]
+
+__all__ = ["BiasDetector", "BiasReport"]
+
+
+@dataclass
+class BiasReport:
+    """
+    Dataclass for bias detection results.
+    
+    Alternative to Pydantic BiasMetrics for simpler use cases.
+    """
+    sentiment_distribution: Dict[str, float] = field(default_factory=dict)
+    intent_coverage: float = 0.0
+    language_balance: Dict[str, float] = field(default_factory=dict)
+    complexity_distribution: Dict[str, float] = field(default_factory=dict)
+    underrepresented_intents: List[str] = field(default_factory=list)
+    bias_detected: bool = False
+    bias_severity: str = "none"
+    recommendations: List[str] = field(default_factory=list)
+    num_conversations: int = 0
 
 
 class BiasDetector:
@@ -48,17 +75,101 @@ class BiasDetector:
     LANGUAGE_BALANCE_THRESHOLD = 0.40  # Minimum for each language
     COMPLEXITY_IMBALANCE_THRESHOLD = 0.30
     
-    def __init__(self, expected_intents: int = 77):
+    def __init__(self, expected_intents: int = 77, use_textblob: bool = True):
         """
         Initialize bias detector.
         
         Args:
             expected_intents: Number of expected unique intents (Banking77 = 77)
+            use_textblob: Whether to use TextBlob for real NLP sentiment analysis
         """
         self._expected_intents = expected_intents
         self._recommendations: List[str] = []
+        self._use_textblob = use_textblob and TEXTBLOB_AVAILABLE
+        
+        if use_textblob and not TEXTBLOB_AVAILABLE:
+            import warnings
+            warnings.warn(
+                "TextBlob not available. Install with: uv add textblob. "
+                "Falling back to metadata-based sentiment analysis."
+            )
     
-    def check_sentiment_distribution(self, conversations: List[Dict]) -> Dict[str, float]:
+    def _analyze_sentiment_from_text(self, text: str) -> str:
+        """
+        Analyze sentiment from actual text using TextBlob.
+        
+        Uses TextBlob's polarity score:
+        - polarity > 0.1: positive
+        - polarity < -0.1: negative
+        - otherwise: neutral
+        
+        Args:
+            text: The text to analyze
+        
+        Returns:
+            Sentiment label: "positive", "neutral", or "negative"
+        """
+        if not self._use_textblob or not text:
+            return "neutral"
+        
+        try:
+            blob = TextBlob(text)
+            polarity = blob.sentiment.polarity
+            
+            if polarity > 0.1:
+                return "positive"
+            elif polarity < -0.1:
+                return "negative"
+            else:
+                return "neutral"
+        except Exception:
+            return "neutral"
+    
+    def _find_underrepresented_intents(
+        self, 
+        conversations: List[Dict], 
+        threshold: float = 0.01
+    ) -> List[str]:
+        """
+        Find intents that are underrepresented in the dataset.
+        
+        An intent is underrepresented if it appears in less than threshold
+        percent of the examples (default: 1%).
+        
+        Args:
+            conversations: List of conversation dictionaries
+            threshold: Minimum representation threshold (default: 0.01 = 1%)
+        
+        Returns:
+            List of underrepresented intent names
+        """
+        if not conversations:
+            return []
+        
+        # Count intent occurrences
+        intent_counts = Counter(
+            conv.get("intent", "unknown") 
+            for conv in conversations
+        )
+        
+        total = len(conversations)
+        underrepresented = []
+        
+        # Check each Banking77 intent
+        for intent in ALL_INTENTS:
+            count = intent_counts.get(intent, 0)
+            ratio = count / total
+            
+            if ratio < threshold:
+                underrepresented.append(intent)
+        
+        return underrepresented
+    
+    def check_sentiment_distribution(
+        self, 
+        conversations: List[Dict],
+        use_nlp: bool = False
+    ) -> Dict[str, float]:
         """
         Analyze sentiment distribution.
         
@@ -66,6 +177,7 @@ class BiasDetector:
         
         Args:
             conversations: List of conversation dictionaries
+            use_nlp: If True, use TextBlob to analyze actual text instead of metadata
         
         Returns:
             Dict with sentiment percentages and imbalance score
@@ -73,11 +185,25 @@ class BiasDetector:
         if not conversations:
             return {"positive": 0, "neutral": 0, "negative": 0, "imbalance": 1.0}
         
-        # Count sentiments
-        sentiment_counts = Counter(
-            conv.get("sentiment", "unknown").lower() 
-            for conv in conversations
-        )
+        # Determine sentiment source
+        if use_nlp and self._use_textblob:
+            # Use TextBlob on actual conversation text
+            sentiments = []
+            for conv in conversations:
+                # Extract all customer text for sentiment analysis
+                customer_text = " ".join(
+                    turn.get("text", "")
+                    for turn in conv.get("turns", [])
+                    if turn.get("speaker") == "customer"
+                )
+                sentiments.append(self._analyze_sentiment_from_text(customer_text))
+            sentiment_counts = Counter(sentiments)
+        else:
+            # Use metadata field
+            sentiment_counts = Counter(
+                conv.get("sentiment", "unknown").lower() 
+                for conv in conversations
+            )
         
         total = len(conversations)
         
@@ -98,6 +224,20 @@ class BiasDetector:
         distribution["imbalance"] = max(deviations)
         
         return distribution
+    
+    def check_sentiment_distribution_nlp(self, conversations: List[Dict]) -> Dict[str, float]:
+        """
+        Analyze sentiment using TextBlob NLP on actual conversation text.
+        
+        This method uses real NLP analysis instead of relying on metadata.
+        
+        Args:
+            conversations: List of conversation dictionaries
+        
+        Returns:
+            Dict with sentiment percentages and imbalance score
+        """
+        return self.check_sentiment_distribution(conversations, use_nlp=True)
     
     def check_intent_coverage(self, conversations: List[Dict]) -> float:
         """
@@ -258,7 +398,11 @@ class BiasDetector:
         else:
             return "high"
     
-    def detect_bias(self, conversations: List[Dict]) -> BiasMetrics:
+    def detect_bias(
+        self, 
+        conversations: List[Dict],
+        use_nlp_sentiment: bool = False
+    ) -> BiasMetrics:
         """
         Run all bias checks and return BiasMetrics.
         
@@ -267,6 +411,7 @@ class BiasDetector:
         
         Args:
             conversations: List of conversation dictionaries
+            use_nlp_sentiment: If True, use TextBlob for sentiment analysis
         
         Returns:
             BiasMetrics with all bias information and recommendations
@@ -274,11 +419,17 @@ class BiasDetector:
         self._recommendations = []
         
         # Run all checks
-        sentiment_dist = self.check_sentiment_distribution(conversations)
+        sentiment_dist = self.check_sentiment_distribution(
+            conversations, 
+            use_nlp=use_nlp_sentiment
+        )
         intent_coverage = self.check_intent_coverage(conversations)
         language_balance = self.check_language_balance(conversations)
         complexity_dist = self.check_complexity_distribution(conversations)
         resolution_dist = self.check_resolution_distribution(conversations)
+        
+        # Find underrepresented intents (< 1%)
+        underrepresented = self._find_underrepresented_intents(conversations)
         
         # Analyze and generate recommendations
         bias_detected = False
@@ -303,6 +454,13 @@ class BiasDetector:
             self._recommendations.append(
                 f"Intent coverage is {intent_coverage*100:.1f}%. Consider generating more "
                 f"samples to cover underrepresented intents."
+            )
+        
+        # Underrepresented intents check
+        if underrepresented and len(underrepresented) > 50:
+            self._recommendations.append(
+                f"Found {len(underrepresented)} underrepresented intents (< 1% each). "
+                f"Consider targeted generation for: {', '.join(underrepresented[:5])}..."
             )
         
         # Language balance check
@@ -348,7 +506,8 @@ class BiasDetector:
             demographic_balance={
                 "language": language_balance,
                 "complexity": complexity_dist,
-                "resolution": resolution_dist
+                "resolution": resolution_dist,
+                "underrepresented_intents": underrepresented[:10]  # Top 10 most underrepresented
             },
             sentiment_distribution={
                 "positive": sentiment_dist["positive"],
@@ -364,8 +523,48 @@ class BiasDetector:
                 "unique_intents": int(intent_coverage * self._expected_intents),
                 "intent_coverage_pct": intent_coverage * 100,
                 "sentiment_imbalance": sentiment_dist["imbalance"],
-                "complexity_imbalance": complexity_dist["imbalance"]
+                "complexity_imbalance": complexity_dist["imbalance"],
+                "underrepresented_count": len(underrepresented),
+                "nlp_sentiment_used": use_nlp_sentiment and self._use_textblob
             }
+        )
+    
+    def detect_bias_report(
+        self, 
+        conversations: List[Dict],
+        use_nlp_sentiment: bool = False
+    ) -> BiasReport:
+        """
+        Run all bias checks and return a BiasReport dataclass.
+        
+        Alternative to detect_bias() that returns a simpler dataclass.
+        
+        Args:
+            conversations: List of conversation dictionaries
+            use_nlp_sentiment: If True, use TextBlob for sentiment analysis
+        
+        Returns:
+            BiasReport dataclass with all bias information
+        """
+        metrics = self.detect_bias(conversations, use_nlp_sentiment)
+        
+        return BiasReport(
+            sentiment_distribution=dict(metrics.sentiment_distribution),
+            intent_coverage=metrics.metadata.get("intent_coverage_pct", 0) / 100,
+            language_balance={
+                "en": metrics.demographic_balance.get("language", {}).get("en", 0),
+                "es": metrics.demographic_balance.get("language", {}).get("es", 0)
+            },
+            complexity_distribution={
+                "simple": metrics.demographic_balance.get("complexity", {}).get("simple", 0),
+                "medium": metrics.demographic_balance.get("complexity", {}).get("medium", 0),
+                "complex": metrics.demographic_balance.get("complexity", {}).get("complex", 0)
+            },
+            underrepresented_intents=metrics.demographic_balance.get("underrepresented_intents", []),
+            bias_detected=metrics.bias_detected,
+            bias_severity=metrics.bias_severity,
+            recommendations=metrics.recommendations,
+            num_conversations=metrics.metadata.get("num_conversations", 0)
         )
     
     def print_report(self, metrics: BiasMetrics) -> None:
@@ -463,8 +662,8 @@ def main():
     """Run bias detection on synthetic data."""
     # Try v2 first, fall back to original
     synthetic_paths = [
+        Path("data/synthetic/customer_service_100.json"),
         Path("data/synthetic/cs_smoke_v2.json"),
-        Path("data/synthetic/customer_service_smoke_test.json"),
     ]
     
     synthetic_path = None

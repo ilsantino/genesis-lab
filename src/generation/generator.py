@@ -642,4 +642,181 @@ class CustomerServiceGenerator(BaseGenerator):
     def intent_count(self) -> int:
         """Get number of available intents."""
         return len(self._intents)
+    
+    # =========================================================================
+    # BATCH INFERENCE METHODS
+    # =========================================================================
+    
+    def prepare_batch_prompts(
+        self,
+        count: int,
+        language: str = "en",
+        intents: Optional[List[str]] = None,
+        sentiment_distribution: Optional[Dict[str, float]] = None,
+        complexity_distribution: Optional[Dict[str, float]] = None
+    ) -> List[Dict[str, Any]]:
+        """
+        Prepare prompts for batch inference without calling the API.
+        
+        This method builds all prompts that would be used for generation,
+        suitable for submission to batch inference.
+        
+        Args:
+            count: Number of prompts to prepare
+            language: Target language ("en" or "es")
+            intents: Optional list of intents to use (cycled if fewer than count)
+            sentiment_distribution: Optional custom sentiment distribution
+            complexity_distribution: Optional custom complexity distribution
+        
+        Returns:
+            List of prompt dictionaries with keys:
+            - prompt: User prompt text
+            - system: System prompt text
+            - metadata: Dict with intent, sentiment, complexity, language
+        """
+        prompts = []
+        
+        # Prepare intent list
+        if intents:
+            intent_cycle = [intents[i % len(intents)] for i in range(count)]
+        else:
+            intent_cycle = [None] * count
+        
+        # Custom distributions
+        sent_dist = sentiment_distribution or DEFAULT_DISTRIBUTION["sentiment"]
+        comp_dist = complexity_distribution or DEFAULT_DISTRIBUTION["complexity"]
+        
+        for i in range(count):
+            # Select sentiment based on distribution
+            sentiments = list(sent_dist.keys())
+            weights = list(sent_dist.values())
+            selected_sentiment = random.choices(sentiments, weights=weights)[0]
+            
+            # Select complexity based on distribution
+            complexities = list(comp_dist.keys())
+            weights = list(comp_dist.values())
+            selected_complexity = random.choices(complexities, weights=weights)[0]
+            
+            # Select parameters
+            params = self._select_random_parameters(
+                intent=intent_cycle[i],
+                sentiment=selected_sentiment,
+                complexity=selected_complexity,
+                language=language
+            )
+            
+            selected_intent = params["intent"]
+            selected_sentiment = params["sentiment"]
+            selected_complexity = params["complexity"]
+            selected_language = params["language"]
+            
+            # Convert to enums for prompt builder
+            sentiment_enum = Sentiment(selected_sentiment)
+            complexity_enum = Complexity(selected_complexity)
+            language_enum = Language(selected_language)
+            
+            # Build prompt with few-shot examples
+            prompt_data = build_full_prompt_with_examples(
+                intent=selected_intent,
+                sentiment=sentiment_enum,
+                complexity=complexity_enum,
+                language=language_enum,
+                num_examples=2,
+                emotion_arc=None
+            )
+            
+            prompts.append({
+                "prompt": prompt_data["user"],
+                "system": prompt_data["system"],
+                "metadata": {
+                    "intent": selected_intent,
+                    "sentiment": selected_sentiment,
+                    "complexity": selected_complexity,
+                    "language": selected_language,
+                    "record_index": i
+                }
+            })
+        
+        logger.info(f"Prepared {len(prompts)} prompts for batch inference")
+        return prompts
+    
+    def process_batch_results(
+        self,
+        results: List[Dict[str, Any]],
+        metadata_map: Optional[Dict[str, Dict]] = None
+    ) -> List[Dict[str, Any]]:
+        """
+        Process results from batch inference into conversation dictionaries.
+        
+        Args:
+            results: Parsed batch results (from BatchResultProcessor)
+            metadata_map: Optional mapping of record_id -> metadata
+        
+        Returns:
+            List of validated conversation dictionaries
+        """
+        conversations = []
+        
+        for result in results:
+            if result.get("error") or not result.get("generated_text"):
+                continue
+            
+            try:
+                # Parse generated JSON
+                text = result["generated_text"]
+                
+                # Try to extract JSON from markdown code blocks
+                if "```json" in text:
+                    start = text.find("```json") + 7
+                    end = text.find("```", start)
+                    if end > start:
+                        text = text[start:end].strip()
+                elif "```" in text:
+                    start = text.find("```") + 3
+                    end = text.find("```", start)
+                    if end > start:
+                        text = text[start:end].strip()
+                
+                conversation = json.loads(text)
+                
+                # Get metadata for this record
+                record_id = result.get("record_id")
+                metadata = {}
+                if metadata_map and record_id and record_id in metadata_map:
+                    metadata = metadata_map[record_id]
+                
+                # Fix schema issues
+                conversation = self._fix_conversation_schema(
+                    conversation,
+                    intent=metadata.get("intent", "general_inquiry"),
+                    sentiment=metadata.get("sentiment", "neutral"),
+                    complexity=metadata.get("complexity", "medium"),
+                    language=metadata.get("language", "en")
+                )
+                
+                # Add metadata
+                conversation["metadata"] = {
+                    "generated_at": datetime.now(timezone.utc).isoformat(),
+                    "model": self._config.aws.default_model,
+                    "generator_version": "1.0.0",
+                    "batch_inference": True,
+                    "record_id": record_id
+                }
+                
+                # Ensure conversation_id is unique
+                if not conversation.get("conversation_id") or conversation["conversation_id"].startswith("conv_XXX"):
+                    conversation["conversation_id"] = f"conv_{uuid.uuid4().hex[:12]}"
+                
+                conversations.append(conversation)
+                self._total_generated += 1
+                
+            except json.JSONDecodeError as e:
+                logger.warning(f"Failed to parse conversation from record {result.get('record_id')}: {e}")
+                self._total_failed += 1
+            except Exception as e:
+                logger.warning(f"Error processing record {result.get('record_id')}: {e}")
+                self._total_failed += 1
+        
+        logger.info(f"Processed {len(conversations)} conversations from batch results")
+        return conversations
 

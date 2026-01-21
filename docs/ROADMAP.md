@@ -2,7 +2,7 @@
 
 Este documento describe las fases de desarrollo planificadas para GENESIS-LAB.
 
-**Última actualización:** 2026-01-16
+**Última actualización:** 2026-01-20
 
 ---
 
@@ -65,22 +65,29 @@ MVP (Días 0-3)     →     v1.0 (Días 4-7)     →     v2.0 (Futuro)
 
 ### Checklist
 
-| Feature | Estado | Prioridad |
-|---------|--------|-----------|
-| Generar 1K conversaciones | ⬜ | Alta |
-| Mejorar calidad de generación | ⬜ | Alta |
-| XGBoost classifier | ⬜ | Alta |
-| Sentence embeddings | ⬜ | Alta |
-| UI Streamlit: Dashboard | ⬜ | Media |
-| UI Streamlit: Generación manual | ⬜ | Media |
-| Prompt caching | ⬜ | Baja |
-| Export HuggingFace Hub | ⬜ | Baja |
+| Feature | Estado | Prioridad | Día |
+|---------|--------|-----------|-----|
+| UI Streamlit: Dashboard | ✅ | Media | 4 |
+| UI Streamlit: Generación manual | ✅ | Media | 4 |
+| UI Streamlit: Validación | ✅ | Media | 4 |
+| UI Streamlit: Registry | ✅ | Media | 4 |
+| UI Streamlit: Comparación | ✅ | Media | 4 |
+| Sistema de componentes UI | ✅ | Media | 4 |
+| Diseño responsivo | ✅ | Baja | 4 |
+| Estados de carga/error | ✅ | Baja | 4 |
+| Generar 1K conversaciones | ⏳ | Alta | Bloqueado (AWS) |
+| XGBoost classifier | ⬜ | Alta | - |
+| Sentence embeddings | ⬜ | Alta | - |
+| Tests: registry, batch | ⬜ | Media | - |
+| Training module completo | ⬜ | Media | - |
+| Prompt caching | ⬜ | Baja | - |
+| Export HuggingFace Hub | ⬜ | Baja | - |
 
 ### Metas
-- 1,000+ conversaciones generadas
-- Classifier accuracy: 60-70%
-- UI funcional para demos
-- Pipeline de training reproducible
+- ✅ UI funcional para demos
+- ⏳ 1,000+ conversaciones generadas (esperando AWS)
+- ⬜ Classifier accuracy: 60-70%
+- ⬜ Pipeline de training reproducible
 
 ---
 
@@ -112,7 +119,8 @@ MVP (Días 0-3)     →     v1.0 (Días 4-7)     →     v2.0 (Futuro)
 Enero 2026
 ├── Fase 1 completada ✅
 ├── Refactor: focus on conversations ✅
-├── Scale to 1K conversations
+├── UI Streamlit completa ✅ (Día 4)
+├── Scale to 1K conversations ⏳ (esperando AWS)
 ├── Train classifier to 60-70%
 └── v1.0 Release
 

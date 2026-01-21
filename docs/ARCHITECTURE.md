@@ -59,7 +59,15 @@ GENESIS-LAB/
 ├── tests/
 ├── ui/
 │   ├── app.py
+│   ├── components/
+│   │   ├── cards.py
+│   │   ├── charts.py
+│   │   └── styles.py
 │   └── pages/
+│       ├── generate.py
+│       ├── validate.py
+│       ├── registry.py
+│       └── compare.py
 ├── .cursorrules
 ├── .env
 ├── .env.template
@@ -154,12 +162,61 @@ Utilidades generales del sistema.
 
 ## 4. UI (Streamlit)
 
+La UI está implementada como un sistema de componentes reutilizables con tema oscuro y diseño responsivo.
+
+### Estructura
+
+```
+ui/
+├── app.py                 # Punto de entrada + navegación
+├── __init__.py
+├── components/
+│   ├── cards.py           # 12 componentes reutilizables
+│   ├── charts.py          # 9 wrappers de Plotly
+│   └── styles.py          # CSS glassmorphism + responsive
+└── pages/
+    ├── generate.py        # Generación de datos
+    ├── validate.py        # Validación con métricas
+    ├── registry.py        # Registro de datasets
+    └── compare.py         # Comparación de datasets
+```
+
 ### `/ui/app.py`
 
 Punto de entrada principal para la interfaz. Controla:
-- Navegación entre páginas
+- Navegación con active page highlighting
+- Sidebar con estadísticas en tiempo real
+- Routing a páginas
 - Inicialización de estado global
-- Carga de configuraciones
+
+### `/ui/components/`
+
+Sistema de componentes reutilizables:
+
+| Componente | Archivo | Uso |
+|------------|---------|-----|
+| `page_header()` | cards.py | Header estandarizado para todas las páginas |
+| `stat_card()` | cards.py | Métricas con valor grande |
+| `metric_card()` | cards.py | Métricas con indicador de status |
+| `domain_card()` | cards.py | Cards para dominios en home |
+| `info_banner()` | cards.py | Banners de info/warning/error |
+| `loading_spinner()` | cards.py | Spinner animado |
+| `skeleton_card()` | cards.py | Placeholder shimmer |
+| `error_state()` | cards.py | Estado de error con retry |
+| `empty_state()` | cards.py | Placeholder para estados vacíos |
+| `intent_distribution_chart()` | charts.py | Barras horizontales |
+| `sentiment_pie_chart()` | charts.py | Donut chart |
+| `quality_gauge()` | charts.py | Gauge para scores |
+| `metrics_radar_chart()` | charts.py | Radar para métricas |
+
+### `/ui/components/styles.py`
+
+Sistema de estilos centralizado:
+- **Tema oscuro** con glassmorphism (backdrop blur + transparencia)
+- **CSS Variables** para paleta de colores
+- **Gradientes** primarios (#667eea → #764ba2)
+- **Animaciones** (fadeIn, pulse, gradient-shift)
+- **Media queries** responsivos (1024px, 768px, 480px)
 
 ### `/ui/pages/`
 
@@ -167,11 +224,27 @@ Cada funcionalidad vive como una página independiente:
 
 | Página | Funcionalidad |
 |--------|---------------|
-| `generate.py` | Generación de datos sintéticos |
-| `validate.py` | Visualización de resultados de validación |
-| `registry.py` | Consulta del historial de datasets |
+| `generate.py` | Configuración y generación de datos sintéticos |
+| `validate.py` | Análisis de calidad, sesgos y distribuciones |
+| `registry.py` | Browse, search y export de datasets |
+| `compare.py` | Comparación side-by-side de datasets |
 
-Streamlit se usa únicamente como interfaz de experimentación para el MVP.
+### Flujo de UI
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        app.py (Router)                          │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐           │
+│  │  Home   │  │Generate │  │Validate │  │Registry │  │Compare│ │
+│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘  └───┬───┘ │
+└───────┼────────────┼────────────┼────────────┼───────────┼─────┘
+        │            │            │            │           │
+        ▼            ▼            ▼            ▼           ▼
+   ┌──────────────────────────────────────────────────────────┐
+   │                 components/ (Shared)                      │
+   │  cards.py │ charts.py │ styles.py                        │
+   └──────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -670,18 +743,23 @@ def test_generation_to_validation_contract():
 | Componente | Estado |
 |------------|--------|
 | Estructura general | ✅ Creada |
-| Módulos definidos | ✅ Definidos (implementación parcial) |
+| Módulos definidos | ✅ Definidos |
 | Dependencias instaladas | ✅ Completado |
 | AWS conectado | ✅ Configurado |
-| UI inicial | ✅ Creada |
-| Templates de prompts | ✅ Customer Service |
+| Templates de prompts | ✅ Customer Service (77 intents) |
 | Contratos documentados | ✅ Completado |
 | Datasets de referencia | ✅ Banking77 |
-| Schemas Pydantic | 🔄 En progreso |
-| Módulo de generación | 🔄 En progreso |
-| Módulo de validación | ⏳ Pendiente |
-| Módulo de training | ⏳ Pendiente |
-| Tests | ⏳ Pendiente |
+| Schemas Pydantic | ✅ Completado |
+| Módulo de generación | ✅ Completado |
+| Módulo de validación | ✅ Completado (quality + bias) |
+| Módulo de training | 🔄 Parcial (intent_classifier.py) |
+| Registry | ✅ Completado (SQLite) |
+| UI Sistema | ✅ Completado |
+| UI Componentes | ✅ 12 componentes reutilizables |
+| UI Charts | ✅ 9 charts Plotly |
+| UI Páginas | ✅ 5 páginas funcionales |
+| UI Responsivo | ✅ Media queries |
+| Tests | 🔄 Parcial (falta registry, batch) |
 
 **Leyenda:** ✅ Completado | 🔄 En progreso | ⏳ Pendiente
 
@@ -695,7 +773,8 @@ def test_generation_to_validation_contract():
 | 2024-01-XX | Templates de prompts: customer_service_prompts.py (77 intents Banking77, bilingüe) |
 | 2024-01-XX | Documentación de contratos entre módulos |
 | 2026-01-16 | Refactor: archivado time series, enfoque en conversaciones |
+| 2026-01-20 | UI completa: sistema de componentes, tema oscuro, diseño responsivo |
 
 ---
 
-*Última actualización: [Fecha actual]*
+*Última actualización: 2026-01-20*
