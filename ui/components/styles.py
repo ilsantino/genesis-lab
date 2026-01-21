@@ -426,14 +426,14 @@ def inject_custom_css():
         }}
         
         /* ===== SECTION HEADERS ===== */
-        .section-header {
+        .section-header {{
             font-size: 1.25rem !important;
             font-weight: 600 !important;
             color: white !important;
             margin-bottom: 1rem !important;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        }}
         
         /* ===== HERO SECTION ===== */
         .hero-title {{

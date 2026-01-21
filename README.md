@@ -1,5 +1,9 @@
 Modular Synthetic Data Generation Factory for LLM Training Pipelines
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://genesis-lab-dfxa5n7gkykdk9bc8uhfpn.streamlit.app)
+
+**Live Demo:** https://genesis-lab-dfxa5n7gkykdk9bc8uhfpn.streamlit.app
+
 GENESIS-LAB es un framework modular diseñado para crear, evaluar y administrar datasets sintéticos de alta calidad utilizando AWS Bedrock, pipelines con LLMs, y una arquitectura escalable basada en principios modernos de ingeniería de datos y agentes.
 
 El proyecto funciona como una fábrica de datasets sintéticos, permitiendo:
