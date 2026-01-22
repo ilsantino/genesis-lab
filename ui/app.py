@@ -141,12 +141,13 @@ def render_home():
     with col1:
         domain_card(
             title="Customer Service",
-            description="Generate realistic multi-turn conversations between customers and support agents. Perfect for training chatbots, intent classifiers, and sentiment analysis models. Uses the Banking77 taxonomy with 77 distinct banking intents.",
+            description="Generate realistic multi-turn conversations between customers and support agents. Each conversation includes natural dialogue flow, escalation patterns, and resolution tracking. Train chatbots, intent classifiers, and sentiment analysis models.",
             features=[
-                "77 Banking intents",
-                "Multi-turn dialogues (4-12 turns)",
-                "Bilingual: English & Spanish",
-                "Variable sentiment arcs",
+                "77 banking intents (Banking77 taxonomy)",
+                "Multi-turn dialogues (4-12 exchanges)",
+                "Bilingual: English and Spanish",
+                "Sentiment arcs: positive, neutral, negative",
+                "Resolution tracking: resolved, escalated, pending",
             ],
             status="active",
             badge_text="Active",
@@ -159,12 +160,13 @@ def render_home():
     with col2:
         domain_card(
             title="Time-Series",
-            description="Generate synthetic temporal data for forecasting models and anomaly detection systems. Includes electricity consumption, IoT sensor readings, and business metrics with realistic trends and seasonality.",
+            description="Generate synthetic temporal data with realistic trends, seasonality, and anomalies. Covers electricity consumption, IoT sensors, and business metrics. Train forecasting models and anomaly detection systems.",
             features=[
-                "370 reference series",
-                "Trends & seasonality",
-                "Configurable anomalies",
-                "Multiple frequencies",
+                "370 reference series from real datasets",
+                "Configurable trends and seasonality",
+                "Anomaly injection with adjustable severity",
+                "Multiple frequencies: 1min to daily",
+                "Automatic stationarity validation",
             ],
             status="coming_soon",
             badge_text="Coming Q1 2026",
@@ -175,12 +177,13 @@ def render_home():
     with col3:
         domain_card(
             title="Financial Transactions",
-            description="Generate synthetic transaction data for fraud detection models and banking system testing. Includes realistic spending patterns, merchant categories, and labeled fraud scenarios while maintaining PCI-DSS compliance.",
+            description="Generate synthetic transaction records for fraud detection and banking system testing. Includes realistic spending patterns, merchant categories, and labeled fraud scenarios. Fully PCI-DSS compliant.",
             features=[
-                "Realistic spending patterns",
-                "Labeled fraud scenarios",
-                "PCI-DSS compliant",
-                "Multi-currency support",
+                "Realistic spending patterns by demographic",
+                "Labeled fraud scenarios (CNP, velocity, etc.)",
+                "PCI-DSS compliant synthetic data",
+                "Multi-currency with realistic FX rates",
+                "Merchant category code distribution",
             ],
             status="coming_soon",
             badge_text="Coming Q2 2026",

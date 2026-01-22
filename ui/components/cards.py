@@ -15,11 +15,11 @@ def domain_card(
     status: str = "active",  # "active", "coming_soon", "beta"
     badge_text: str = "",
     icon: str = "",
-    cta_text: str = "",
-    cta_disabled: bool = False
 ):
     """
     Create a domain card with glassmorphism styling.
+    
+    Uses separate st.markdown calls to avoid nested HTML interpolation issues.
     
     Args:
         title: Card title
@@ -28,56 +28,38 @@ def domain_card(
         status: "active", "coming_soon", or "beta"
         badge_text: Text for status badge
         icon: Emoji icon for the card
-        cta_text: Call-to-action button text
-        cta_disabled: Whether CTA is disabled
     """
-    # Status-specific styling
-    status_class = {
-        "active": "active",
-        "coming_soon": "coming-soon",
-        "beta": "beta"
-    }.get(status, "")
+    # Badge colors based on status
+    badge_colors = {
+        "active": ("#10b981", "rgba(16, 185, 129, 0.2)"),
+        "coming_soon": ("#f59e0b", "rgba(245, 158, 11, 0.2)"),
+        "beta": ("#3b82f6", "rgba(59, 130, 246, 0.2)")
+    }
+    color, bg = badge_colors.get(status, badge_colors["active"])
     
-    badge_class = {
-        "active": "badge-active",
-        "coming_soon": "badge-coming-soon",
-        "beta": "badge-beta"
-    }.get(status, "badge-active")
-    
-    # Build features HTML with inline styles
-    features_html = ""
-    for feature in features:
-        features_html += f"""
-        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: #a0aec0; font-size: 0.9rem;">
-            <span style="color: #10b981; font-weight: bold;">✓</span>
-            <span>{feature}</span>
-        </div>
-        """
-    
-    # Build badge HTML
-    badge_html = ""
-    if badge_text:
-        badge_html = f'<span class="{badge_class} badge">{badge_text}</span>'
-    
-    card_html = f"""
-    <div class="domain-card {status_class}">
+    # Card header (single markdown call - no nesting)
+    st.markdown(f'''
+    <div style="background: rgba(30, 30, 50, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 1.5rem; margin-bottom: 0.5rem;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
             <span style="font-size: 2.5rem;">{icon}</span>
-            {badge_html}
+            <span style="background: {bg}; color: {color}; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">{badge_text}</span>
         </div>
-        <h3 class="domain-title">{title}</h3>
-        <p class="domain-description">{description}</p>
-        <div style="margin-top: 1rem;">
-            {features_html}
-        </div>
-    </div>
-    """
+        <h3 style="font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">{title}</h3>
+        <p style="color: #a0aec0; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">{description}</p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 0.5rem;">
+    ''', unsafe_allow_html=True)
     
-    st.markdown(card_html, unsafe_allow_html=True)
+    # Each feature as separate call (avoids nested HTML interpolation!)
+    for feature in features:
+        st.markdown(f'''
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: #a0aec0; font-size: 0.85rem;">
+                <span style="color: #10b981; font-size: 0.9rem;">✓</span>
+                <span>{feature}</span>
+            </div>
+        ''', unsafe_allow_html=True)
     
-    # Add CTA button if specified
-    if cta_text:
-        st.button(cta_text, disabled=cta_disabled, key=f"cta_{title.lower().replace(' ', '_')}")
+    # Close container
+    st.markdown('</div></div>', unsafe_allow_html=True)
 
 
 def stat_card(

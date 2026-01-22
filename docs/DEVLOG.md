@@ -770,6 +770,16 @@ uv run python scripts/generate_data.py --total 500 --resume
 
 ---
 
+### UI Fixes (2026-01-21)
+
+| Fix | Description |
+|-----|-------------|
+| Domain cards HTML | Rewrote `domain_card()` to avoid nested f-string interpolation |
+| Domain descriptions | Added detailed descriptions and 5 features each |
+| Zoom responsiveness | Added CSS to prevent layout shift on browser zoom |
+
+---
+
 ## Próximos Pasos — Día 6+
 
 ### Prioridad Alta (Bloqueado por AWS)

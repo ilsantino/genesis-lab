@@ -607,6 +607,20 @@ def inject_custom_css():
                 font-size: 0.85rem;
             }}
         }}
+        
+        /* Prevent layout shift on zoom */
+        .stMarkdown > div {{
+            min-width: 0;
+            overflow-wrap: break-word;
+        }}
+        
+        [data-testid="column"] {{
+            min-width: 0 !important;
+        }}
+        
+        .element-container {{
+            min-width: 0;
+        }}
     </style>
     """
     
