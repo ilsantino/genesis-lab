@@ -44,12 +44,12 @@ def domain_card(
         "beta": "badge-beta"
     }.get(status, "badge-active")
     
-    # Build features HTML
+    # Build features HTML with inline styles
     features_html = ""
     for feature in features:
         features_html += f"""
-        <div class="feature-item">
-            <span class="feature-icon">✓</span>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: #a0aec0; font-size: 0.9rem;">
+            <span style="color: #10b981; font-weight: bold;">✓</span>
             <span>{feature}</span>
         </div>
         """
@@ -169,36 +169,40 @@ def metric_card(
 
 def feature_list(features: List[Dict[str, str]], columns: int = 2):
     """
-    Create a feature list with icons.
+    Create a feature list with icons in a symmetric grid.
     
     Args:
         features: List of dicts with 'icon', 'title', 'description'
         columns: Number of columns
     """
-    cols = st.columns(columns)
+    # Process features in rows for better symmetry
+    rows = [features[i:i + columns] for i in range(0, len(features), columns)]
     
-    for idx, feature in enumerate(features):
-        with cols[idx % columns]:
-            feature_html = f"""
-            <div style="
-                background: rgba(30, 30, 50, 0.4);
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                border-radius: 12px;
-                padding: 1.25rem;
-                margin-bottom: 1rem;
-            ">
-                <div style="font-size: 1.5rem; margin-bottom: 0.75rem;">
-                    {feature.get('icon', '✨')}
+    for row in rows:
+        cols = st.columns(columns)
+        for idx, feature in enumerate(row):
+            with cols[idx]:
+                feature_html = f"""
+                <div style="
+                    background: rgba(30, 30, 50, 0.4);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    border-radius: 12px;
+                    padding: 1.25rem;
+                    margin-bottom: 1rem;
+                    min-height: 140px;
+                ">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.75rem;">
+                        {feature.get('icon', '✨')}
+                    </div>
+                    <h4 style="color: white; font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">
+                        {feature.get('title', '')}
+                    </h4>
+                    <p style="color: #a0aec0; font-size: 0.9rem; margin: 0; line-height: 1.5;">
+                        {feature.get('description', '')}
+                    </p>
                 </div>
-                <h4 style="color: white; font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">
-                    {feature.get('title', '')}
-                </h4>
-                <p style="color: #a0aec0; font-size: 0.9rem; margin: 0;">
-                    {feature.get('description', '')}
-                </p>
-            </div>
-            """
-            st.markdown(feature_html, unsafe_allow_html=True)
+                """
+                st.markdown(feature_html, unsafe_allow_html=True)
 
 
 def info_banner(

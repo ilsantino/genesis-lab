@@ -141,12 +141,12 @@ def render_home():
     with col1:
         domain_card(
             title="Customer Service",
-            description="Multi-turn banking conversations using Banking77 taxonomy with 77 distinct intents. Bilingual support for English and Spanish.",
+            description="Generate realistic multi-turn conversations between customers and support agents. Perfect for training chatbots, intent classifiers, and sentiment analysis models. Uses the Banking77 taxonomy with 77 distinct banking intents.",
             features=[
-                "77 Banking intents (Banking77)",
-                "Multi-turn dialogues",
-                "Bilingual EN/ES support",
-                "Sentiment & emotion arcs",
+                "77 Banking intents",
+                "Multi-turn dialogues (4-12 turns)",
+                "Bilingual: English & Spanish",
+                "Variable sentiment arcs",
             ],
             status="active",
             badge_text="Active",
@@ -159,15 +159,15 @@ def render_home():
     with col2:
         domain_card(
             title="Time-Series",
-            description="Synthetic temporal data for electricity consumption, IoT sensors, and business metrics. Includes validation for stationarity and anomalies.",
+            description="Generate synthetic temporal data for forecasting models and anomaly detection systems. Includes electricity consumption, IoT sensor readings, and business metrics with realistic trends and seasonality.",
             features=[
                 "370 reference series",
-                "4 sub-domains",
-                "Seasonal patterns",
-                "Anomaly injection",
+                "Trends & seasonality",
+                "Configurable anomalies",
+                "Multiple frequencies",
             ],
             status="coming_soon",
-            badge_text="Coming Q1 2025",
+            badge_text="Coming Q1 2026",
             icon="📈",
         )
         st.button("Notify Me", key="cta_ts", disabled=True, use_container_width=True)
@@ -175,15 +175,15 @@ def render_home():
     with col3:
         domain_card(
             title="Financial Transactions",
-            description="Realistic transaction patterns for fraud detection and banking system testing. PCI-DSS compliant synthetic data generation.",
+            description="Generate synthetic transaction data for fraud detection models and banking system testing. Includes realistic spending patterns, merchant categories, and labeled fraud scenarios while maintaining PCI-DSS compliance.",
             features=[
-                "Realistic patterns",
-                "Fraud scenarios",
+                "Realistic spending patterns",
+                "Labeled fraud scenarios",
                 "PCI-DSS compliant",
-                "Multi-currency",
+                "Multi-currency support",
             ],
             status="coming_soon",
-            badge_text="Coming Q2 2025",
+            badge_text="Coming Q2 2026",
             icon="💳",
         )
         st.button("Notify Me", key="cta_fin", disabled=True, use_container_width=True)
