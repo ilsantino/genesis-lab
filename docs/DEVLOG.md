@@ -12,7 +12,8 @@
 - [Día 3 — Validation Pipeline + Training Baseline](#día-3--validation-pipeline--training-baseline)
 - [Día 4 — UI Polish and Component System](#día-4--ui-polish-and-component-system-2026-01-20)
 - [Día 5 — Tests Completos + Training Module](#día-5--tests-completos--training-module-2026-01-21)
-- [Próximos Pasos — Día 6+](#próximos-pasos--día-6)
+- [Día 6 — Generate Page Redesign + Batch Inference](#día-6--generate-page-redesign--batch-inference-2026-01-27)
+- [Próximos Pasos — Día 7+](#próximos-pasos--día-7)
 
 ---
 
@@ -780,18 +781,176 @@ uv run python scripts/generate_data.py --total 500 --resume
 
 ---
 
-## Próximos Pasos — Día 6+
+## Día 6 — Generate Page Redesign + Batch Inference (2026-01-27)
 
-### Prioridad Alta (Bloqueado por AWS)
+**Fecha:** 2026-01-27
 
-1. **Escalar a 1K Conversaciones**
-   - Usar `scripts/generate_data.py --total 1000`
-   - Esperando quota increase para mayor velocidad
-   - Puede ejecutarse overnight con auto-pause
+### Resumen
+
+Rediseño completo de la página Generate con opciones avanzadas de customización. Implementación del script de batch inference para pruebas de 1000+ items. Corrección de credenciales AWS.
+
+### AWS Credentials Fix
+
+| Problema | Solución |
+|----------|----------|
+| `IncompleteSignatureException` | Credenciales AWS CLI estaban invertidas (secret key en access key field) |
+| Python usando credenciales incorrectas | `.env` correcto, pero boto3 leía `~/.aws/credentials` |
+| Solución | `aws configure set` para corregir ambos valores |
+
+**Verificación exitosa:**
+```bash
+aws sts get-caller-identity
+# {
+#     "UserId": "AIDAYPBRC4VYEN5X437S4",
+#     "Account": "582071018864",
+#     "Arn": "arn:aws:iam::582071018864:user/genesis-lab-dev-ilsantino"
+# }
+```
+
+### Generate Page Redesign
+
+Rediseño completo de `ui/pages/generate.py` con opciones avanzadas:
+
+#### Basic Settings
+| Opción | Rango | Default |
+|--------|-------|---------|
+| Conversations | 10-5000 | 1000 |
+| Language Distribution | 0-100% EN | 50% |
+
+#### Intent Selection (Banking77 Taxonomy)
+- 12 categorías expandibles
+- 77 intents individuales seleccionables
+- Checkboxes a nivel de categoría e intent
+- Contador de intents seleccionados
+
+**Categorías:**
+- Card Management (18 intents)
+- Card Payments (7)
+- Cash & ATM (7)
+- Transfers (10)
+- Top Up (12)
+- Currency Exchange (5)
+- Account Security (4)
+- Identity Verification (4)
+- Account Management (5)
+- Payment Methods (2)
+- Refunds (3)
+
+#### Sentiment Distribution
+| Control | Default |
+|---------|---------|
+| 😊 Positive | 30% |
+| 😐 Neutral | 50% |
+| 😤 Negative | 20% |
+
+Visual: Progress bar con colores verde/púrpura/rojo
+
+#### Complexity & Turn Count
+| Opción | Descripción |
+|--------|-------------|
+| Simple | 2-4 turns, straightforward |
+| Medium | 4-8 turns, follow-ups |
+| Complex | 8-12 turns, escalations |
+| Turn Range | Slider min/max (2-12) |
+
+#### Resolution Types
+- ✅ Resolved - Issue fully addressed
+- 📞 Escalated - Transferred to specialist
+- ⏳ Pending - Follow-up needed
+
+#### AWS Settings (Hybrid Mode)
+| Feature | Descripción |
+|---------|-------------|
+| Default credentials | Lee de `.env` automáticamente |
+| Status indicator | Muestra si está conectado |
+| Custom override | Checkbox para usar credenciales propias |
+| S3 Bucket | Configurable (default: genesis-lab-batch-inference) |
+| Region selector | us-east-1, us-west-2, eu-west-1, ap-southeast-1 |
+
+#### Time Estimation (Batch Mode)
+Reemplazado el estimate de "6+ hours" por tiempos reales de batch:
+
+| Items | Tiempo Estimado |
+|-------|-----------------|
+| 100 | ~5 min |
+| 500 | ~15 min |
+| 1000 | ~25 min |
+| 2000 | ~45 min |
+
+### Archivos Creados
+
+| Archivo | Descripción | Líneas |
+|---------|-------------|--------|
+| `scripts/test_batch_inference.py` | Script completo para batch inference | ~450 |
+
+### Archivos Modificados
+
+| Archivo | Cambio |
+|---------|--------|
+| `ui/pages/generate.py` | Rediseño completo con todas las opciones de customización |
+
+### Batch Inference Test Script
+
+`scripts/test_batch_inference.py` - Script completo para testing:
+
+**Features:**
+- Configurable total y EN/ES split
+- Prepara prompts con CustomerServiceGenerator
+- Construye archivo JSONL en formato Bedrock
+- Upload a S3 y submit de batch job
+- Polling con progress callback
+- Download y procesamiento de resultados
+- Validación de calidad y detección de bias
+- Registro en database
+
+**Uso:**
+```bash
+# Dry run (ver plan)
+uv run python scripts/test_batch_inference.py --total 1000 --dry-run
+
+# Ejecutar batch para 1000 items
+uv run python scripts/test_batch_inference.py --total 1000
+
+# Custom split (70% EN, 30% ES)
+uv run python scripts/test_batch_inference.py --total 1000 --en-percent 70
+
+# Con timeout personalizado
+uv run python scripts/test_batch_inference.py --total 1000 --timeout 3600
+```
+
+### Checklist Día 6
+
+| Entregable | Estado |
+|------------|--------|
+| Generate page redesign | ✅ |
+| Intent category selection | ✅ |
+| Sentiment distribution sliders | ✅ |
+| Complexity selector | ✅ |
+| Turn count range | ✅ |
+| Resolution type checkboxes | ✅ |
+| AWS settings (hybrid mode) | ✅ |
+| Time estimates (batch mode) | ✅ |
+| Batch inference test script | ✅ |
+| AWS credentials fix | ✅ |
+
+---
+
+## Próximos Pasos — Día 7+
+
+### Prioridad Alta
+
+1. **Test Batch Inference**
+   - Ejecutar `scripts/test_batch_inference.py --total 1000`
+   - Verificar resultados de batch job
+   - Validar calidad del dataset generado
+
+2. **Conectar UI a Batch Mode**
+   - Wiring del Generate page al pipeline de batch
+   - Progress tracking en tiempo real
 
 ### Prioridad Baja
 
-2. **Optimizaciones**
+3. **Optimizaciones**
    - Prompt caching para reducir costos AWS
    - Export a HuggingFace Hub
 
