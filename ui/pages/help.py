@@ -21,10 +21,11 @@ def render_help_page():
     )
     
     # Documentation tabs
-    tab_start, tab_features, tab_concepts, tab_faq = st.tabs([
+    tab_start, tab_features, tab_concepts, tab_models, tab_faq = st.tabs([
         "🚀 Getting Started",
         "⚙️ Features Guide",
         "📖 Concepts",
+        "🤖 Models & Training",
         "❓ FAQ"
     ])
     
@@ -36,6 +37,9 @@ def render_help_page():
     
     with tab_concepts:
         render_concepts()
+    
+    with tab_models:
+        render_models_training()
     
     with tab_faq:
         render_faq()
@@ -488,6 +492,316 @@ def render_concepts():
         """, unsafe_allow_html=True)
 
 
+def render_models_training():
+    """Render the Models & Training deep-dive tab."""
+    
+    # Main explainer
+    st.markdown("""
+    <div class="glass-card" style="border-left: 4px solid #667eea;">
+        <h3 style="color: white; margin-bottom: 1rem;">Understanding the Genesis Lab Pipeline</h3>
+        <p style="color: #a0aec0; line-height: 1.8;">
+            Genesis Lab is a <strong style="color: white;">synthetic data generation</strong> platform. 
+            This page explains exactly what happens at each stage, what models are used, and how 
+            training works. <strong style="color: #f59e0b;">Important:</strong> You do NOT train the AI 
+            that generates data - you train a separate classifier.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    get_divider()
+    
+    # Generation vs Training - The key distinction
+    st.markdown('<p class="section-header">Generation vs Training: The Key Distinction</p>', unsafe_allow_html=True)
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div class="glass-card" style="border-top: 4px solid #667eea; min-height: 320px;">
+            <h4 style="color: #667eea; margin-bottom: 1rem;">🤖 GENERATION (Claude AI)</h4>
+            <p style="color: white; font-weight: 600; margin-bottom: 0.5rem;">What it is:</p>
+            <p style="color: #a0aec0; margin-bottom: 1rem;">
+                Claude 3.5 Sonnet (via AWS Bedrock) creates synthetic conversations based on your settings.
+            </p>
+            <p style="color: white; font-weight: 600; margin-bottom: 0.5rem;">Is it trained?</p>
+            <p style="color: #a0aec0; margin-bottom: 1rem;">
+                <strong style="color: #10b981;">Already trained by Anthropic.</strong> You cannot and do not need to train it.
+            </p>
+            <p style="color: white; font-weight: 600; margin-bottom: 0.5rem;">Your role:</p>
+            <p style="color: #a0aec0;">
+                Configure settings (samples, language, thresholds) and let Claude generate data.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="glass-card" style="border-top: 4px solid #ec4899; min-height: 320px;">
+            <h4 style="color: #ec4899; margin-bottom: 1rem;">📊 TRAINING (Classifier)</h4>
+            <p style="color: white; font-weight: 600; margin-bottom: 0.5rem;">What it is:</p>
+            <p style="color: #a0aec0; margin-bottom: 1rem;">
+                A machine learning model that learns to classify intents from the synthetic data.
+            </p>
+            <p style="color: white; font-weight: 600; margin-bottom: 0.5rem;">Is it trained?</p>
+            <p style="color: #a0aec0; margin-bottom: 1rem;">
+                <strong style="color: #f59e0b;">You train it!</strong> Using the synthetic data Claude generated.
+            </p>
+            <p style="color: white; font-weight: 600; margin-bottom: 0.5rem;">Your role:</p>
+            <p style="color: #a0aec0;">
+                Choose a model (LogReg, RF, XGBoost), configure settings, and train on your data.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Pipeline visualization
+    st.markdown("""
+    <div class="glass-card" style="text-align: center; margin-top: 1rem;">
+        <p style="color: #718096; margin-bottom: 0.5rem;">THE COMPLETE FLOW:</p>
+        <p style="color: #a0aec0; font-size: 1.1rem; letter-spacing: 0.3px;">
+            <span style="background: rgba(102, 126, 234, 0.2); padding: 0.3rem 0.6rem; border-radius: 4px;">Your Settings</span>
+            <span style="color: #4a5568;"> → </span>
+            <span style="background: rgba(102, 126, 234, 0.2); padding: 0.3rem 0.6rem; border-radius: 4px;">Claude AI</span>
+            <span style="color: #4a5568;"> → </span>
+            <span style="background: rgba(16, 185, 129, 0.2); padding: 0.3rem 0.6rem; border-radius: 4px;">Synthetic Data</span>
+            <span style="color: #4a5568;"> → </span>
+            <span style="background: rgba(16, 185, 129, 0.2); padding: 0.3rem 0.6rem; border-radius: 4px;">Validation</span>
+            <span style="color: #4a5568;"> → </span>
+            <span style="background: rgba(236, 72, 153, 0.2); padding: 0.3rem 0.6rem; border-radius: 4px;">Train Classifier</span>
+            <span style="color: #4a5568;"> → </span>
+            <span style="background: rgba(245, 158, 11, 0.2); padding: 0.3rem 0.6rem; border-radius: 4px;">Predict Intents!</span>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    get_divider()
+    
+    # Available Models Deep Dive
+    st.markdown('<p class="section-header">Classification Models Reference</p>', unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="glass-card">
+        <p style="color: #a0aec0; margin-bottom: 1rem;">
+            All classifiers use <strong style="color: white;">TF-IDF vectorization</strong> to convert text to numbers. 
+            TF-IDF measures how important each word is by combining word frequency with how unique the word is across all documents.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Logistic Regression
+    st.markdown("""
+    <div class="glass-card" style="margin-top: 1rem;">
+        <h4 style="color: #667eea; margin-bottom: 1rem;">⚡ Logistic Regression</h4>
+        <table style="width: 100%; color: #a0aec0;">
+            <tr>
+                <td style="padding: 0.5rem 0; width: 30%;"><strong>Speed</strong></td>
+                <td style="color: #10b981;">Very Fast (seconds)</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>Accuracy</strong></td>
+                <td>Good baseline</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>How it works</strong></td>
+                <td>Finds a linear boundary to separate intent classes. Simple but effective.</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>Best for</strong></td>
+                <td>Quick experiments, debugging, establishing a baseline</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>Preset</strong></td>
+                <td>⚡ Fast</td>
+            </tr>
+        </table>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Random Forest
+    st.markdown("""
+    <div class="glass-card" style="margin-top: 1rem;">
+        <h4 style="color: #10b981; margin-bottom: 1rem;">🌲 Random Forest</h4>
+        <table style="width: 100%; color: #a0aec0;">
+            <tr>
+                <td style="padding: 0.5rem 0; width: 30%;"><strong>Speed</strong></td>
+                <td style="color: #f59e0b;">Medium (10-30 seconds)</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>Accuracy</strong></td>
+                <td>Better than LogReg, more robust</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>How it works</strong></td>
+                <td>Builds many decision trees and combines their votes. Reduces overfitting.</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>Best for</strong></td>
+                <td>Production with limited data, when you need feature importance</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>Preset</strong></td>
+                <td>⚖️ Balanced</td>
+            </tr>
+        </table>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # XGBoost
+    st.markdown("""
+    <div class="glass-card" style="margin-top: 1rem;">
+        <h4 style="color: #ec4899; margin-bottom: 1rem;">🎯 XGBoost</h4>
+        <table style="width: 100%; color: #a0aec0;">
+            <tr>
+                <td style="padding: 0.5rem 0; width: 30%;"><strong>Speed</strong></td>
+                <td style="color: #ef4444;">Slower (30-60 seconds)</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>Accuracy</strong></td>
+                <td>Best overall performance</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>How it works</strong></td>
+                <td>Gradient boosting: builds trees sequentially, each correcting previous errors.</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>Best for</strong></td>
+                <td>Final production model, when accuracy is critical</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.5rem 0;"><strong>Preset</strong></td>
+                <td>🎯 Best</td>
+            </tr>
+        </table>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    get_divider()
+    
+    # Validation Methods
+    st.markdown('<p class="section-header">Validation Methods Explained</p>', unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="glass-card">
+        <p style="color: #a0aec0; margin-bottom: 1rem;">
+            Before training, Genesis Lab validates your synthetic data using these techniques:
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    col_val1, col_val2 = st.columns(2)
+    
+    with col_val1:
+        st.markdown("""
+        <div class="glass-card">
+            <h4 style="color: #10b981; margin-bottom: 1rem;">📊 Quality Metrics</h4>
+            <ul style="color: #a0aec0; line-height: 2.2;">
+                <li><strong>Completeness:</strong> Are all required fields present?</li>
+                <li><strong>Consistency:</strong> Does the conversation flow logically?</li>
+                <li><strong>Realism:</strong> Does the distribution match Banking77?</li>
+                <li><strong>Diversity:</strong> Is there variety in responses?</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class="glass-card" style="margin-top: 1rem;">
+            <h4 style="color: #667eea; margin-bottom: 1rem;">📏 Distribution Matching</h4>
+            <p style="color: #a0aec0; line-height: 1.8;">
+                Uses <strong style="color: white;">Jensen-Shannon Divergence</strong> to compare your 
+                synthetic data distribution against the Banking77 reference dataset. 
+                Lower divergence = more realistic data.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col_val2:
+        st.markdown("""
+        <div class="glass-card">
+            <h4 style="color: #f59e0b; margin-bottom: 1rem;">⚖️ Bias Detection</h4>
+            <ul style="color: #a0aec0; line-height: 2.2;">
+                <li><strong>Sentiment Balance:</strong> pos/neutral/neg distribution</li>
+                <li><strong>Language Balance:</strong> English/Spanish ratio</li>
+                <li><strong>Intent Coverage:</strong> % of 77 intents represented</li>
+                <li><strong>Complexity Balance:</strong> simple/medium/complex</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class="glass-card" style="margin-top: 1rem;">
+            <h4 style="color: #ec4899; margin-bottom: 1rem;">🔍 Semantic Coherence</h4>
+            <p style="color: #a0aec0; line-height: 1.8;">
+                Optionally uses <strong style="color: white;">sentence embeddings</strong> (BERT-based) 
+                to check if agent responses are semantically related to customer queries.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    get_divider()
+    
+    # Complete Glossary
+    st.markdown('<p class="section-header">Complete Glossary</p>', unsafe_allow_html=True)
+    
+    with st.expander("🔤 A-F", expanded=False):
+        st.markdown("""
+        | Term | Definition |
+        |------|------------|
+        | **Accuracy** | Percentage of predictions that are correct |
+        | **AWS Bedrock** | Amazon's managed service for accessing LLMs like Claude |
+        | **Banking77** | Benchmark dataset with 77 customer service intents |
+        | **Bias** | Systematic skew in data that can affect model fairness |
+        | **Classification** | Task of assigning categories (intents) to inputs |
+        | **Claude** | Anthropic's AI model used for data generation |
+        | **Cross-Validation** | Testing on multiple data splits for reliable evaluation |
+        | **F1 Score** | Harmonic mean of precision and recall |
+        """)
+    
+    with st.expander("🔤 G-N", expanded=False):
+        st.markdown("""
+        | Term | Definition |
+        |------|------------|
+        | **Generation** | Process of creating synthetic data using Claude |
+        | **Gradient Boosting** | ML technique where models are trained sequentially to correct errors |
+        | **Intent** | The purpose or goal behind a customer's message |
+        | **Jensen-Shannon Divergence** | Measure of similarity between two probability distributions |
+        | **Logistic Regression** | Linear model for classification |
+        | **Max Features** | Maximum number of vocabulary terms in TF-IDF |
+        | **N-gram** | Sequence of N consecutive words (unigram=1, bigram=2, trigram=3) |
+        """)
+    
+    with st.expander("🔤 O-Z", expanded=False):
+        st.markdown("""
+        | Term | Definition |
+        |------|------------|
+        | **Overfitting** | When a model memorizes training data instead of learning patterns |
+        | **Precision** | Of all positive predictions, how many are correct |
+        | **Random Forest** | Ensemble of decision trees that vote on predictions |
+        | **Recall** | Of all actual positives, how many were correctly identified |
+        | **Synthetic Data** | Artificially generated data that mimics real data |
+        | **TF-IDF** | Term Frequency-Inverse Document Frequency - text vectorization method |
+        | **Training** | Process of teaching a model to recognize patterns in data |
+        | **Validation** | Checking data quality before using it for training |
+        | **XGBoost** | Extreme Gradient Boosting - powerful tree-based algorithm |
+        """)
+    
+    # Quick Reference Card
+    st.markdown('<p class="section-header" style="margin-top: 2rem;">Quick Reference</p>', unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="glass-card" style="border: 1px solid #4a5568;">
+        <h4 style="color: white; margin-bottom: 1rem;">🎯 TL;DR - The 30-Second Summary</h4>
+        <ol style="color: #a0aec0; line-height: 2;">
+            <li><strong>Generate:</strong> Claude creates fake but realistic conversations</li>
+            <li><strong>Validate:</strong> Check the data is good quality and unbiased</li>
+            <li><strong>Train:</strong> Teach a classifier (LogReg/RF/XGBoost) to recognize intents</li>
+            <li><strong>Use:</strong> The trained classifier predicts intents for new messages</li>
+        </ol>
+        <p style="color: #f59e0b; margin-top: 1rem;">
+            <strong>Remember:</strong> You train the classifier, NOT Claude. Claude is already trained.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
 def render_faq():
     """Render the FAQ tab."""
     
@@ -522,6 +836,107 @@ def render_faq():
         Data with a quality score above 70% and bias severity of "low" or "none" 
         is considered production-ready. Always validate your data using the 
         Validate page before deploying to production systems.
+        """)
+    
+    get_divider()
+    
+    # Training Questions - NEW SECTION
+    st.markdown("""
+    <div class="glass-card">
+        <h4 style="color: white; margin-bottom: 1rem;">🎓 Training</h4>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    with st.expander("Do I need to train the AI model (Claude)?"):
+        st.markdown("""
+        **No!** This is the most common misconception.
+        
+        - **Claude** (the AI that generates data) is already trained by Anthropic
+        - You cannot and do not need to train Claude
+        - What you *can* train is a **separate classifier** that learns from the synthetic data
+        
+        Think of it this way:
+        - Claude = An author writing example conversations (already skilled)
+        - Classifier = A student learning from those examples (you train this)
+        """)
+    
+    with st.expander("What's the difference between generation and training?"):
+        st.markdown("""
+        | | Generation | Training |
+        |---|---|---|
+        | **What** | Creating synthetic data | Teaching a model to classify |
+        | **Who** | Claude AI (AWS Bedrock) | Classifier (LogReg/RF/XGBoost) |
+        | **Input** | Your settings | Synthetic conversations |
+        | **Output** | Conversations | Trained model |
+        | **Your role** | Configure settings | Choose model, run training |
+        
+        **Flow:** Generation → Validation → Training → Use model
+        """)
+    
+    with st.expander("Why do I need to validate before training?"):
+        st.markdown("""
+        **Garbage in, garbage out.**
+        
+        If you train on bad data, your model will learn bad patterns:
+        - Missing fields → Model crashes during training
+        - Biased sentiment → Model predicts same sentiment always
+        - Low diversity → Model can't generalize to new intents
+        - Inconsistent conversations → Model learns wrong patterns
+        
+        Validation catches these issues **before** they waste your training time.
+        
+        **Rule of thumb:** Quality score > 70%, Bias severity = "low" or "none"
+        """)
+    
+    with st.expander("What accuracy should I expect?"):
+        st.markdown("""
+        With 77 intents, random guessing = 1.3% accuracy. Here's what's realistic:
+        
+        | Dataset Size | Expected Accuracy | Notes |
+        |--------------|------------------|-------|
+        | 100 samples | 10-20% | Limited, but 10x better than random |
+        | 500 samples | 40-50% | Good for prototypes |
+        | 1,000 samples | 60-70% | Ready for initial production |
+        | 5,000 samples | 80-85% | Production-ready |
+        | 10,000+ samples | 90%+ | State-of-the-art |
+        
+        **Tip:** Quality matters more than quantity. Focus on diverse, high-quality data.
+        """)
+    
+    with st.expander("Which model should I use?"):
+        st.markdown("""
+        **Start with Balanced (Random Forest) if unsure.**
+        
+        | Situation | Recommended |
+        |-----------|-------------|
+        | Just testing, need speed | ⚡ Fast (Logistic Regression) |
+        | Production, general use | ⚖️ Balanced (Random Forest) |
+        | Need max accuracy | 🎯 Best (XGBoost) |
+        | Less than 500 samples | Random Forest |
+        | More than 1000 samples | XGBoost |
+        
+        All models use the same TF-IDF text processing, so the data prep is identical.
+        """)
+    
+    with st.expander("What is cross-validation and should I use it?"):
+        st.markdown("""
+        **Cross-validation tests your model multiple times for more reliable results.**
+        
+        **How 5-fold CV works:**
+        1. Split data into 5 equal parts
+        2. Train on 4 parts, test on 1
+        3. Repeat 5 times with different test parts
+        4. Average the results
+        
+        **When to use:**
+        - Final evaluation before production
+        - When you want confidence intervals (±)
+        - When dataset is small (< 500 samples)
+        
+        **When to skip:**
+        - Quick experiments
+        - Large datasets (5000+) - single split is reliable enough
+        - Time is critical
         """)
     
     get_divider()

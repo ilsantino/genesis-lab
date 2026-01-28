@@ -235,10 +235,29 @@ Cada funcionalidad vive como una página independiente:
 |--------|---------------|
 | `generate.py` | Configuración y generación de datos sintéticos |
 | `validate.py` | Análisis de calidad, sesgos y distribuciones |
-| `training.py` | Entrenamiento de clasificadores con presets, CV, y tracking |
+| `training.py` | Entrenamiento de clasificadores con presets, CV, tracking, y documentación educativa (Learn tab) |
 | `registry.py` | Browse, search y export de datasets |
 | `compare.py` | Comparación side-by-side de datasets |
-| `help.py` | Documentación: Getting Started, Features, Concepts, FAQ |
+| `help.py` | Documentación completa: Getting Started, Features, Concepts, Models & Training, FAQ |
+
+### Documentación Educativa Integrada
+
+La UI incluye documentación educativa integrada para usuarios sin conocimiento previo:
+
+**Training Page (`training.py`):**
+- **Tab "Learn"**: Explica qué es el entrenamiento, pipeline completo, comparación de modelos, guía de selección, interpretación de métricas, y glosario
+- **Ayuda inline**: Expandables con explicaciones sobre datasets, presets, y configuración
+- **Tooltips**: Ayuda contextual en controles avanzados (TF-IDF, N-grams, Cross-Validation)
+
+**Help Page (`help.py`):**
+- **Tab "Models & Training"**: Diferencia entre generación y entrenamiento, referencia de modelos, métodos de validación estadística, glosario completo A-Z
+- **FAQ expandido**: Preguntas frecuentes sobre entrenamiento, precisión esperada, selección de modelos
+
+**Conceptos clave documentados:**
+- Distinción clara: "No entrenas a Claude, entrenas un clasificador"
+- Pipeline visual: Settings → Claude → Datos → Validación → Entrenamiento → Predicción
+- Modelos: Logistic Regression (rápido), Random Forest (balanceado), XGBoost (mejor precisión)
+- Métricas: Accuracy, F1, Precision, Recall explicados en lenguaje simple
 
 ### Flujo de UI
 
@@ -785,7 +804,8 @@ def test_generation_to_validation_contract():
 | 2024-01-XX | Documentación de contratos entre módulos |
 | 2026-01-16 | Refactor: archivado time series, enfoque en conversaciones |
 | 2026-01-20 | UI completa: sistema de componentes, tema oscuro, diseño responsivo |
+| 2026-01-28 | Documentación educativa: Learn tab en Training, Models & Training tab en Help, FAQ expandido |
 
 ---
 
-*Última actualización: 2026-01-20*
+*Última actualización: 2026-01-28*
